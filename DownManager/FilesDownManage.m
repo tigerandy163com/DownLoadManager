@@ -219,7 +219,7 @@ static   FilesDownManage *sharedFilesDownManage = nil;
     NSInteger max = MAXLINES;
     FileModel *fileInfo =  [request.userInfo objectForKey:@"File"];
     NSInteger downingcount =0;
-    NSInteger indexmax;
+    NSInteger indexmax =-1;
     for (FileModel *file in _filelist) {
         if (file.isDownloading) {
             downingcount++;
@@ -533,7 +533,7 @@ static   FilesDownManage *sharedFilesDownManage = nil;
 
         NSFileManager *fileManager=[NSFileManager defaultManager];
         NSError *error;
-        NSInteger delindex;
+        NSInteger delindex =-1;
         if([CommonHelper isExistFile:_fileInfo.targetPath])//已经下载过一次该音乐
         {
             if ([fileManager removeItemAtPath:_fileInfo.targetPath error:&error]!=YES) {
@@ -643,7 +643,7 @@ static   FilesDownManage *sharedFilesDownManage = nil;
 #pragma mark -- init methods --
 -(id)initWithBasepath:(NSString *)basepath
 TargetPathArr:(NSArray *)targetpaths{
-    _basepath = basepath;
+    self.basepath = basepath;
     _targetPathArray = [[NSMutableArray alloc]initWithArray:targetpaths];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString * Max= [userDefaults valueForKey:@"kMaxRequestCount"];
