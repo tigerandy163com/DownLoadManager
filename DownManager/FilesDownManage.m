@@ -138,7 +138,7 @@ static   FilesDownManage *sharedFilesDownManage = nil;
 -(void)saveDownloadFile:(FileModel*)fileinfo{
     NSData *imagedata =UIImagePNGRepresentation(fileinfo.fileimage);
 
-    NSDictionary *filedic = [NSDictionary dictionaryWithObjectsAndKeys:fileinfo.fileName,@"filename",fileinfo.fileURL,@"fileurl",fileinfo.time,@"time",fileinfo.fileSize,@"filesize",fileinfo.fileReceivedSize,@"filerecievesize",imagedata,@"fileimage",_basepath,@"basepath",nil];
+    NSDictionary *filedic = [NSDictionary dictionaryWithObjectsAndKeys:fileinfo.fileName,@"filename",fileinfo.fileURL,@"fileurl",fileinfo.time,@"time",_basepath,@"basepath",_TargetSubPath,@"tarpath" ,fileinfo.fileSize,@"filesize",fileinfo.fileReceivedSize,@"filerecievesize",imagedata,@"fileimage",nil];
 
     NSString *plistPath = [fileinfo.tempPath stringByAppendingPathExtension:@"plist"];
     if (![filedic writeToFile:plistPath atomically:YES]) {
@@ -358,11 +358,13 @@ static   FilesDownManage *sharedFilesDownManage = nil;
     file.fileURL = [dic objectForKey:@"fileurl"];
     file.fileSize = [dic objectForKey:@"filesize"];
     file.fileReceivedSize= [dic objectForKey:@"filerecievesize"];
-    
-
-
-    file.targetPath =
-    file.tempPath =
+    self.basepath = [dic objectForKey:@"basepath"];
+    self.TargetSubPath = [dic objectForKey:@"tarpath"];
+    NSString*  path1= [CommonHelper getTargetPathWithBasepath:_basepath subpath:_TargetSubPath];
+    path1 = [path1 stringByAppendingPathComponent:file.fileName];
+    file.targetPath = path1;
+    NSString *tempfilePath= [TEMPPATH stringByAppendingPathComponent: file.fileName];
+    file.tempPath = tempfilePath;
     file.time = [dic objectForKey:@"time"];
     file.fileimage = [UIImage imageWithData:[dic objectForKey:@"fileimage"]];
     file.isDownloading=NO;
@@ -463,6 +465,7 @@ static   FilesDownManage *sharedFilesDownManage = nil;
 {
     
     //因为是重新下载，则说明肯定该文件已经被下载完，或者有临时文件正在留着，所以检查一下这两个地方，存在则删除掉
+    self.TargetSubPath = path;
     if (_fileInfo!=nil) {
         [_fileInfo release];
         
@@ -772,14 +775,14 @@ TargetPathArr:(NSArray *)targetpaths{
   
     NSString *len = [responseHeaders objectForKey:@"Content-Length"];//
         // NSLog(@"%@,%@,%@",fileInfo.fileSize,fileInfo.fileReceivedSize,len);
-        
-        //    if ([fileInfo.fileSize longLongValue]> [len longLongValue]) {
-        //        return;
-        //    }
+    //这个信息头，首次收到的为总大小，那么后来续传时收到的大小为肯定小于或等于首次的值，则忽略
+    if ([fileInfo.fileSize longLongValue]> [len longLongValue])
+    {
+        return;
+    }
    
-        fileInfo.fileSize = [NSString stringWithFormat:@"%lld",  ([fileInfo.fileReceivedSize longLongValue] +[len longLongValue])];
-        //   [request.userInfo setValue:fileInfo forKey:@"File"];
-     //   [self saveDownloadFile:fileInfo];
+        fileInfo.fileSize = [NSString stringWithFormat:@"%lld",  [len longLongValue]];
+        [self saveDownloadFile:fileInfo];
     
 }
 

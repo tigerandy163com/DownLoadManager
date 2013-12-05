@@ -25,6 +25,7 @@
 @property(nonatomic,retain)id<DownloadDelegate> downloadDelegate;//下载列表delegate
 
 @property(nonatomic,retain)NSString *basepath;
+@property(nonatomic,retain)NSString *TargetSubPath;
 @property(nonatomic,retain)NSMutableArray *finishedlist;//已下载完成的文件列表（文件对象）
 
 @property(nonatomic,retain)NSMutableArray *downinglist;//正在下载的文件列表(ASIHttpRequest对象)
