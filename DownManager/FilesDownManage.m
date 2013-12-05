@@ -150,7 +150,7 @@ static   FilesDownManage *sharedFilesDownManage = nil;
     for(ASIHTTPRequest *tempRequest in self.downinglist)
     {
         NSLog(@"%@",[tempRequest.url absoluteString]);
-        if([[tempRequest.url absoluteString] isEqualToString:fileInfo.fileURL])
+        if([[tempRequest.originalURL absoluteString] isEqualToString:fileInfo.fileURL])
         {
             if ([tempRequest isExecuting]&&isBeginDown) {
                 return;
@@ -606,11 +606,12 @@ static   FilesDownManage *sharedFilesDownManage = nil;
         if (!file.error) {
         if (file.isDownloading==YES) {
             file.willDownloading = NO;
-            num++;
+            
             if (num>max) {
                 file.isDownloading = NO;
                 file.willDownloading = YES;
-            }
+            }else
+            num++;
         }
         }
     }
