@@ -19,19 +19,19 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [FilesDownManage sharedFilesDownManageWithBasepath:@"DownLoad" TargetPathArr:[NSArray arrayWithObject:@"DownLoad/mp3"]];
-       NSArray *onlineBooksUrl = [NSArray arrayWithObjects:@"http://wt.wishdown.com:8082/soft/%C4%B4%D6%B8%B9%C3%C4%EF.mp3?222018468612008x1367051811x222018515330154-8a9b57c765112a2d2d31c1deef595f83",
-                               @"http://rs.qipaoxian.com/mp3file/images/res/ttres/111/2111_b51ef49b0c83ddbd44b959f651e32924.mp3",
-                               @"http://rs.qipaoxian.com/mp3file/images/res/ttres/166/2166_1f241a1d90c211cbffaa58d09cf89019.mp3",
+       NSArray *onlineBooksUrl = [NSArray arrayWithObjects:@"http://219.239.26.20/download/53546556/76795884/2/dmg/232/4/1383696088040_516/QQ_V3.0.1.dmg",
+                               @"http://219.239.26.11/download/46280417/68353447/3/dmg/105/192/1369883541097_192/KindleForMac._V383233429_.dmg",
+                               @"http://free2.macx.cn:81/Tools/Office/UltraEdit-v4-0-0-7.dmg",
                                
-                               @"http://rs.qipaoxian.com/mp3file/newmp3/004.mp3",
-                               @"http://rs.qipaoxian.com/mp3file/images/res/ttres/98/2098_6826a39adbf50f53c36baa901b25fe70.mp3",
+                               @"http://124.254.47.46/download/53349786/76725509/1/exe/13/154/53349786_1/QQ2013SP4.exe",
+                               @"http://dldir1.qq.com/qqfile/qq/QQ2013/QQ2013SP5/9050/QQ2013SP5.exe",
 
-                               @"http://rs.qipaoxian.com/mp3file/newmp3/shui.mp3",
-                               @"http://rs.qipaoxian.com/mp3file/newmp3/qiong.mp3",
-                               @"http://rs.qipaoxian.com/mp3file/images/res/ttres/854/2854_c21cfcafe8fff8f50719f195ae937195.mp3",
-                               @"http://rs.qipaoxian.com/mp3file/newmp3/hu.mp3",nil];
+                               @"http://dldir1.qq.com/qqfile/tm/TM2013Preview1.exe",
+                               @"http://dldir1.qq.com/invc/tt/QQBrowserSetup.exe",
+                               @"http://dldir1.qq.com/music/clntupate/QQMusic_Setup_100.exe",
+                               @"http://dl_dir.qq.com/invc/qqpinyin/QQPinyin_Setup_4.6.2028.400.exe",nil];
     
-    NSArray *names = [NSArray arrayWithObjects:@"拇指姑娘.mp3", @"天鹅王子.mp3",@"笨汉斯.mp3",@"丑小鸭.mp3",@"园丁和主人.mp3",@"睡美人.mp3",@"穷人和富人.mp3",@"小人国.mp3",@"狐狸和马.mp3",nil];
+    NSArray *names = [NSArray arrayWithObjects:@"MacQQ", @"KindleForMac",@"UltraEdit",@"QQ2013SP4",@"QQ2013SP5",@"TM2013",@"QQBrowser",@"QQMusic",@"QQPinyin",nil];
     
     downContentDatas = [[NSMutableArray alloc]initWithArray:names];
     downURLArr = [[NSArray alloc]initWithArray:onlineBooksUrl];

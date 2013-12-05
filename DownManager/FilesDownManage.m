@@ -150,7 +150,7 @@ static   FilesDownManage *sharedFilesDownManage = nil;
     for(ASIHTTPRequest *tempRequest in self.downinglist)
     {
         NSLog(@"%@",[tempRequest.url absoluteString]);
-        if([[tempRequest.originalURL absoluteString] isEqualToString:fileInfo.fileURL])
+        if([[[tempRequest.url absoluteString]lastPathComponent] isEqualToString:[fileInfo.fileURL lastPathComponent]])
         {
             if ([tempRequest isExecuting]&&isBeginDown) {
                 return;
@@ -198,7 +198,8 @@ static   FilesDownManage *sharedFilesDownManage = nil;
     BOOL exit = NO;
     for(ASIHTTPRequest *tempRequest in self.downinglist)
     {
-        if([[tempRequest.url absoluteString] isEqual:fileInfo.fileURL])
+       //  NSLog(@"!!!!---::%@",[tempRequest.url absoluteString]);
+        if([[[tempRequest.url absoluteString]lastPathComponent] isEqualToString:[fileInfo.fileURL lastPathComponent] ])
         {
             [self.downinglist replaceObjectAtIndex:[_downinglist indexOfObject:tempRequest] withObject:request ];
             
@@ -208,7 +209,9 @@ static   FilesDownManage *sharedFilesDownManage = nil;
     }
     
     if (!exit) {
+       
         [self.downinglist addObject:request];
+         NSLog(@"EXIT!!!!---::%@",[request.url absoluteString]);
     }
     [self.downloadDelegate updateCellProgress:request];
     [request release];
