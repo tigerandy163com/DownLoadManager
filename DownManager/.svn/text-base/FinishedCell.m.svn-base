@@ -1,0 +1,187 @@
+//
+//  FinishedCell.m
+
+
+#import "FinishedCell.h"
+#import "FilesDownManage.h"
+#import "DemoImageEditor.h"
+#import "CDFileDetailViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
+@implementation FinishedCell
+
+@synthesize fileInfo;
+@synthesize  fileImage,fileName,fileSize,fileTypeLab,timelable;
+@synthesize mediaPlayer;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+- (IBAction)deleteFile:(id)sender{
+    [[FilesDownManage sharedFilesDownManage]  deleteFinishFile:fileInfo];
+    UITableView *tableView=(UITableView *)[self superview];
+    [tableView reloadData];
+}
+
+- (IBAction)openFile:(UIButton *)sender {
+    NSString *ext = fileInfo.fileType;
+    NSString *url = fileInfo.targetPath;
+    self.delegate.view.userInteractionEnabled = NO;
+    if ([ext isEqualToString:@"mp3"]||[ext isEqualToString:@"acc"]) {
+        [self showAudio:url];
+    }else if ([ext isEqualToString:@"mp4"]||[ext isEqualToString:@"mov"]){
+        [self showVideo:url];
+    }else if ([ext isEqualToString:@"jpg"]||[ext isEqualToString:@"png"]){
+        [self showImage:url];
+    }else
+        [self showFile:url];
+}
+- (void)dealloc
+{
+    
+	if ( mediaPlayer != nil ) {
+		//[mediaPlayer.view removeFromSuperview];
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] < 4.9)
+            {
+            //[mediaPlayer stop];
+            }
+		[mediaPlayer release];
+		mediaPlayer = nil;
+	}
+    
+    [fileInfo release];
+    [fileSize release];
+    [fileTypeLab release];
+    [fileImage release];
+    [timelable release];
+    [fileName release];
+    [super dealloc];
+}
+-(void)showVideo:(NSString *)url
+{
+    if(isShowVideo )
+    {
+     self.delegate.view.userInteractionEnabled = YES;
+        return;
+    
+    }
+   
+    NSURL *urlVideo ;
+    urlVideo =[NSURL fileURLWithPath:url] ;
+    
+	mediaPlayer = [[CUDirectionMPMoviePlayerViewController alloc] initWithContentURL:urlVideo];
+	mediaPlayer.view.backgroundColor = [UIColor clearColor];
+	mediaPlayer.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+
+	mediaPlayer.view.contentMode = UIViewContentModeBottom;
+	mediaPlayer.moviePlayer.fullscreen = YES;
+	
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(theMovieFinishedCallback:)
+												 name:MPMoviePlayerPlaybackDidFinishNotification
+											   object:nil];
+
+	[mediaPlayer.moviePlayer play];
+    isShowVideo = YES;
+    [self.delegate presentModalViewController:mediaPlayer animated:YES];
+     self.delegate.view.userInteractionEnabled = YES;
+//	[self performSelector:@selector(delayPresentMoviePlayer) withObject:nil afterDelay:1.0];
+    
+}
+-(void)delayPresentMoviePlayer{
+	[self.delegate presentModalViewController:mediaPlayer animated:YES];
+}
+// When the movie is done, release the controller.
+-(void)theMovieFinishedCallback:(NSNotification*)aNotification
+{
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+												  object:nil];
+   
+	//[theMovie dismissMoviePlayerViewControllerAnimated];
+
+	[mediaPlayer dismissModalViewControllerAnimated:YES];
+
+    [mediaPlayer release];
+    mediaPlayer = nil;
+    isShowVideo = NO;
+
+}
+
+
+-(void)showImage:(NSString *)url{
+    NSURL *urlVideo ;
+    urlVideo =[NSURL fileURLWithPath:url] ;
+    UIImage *image = [UIImage imageWithContentsOfFile:url];
+    DemoImageEditor *imageEditor = [[DemoImageEditor alloc] initWithNibName:@"DemoImageEditor" bundle:nil];
+    ALAssetsLibrary *library = [[[ALAssetsLibrary alloc] init]autorelease];
+    imageEditor.sourceImage = image;
+    //imageEditor.previewImage = image;
+    imageEditor.doneCallback = ^(UIImage *editedImage, BOOL canceled){
+           [self.delegate.navigationController popViewControllerAnimated:YES];
+        if(!canceled) {
+            
+            [library writeImageToSavedPhotosAlbum:[editedImage CGImage]
+                                           orientation:editedImage.imageOrientation
+                                       completionBlock:^(NSURL *assetURL, NSError *error){
+                                           if (error) {
+                                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Saving"
+                                                                                               message:[error localizedDescription]
+                                                                                              delegate:nil
+                                                                                     cancelButtonTitle:@"Ok"
+                                                                                     otherButtonTitles: nil];
+                                               [alert show];
+                                               [alert release];
+                                           }
+                                       }];
+         
+             }
+        
+    };
+   [self.delegate.navigationController pushViewController:imageEditor animated:YES];
+     self.delegate.view.userInteractionEnabled = YES;
+    [imageEditor release];
+}
+-(void)showFile:(NSString *)url{
+    
+	CDFileDetailViewController *controller = [[CDFileDetailViewController alloc] initWithNibName:@"CDFileDetailViewController" bundle:nil];
+	controller.fileUrl = url;
+	[self.delegate.navigationController pushViewController:controller animated:YES];
+    
+     self.delegate.view.userInteractionEnabled = YES;
+	[controller release];
+}
+
+-(void)showAudio:(NSString *)url{
+    NSURL *urlVideo ;
+    
+    urlVideo =[NSURL fileURLWithPath:url] ;
+
+    mediaPlayer = [[CUDirectionMPMoviePlayerViewController alloc] init];
+	mediaPlayer.view.backgroundColor = [UIColor clearColor];
+	mediaPlayer.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    
+	mediaPlayer.view.contentMode = UIViewContentModeBottom;
+	mediaPlayer.moviePlayer.fullscreen = NO;
+	mediaPlayer.moviePlayer.contentURL = urlVideo;
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(theMovieFinishedCallback:)
+												 name:MPMoviePlayerPlaybackDidFinishNotification
+											   object:nil];
+    
+	[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
+	[mediaPlayer.moviePlayer play];
+    isShowVideo = YES;
+    [self.delegate presentModalViewController:mediaPlayer animated:YES];
+	//[self performSelector:@selector(delayPresentMoviePlayer) withObject:nil afterDelay:1.0];
+    self.delegate.view.userInteractionEnabled = YES;
+}
+@end

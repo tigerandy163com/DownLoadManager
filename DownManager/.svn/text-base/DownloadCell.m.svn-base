@@ -1,0 +1,94 @@
+//
+//  DownloadCell.m
+
+
+#import "DownloadCell.h"
+
+#import "FilesDownManage.h"
+@implementation DownloadCell
+@synthesize fileInfo;
+@synthesize progress1;
+@synthesize fileName;
+@synthesize fileCurrentSize;
+@synthesize fileSize;
+@synthesize timelable;
+@synthesize operateButton;
+@synthesize request;
+@synthesize averagebandLab;
+@synthesize sizeinfoLab;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+- (void)dealloc
+{
+    [request release];
+    [operateButton release];
+    [fileName release];
+    [fileCurrentSize release];
+    [fileSize release];
+    [progress1 release];
+    [fileInfo release];
+    [timelable release];
+    [averagebandLab release];
+    [sizeinfoLab release];
+    [_fileImage release];
+    [_fileTypeLab release];
+    [_typeImage release];
+    [super dealloc];
+}
+
+- (IBAction)deleteRquest:(id)sender {
+    FilesDownManage *filedownmanage = [FilesDownManage sharedFilesDownManage];
+    [filedownmanage deleteRequest:request];
+    UITableView *tableView=(UITableView *)[self superview];
+    [tableView reloadData];
+}
+
+-(IBAction)operateTask:(id)sender
+{
+    UIButton *btnOperate=(UIButton *)sender;
+    FileModel *downFile=((DownloadCell *)[[[btnOperate superview] superview]superview]).fileInfo;
+    FilesDownManage *filedownmanage = [FilesDownManage sharedFilesDownManage];
+    if(downFile.isDownloading)//文件正在下载，点击之后暂停下载 有可能进入等待状态
+    {
+        [operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-开始按钮.png"] forState:UIControlStateNormal];
+//        [request cancel];
+//        [request release];
+//        request=nil;
+        [filedownmanage stopRequest:request];
+    }
+    else
+    {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *use3G = [userDefaults valueForKey:kUse3G];
+        
+            
+        if( YES == [ASIHTTPRequest isNetworkReachableViaWWAN] && NO == [use3G boolValue] )
+        {
+        
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"您设置了不使用2G/3G下载，如果希望使用2G/3G下载请更改相应设置" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            
+            [alert show];
+            [alert release];
+        }
+        else
+        {
+            [operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-暂停按钮.png"] forState:UIControlStateNormal];
+            if (downFile.post) {
+              //  [filedownmanage beginPostRequest:downFile isBeginPost:YES];
+            }else
+           // [filedownmanage beginRequest:downFile isBeginDown:YES];
+                [filedownmanage resumeRequest:request];
+        }
+        
+    }
+    //暂停意味着这个Cell里的ASIHttprequest已被释放，要及时更新table的数据，使最新的ASIHttpreqst控制Cell
+    UITableView *tableView=(UITableView *)[self superview];
+    [tableView reloadData];
+}
+@end

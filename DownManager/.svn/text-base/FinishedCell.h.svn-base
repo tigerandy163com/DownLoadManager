@@ -1,0 +1,30 @@
+//
+//  FinishedCell.h
+
+
+#import <UIKit/UIKit.h>
+#import "FileModel.h"
+#import "CUDirectionMPMoviePlayerViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
+@interface FinishedCell : UITableViewCell {
+    FileModel *fileInfo;
+    CUDirectionMPMoviePlayerViewController *mediaPlayer;
+
+    BOOL isShowVideo;
+    BOOL isVoice;
+    BOOL isStartPlayVoice;
+}
+@property(nonatomic,assign)UIViewController *delegate;
+@property(nonatomic,retain) FileModel *fileInfo;
+@property (retain, nonatomic) IBOutlet UILabel *fileTypeLab;
+@property (retain, nonatomic) IBOutlet UIImageView *fileImage;
+@property(nonatomic,retain)IBOutlet UILabel *fileName;
+@property(nonatomic,retain)IBOutlet UILabel *fileSize;
+@property (retain, nonatomic) IBOutlet UILabel *timelable;
+
+@property(nonatomic,retain)CUDirectionMPMoviePlayerViewController *mediaPlayer;
+- (IBAction)deleteFile:(id)sender;
+- (IBAction)openFile:(UIButton *)sender;
+
+@end
