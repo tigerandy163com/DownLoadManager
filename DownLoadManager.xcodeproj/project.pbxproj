@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C66C7321184EBD6C0059E952 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C7320184EBD6C0059E952 /* Foundation.framework */; };
+		C66C7323184EBD6C0059E952 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C7322184EBD6C0059E952 /* CoreGraphics.framework */; };
+		C66C7325184EBD6C0059E952 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C7324184EBD6C0059E952 /* UIKit.framework */; };
+		C66C732B184EBD6C0059E952 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C66C7329184EBD6C0059E952 /* InfoPlist.strings */; };
+		C66C732D184EBD6C0059E952 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C66C732C184EBD6C0059E952 /* main.m */; };
+		C66C7331184EBD6C0059E952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C66C7330184EBD6C0059E952 /* AppDelegate.m */; };
+		C66C7337184EBD6C0059E952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66C7336184EBD6C0059E952 /* ViewController.m */; };
+		C66C7339184EBD6C0059E952 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66C7338184EBD6C0059E952 /* Images.xcassets */; };
+		C66C73EE184EC2570059E952 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C73ED184EC2570059E952 /* CFNetwork.framework */; };
+		C6A022DA185052A9008EB2F7 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02286185052A9008EB2F7 /* ASIAuthenticationDialog.m */; };
+		C6A022DB185052A9008EB2F7 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02289185052A9008EB2F7 /* ASIDataCompressor.m */; };
+		C6A022DC185052A9008EB2F7 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0228B185052A9008EB2F7 /* ASIDataDecompressor.m */; };
+		C6A022DD185052A9008EB2F7 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0228D185052A9008EB2F7 /* ASIDownloadCache.m */; };
+		C6A022DE185052A9008EB2F7 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0228F185052A9008EB2F7 /* ASIFormDataRequest.m */; };
+		C6A022DF185052A9008EB2F7 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02291185052A9008EB2F7 /* ASIHTTPRequest.m */; };
+		C6A022E0185052A9008EB2F7 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02295185052A9008EB2F7 /* ASIInputStream.m */; };
+		C6A022E1185052A9008EB2F7 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02297185052A9008EB2F7 /* ASINetworkQueue.m */; };
+		C6A022E2185052A9008EB2F7 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02299185052A9008EB2F7 /* ASINSStringAdditions.m */; };
+		C6A022E3185052A9008EB2F7 /* NSHTTPCookieAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0229C185052A9008EB2F7 /* NSHTTPCookieAdditions.m */; };
+		C6A022E4185052A9008EB2F7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0229E185052A9008EB2F7 /* Reachability.m */; };
+		C6A022E8185052A9008EB2F7 /* CommonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022A6185052A9008EB2F7 /* CommonHelper.m */; };
+		C6A022E9185052A9008EB2F7 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022A8185052A9008EB2F7 /* DownloadCell.m */; };
+		C6A022EA185052A9008EB2F7 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022AB185052A9008EB2F7 /* DownloadViewController.m */; };
+		C6A022EB185052A9008EB2F7 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6A022AC185052A9008EB2F7 /* DownloadViewController.xib */; };
+		C6A022EC185052A9008EB2F7 /* FileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022AE185052A9008EB2F7 /* FileModel.m */; };
+		C6A022ED185052A9008EB2F7 /* FilesDownManage.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022B0185052A9008EB2F7 /* FilesDownManage.m */; };
+		C6A022EE185052A9008EB2F7 /* FinishedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022B2185052A9008EB2F7 /* FinishedCell.m */; };
+		C6A022EF185052A9008EB2F7 /* 下载完成-删除.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B4185052A9008EB2F7 /* 下载完成-删除.png */; };
+		C6A022F0185052A9008EB2F7 /* 下载完成-删除@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B5185052A9008EB2F7 /* 下载完成-删除@2x.png */; };
+		C6A022F1185052A9008EB2F7 /* 下载弹出按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B6185052A9008EB2F7 /* 下载弹出按钮.png */; };
+		C6A022F2185052A9008EB2F7 /* 下载弹出按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B7185052A9008EB2F7 /* 下载弹出按钮@2x.png */; };
+		C6A022F3185052A9008EB2F7 /* 下载弹出背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B8185052A9008EB2F7 /* 下载弹出背景.png */; };
+		C6A022F4185052A9008EB2F7 /* 下载弹出背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B9185052A9008EB2F7 /* 下载弹出背景@2x.png */; };
+		C6A022F5185052A9008EB2F7 /* 下载弹出进度条.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BA185052A9008EB2F7 /* 下载弹出进度条.png */; };
+		C6A022F6185052A9008EB2F7 /* 下载弹出进度条@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BB185052A9008EB2F7 /* 下载弹出进度条@2x.png */; };
+		C6A022F7185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BC185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png */; };
+		C6A022F8185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BD185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png */; };
+		C6A022F9185052A9008EB2F7 /* 下载管理-上传图标.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BE185052A9008EB2F7 /* 下载管理-上传图标.png */; };
+		C6A022FA185052A9008EB2F7 /* 下载管理-上传图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BF185052A9008EB2F7 /* 下载管理-上传图标@2x.png */; };
+		C6A022FB185052A9008EB2F7 /* 下载管理-开始按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C0185052A9008EB2F7 /* 下载管理-开始按钮.png */; };
+		C6A022FC185052A9008EB2F7 /* 下载管理-开始按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C1185052A9008EB2F7 /* 下载管理-开始按钮@2x.png */; };
+		C6A022FD185052A9008EB2F7 /* 下载管理-暂停按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C2185052A9008EB2F7 /* 下载管理-暂停按钮.png */; };
+		C6A022FE185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C3185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png */; };
+		C6A022FF185052A9008EB2F7 /* 下载管理下载图标.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C4185052A9008EB2F7 /* 下载管理下载图标.png */; };
+		C6A02300185052A9008EB2F7 /* 下载管理下载图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C5185052A9008EB2F7 /* 下载管理下载图标@2x.png */; };
+		C6A02301185052A9008EB2F7 /* 下载管理单条背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C6185052A9008EB2F7 /* 下载管理单条背景.png */; };
+		C6A02302185052A9008EB2F7 /* 下载管理单条背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C7185052A9008EB2F7 /* 下载管理单条背景@2x.png */; };
+		C6A02303185052A9008EB2F7 /* 下载管理取消按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C8185052A9008EB2F7 /* 下载管理取消按钮.png */; };
+		C6A02304185052A9008EB2F7 /* 下载管理取消按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C9185052A9008EB2F7 /* 下载管理取消按钮@2x.png */; };
+		C6A02305185052A9008EB2F7 /* 下载管理进度条背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CA185052A9008EB2F7 /* 下载管理进度条背景.png */; };
+		C6A02306185052A9008EB2F7 /* 下载管理进度条背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CB185052A9008EB2F7 /* 下载管理进度条背景@2x.png */; };
+		C6A02307185052A9008EB2F7 /* 下载管理进度背景点九.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CC185052A9008EB2F7 /* 下载管理进度背景点九.png */; };
+		C6A02308185052A9008EB2F7 /* 下载管理进度背景点九@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CD185052A9008EB2F7 /* 下载管理进度背景点九@2x.png */; };
+		C6A02309185052A9008EB2F7 /* 两项选项卡右1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CE185052A9008EB2F7 /* 两项选项卡右1.png */; };
+		C6A0230A185052A9008EB2F7 /* 两项选项卡右1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CF185052A9008EB2F7 /* 两项选项卡右1@2x.png */; };
+		C6A0230B185052A9008EB2F7 /* 两项选项卡右2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D0185052A9008EB2F7 /* 两项选项卡右2.png */; };
+		C6A0230C185052A9008EB2F7 /* 两项选项卡右2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D1185052A9008EB2F7 /* 两项选项卡右2@2x.png */; };
+		C6A0230D185052A9008EB2F7 /* 两项选项卡左1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D2185052A9008EB2F7 /* 两项选项卡左1.png */; };
+		C6A0230E185052A9008EB2F7 /* 两项选项卡左1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D3185052A9008EB2F7 /* 两项选项卡左1@2x.png */; };
+		C6A0230F185052A9008EB2F7 /* 两项选项卡左2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D4185052A9008EB2F7 /* 两项选项卡左2.png */; };
+		C6A02310185052A9008EB2F7 /* 两项选项卡左2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D5185052A9008EB2F7 /* 两项选项卡左2@2x.png */; };
+		C6A02311185052A9008EB2F7 /* 图片-分类大背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D6185052A9008EB2F7 /* 图片-分类大背景.png */; };
+		C6A02312185052A9008EB2F7 /* 显示信息数目背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D7185052A9008EB2F7 /* 显示信息数目背景.png */; };
+		C6A02313185052A9008EB2F7 /* 显示信息数目背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D8185052A9008EB2F7 /* 显示信息数目背景@2x.png */; };
+		C6A0231518505304008EB2F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66C7332184EBD6C0059E952 /* Main.storyboard */; };
+		C6EB7271184F036F00072B53 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C6EB7270184F036F00072B53 /* libz.1.2.5.dylib */; };
+		C6EB7274184F473B00072B53 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EB7273184F473B00072B53 /* SettingViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C66C731D184EBD6C0059E952 /* DownLoadManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownLoadManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C66C7320184EBD6C0059E952 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C66C7322184EBD6C0059E952 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C66C7324184EBD6C0059E952 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C66C7328184EBD6C0059E952 /* DownLoadManager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DownLoadManager-Info.plist"; sourceTree = "<group>"; };
+		C66C732A184EBD6C0059E952 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C66C732C184EBD6C0059E952 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C66C732E184EBD6C0059E952 /* DownLoadManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DownLoadManager-Prefix.pch"; sourceTree = "<group>"; };
+		C66C732F184EBD6C0059E952 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C66C7330184EBD6C0059E952 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C66C7333184EBD6C0059E952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C66C7335184EBD6C0059E952 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C66C7336184EBD6C0059E952 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C66C7338184EBD6C0059E952 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C66C733F184EBD6C0059E952 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C66C73ED184EC2570059E952 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C66C73EF184ECB360059E952 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C6A02285185052A9008EB2F7 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		C6A02286185052A9008EB2F7 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		C6A02287185052A9008EB2F7 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		C6A02288185052A9008EB2F7 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		C6A02289185052A9008EB2F7 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		C6A0228A185052A9008EB2F7 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		C6A0228B185052A9008EB2F7 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		C6A0228C185052A9008EB2F7 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		C6A0228D185052A9008EB2F7 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		C6A0228E185052A9008EB2F7 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		C6A0228F185052A9008EB2F7 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		C6A02290185052A9008EB2F7 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		C6A02291185052A9008EB2F7 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		C6A02292185052A9008EB2F7 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		C6A02293185052A9008EB2F7 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		C6A02294185052A9008EB2F7 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		C6A02295185052A9008EB2F7 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		C6A02296185052A9008EB2F7 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		C6A02297185052A9008EB2F7 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		C6A02298185052A9008EB2F7 /* ASINSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINSStringAdditions.h; sourceTree = "<group>"; };
+		C6A02299185052A9008EB2F7 /* ASINSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINSStringAdditions.m; sourceTree = "<group>"; };
+		C6A0229A185052A9008EB2F7 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		C6A0229B185052A9008EB2F7 /* NSHTTPCookieAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSHTTPCookieAdditions.h; sourceTree = "<group>"; };
+		C6A0229C185052A9008EB2F7 /* NSHTTPCookieAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHTTPCookieAdditions.m; sourceTree = "<group>"; };
+		C6A0229D185052A9008EB2F7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		C6A0229E185052A9008EB2F7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		C6A022A5185052A9008EB2F7 /* CommonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonHelper.h; sourceTree = "<group>"; };
+		C6A022A6185052A9008EB2F7 /* CommonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonHelper.m; sourceTree = "<group>"; };
+		C6A022A7185052A9008EB2F7 /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
+		C6A022A8185052A9008EB2F7 /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
+		C6A022A9185052A9008EB2F7 /* DownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadDelegate.h; sourceTree = "<group>"; };
+		C6A022AA185052A9008EB2F7 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
+		C6A022AB185052A9008EB2F7 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
+		C6A022AC185052A9008EB2F7 /* DownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadViewController.xib; sourceTree = "<group>"; };
+		C6A022AD185052A9008EB2F7 /* FileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileModel.h; sourceTree = "<group>"; };
+		C6A022AE185052A9008EB2F7 /* FileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileModel.m; sourceTree = "<group>"; };
+		C6A022AF185052A9008EB2F7 /* FilesDownManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesDownManage.h; sourceTree = "<group>"; };
+		C6A022B0185052A9008EB2F7 /* FilesDownManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesDownManage.m; sourceTree = "<group>"; };
+		C6A022B1185052A9008EB2F7 /* FinishedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishedCell.h; sourceTree = "<group>"; };
+		C6A022B2185052A9008EB2F7 /* FinishedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishedCell.m; sourceTree = "<group>"; };
+		C6A022B4185052A9008EB2F7 /* 下载完成-删除.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载完成-删除.png"; sourceTree = "<group>"; };
+		C6A022B5185052A9008EB2F7 /* 下载完成-删除@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载完成-删除@2x.png"; sourceTree = "<group>"; };
+		C6A022B6185052A9008EB2F7 /* 下载弹出按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出按钮.png"; sourceTree = "<group>"; };
+		C6A022B7185052A9008EB2F7 /* 下载弹出按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出按钮@2x.png"; sourceTree = "<group>"; };
+		C6A022B8185052A9008EB2F7 /* 下载弹出背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出背景.png"; sourceTree = "<group>"; };
+		C6A022B9185052A9008EB2F7 /* 下载弹出背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出背景@2x.png"; sourceTree = "<group>"; };
+		C6A022BA185052A9008EB2F7 /* 下载弹出进度条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条.png"; sourceTree = "<group>"; };
+		C6A022BB185052A9008EB2F7 /* 下载弹出进度条@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条@2x.png"; sourceTree = "<group>"; };
+		C6A022BC185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条进度背景点九.png"; sourceTree = "<group>"; };
+		C6A022BD185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条进度背景点九@2x.png"; sourceTree = "<group>"; };
+		C6A022BE185052A9008EB2F7 /* 下载管理-上传图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-上传图标.png"; sourceTree = "<group>"; };
+		C6A022BF185052A9008EB2F7 /* 下载管理-上传图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-上传图标@2x.png"; sourceTree = "<group>"; };
+		C6A022C0185052A9008EB2F7 /* 下载管理-开始按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-开始按钮.png"; sourceTree = "<group>"; };
+		C6A022C1185052A9008EB2F7 /* 下载管理-开始按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-开始按钮@2x.png"; sourceTree = "<group>"; };
+		C6A022C2185052A9008EB2F7 /* 下载管理-暂停按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-暂停按钮.png"; sourceTree = "<group>"; };
+		C6A022C3185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-暂停按钮@2x.png"; sourceTree = "<group>"; };
+		C6A022C4185052A9008EB2F7 /* 下载管理下载图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理下载图标.png"; sourceTree = "<group>"; };
+		C6A022C5185052A9008EB2F7 /* 下载管理下载图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理下载图标@2x.png"; sourceTree = "<group>"; };
+		C6A022C6185052A9008EB2F7 /* 下载管理单条背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理单条背景.png"; sourceTree = "<group>"; };
+		C6A022C7185052A9008EB2F7 /* 下载管理单条背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理单条背景@2x.png"; sourceTree = "<group>"; };
+		C6A022C8185052A9008EB2F7 /* 下载管理取消按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理取消按钮.png"; sourceTree = "<group>"; };
+		C6A022C9185052A9008EB2F7 /* 下载管理取消按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理取消按钮@2x.png"; sourceTree = "<group>"; };
+		C6A022CA185052A9008EB2F7 /* 下载管理进度条背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度条背景.png"; sourceTree = "<group>"; };
+		C6A022CB185052A9008EB2F7 /* 下载管理进度条背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度条背景@2x.png"; sourceTree = "<group>"; };
+		C6A022CC185052A9008EB2F7 /* 下载管理进度背景点九.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度背景点九.png"; sourceTree = "<group>"; };
+		C6A022CD185052A9008EB2F7 /* 下载管理进度背景点九@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度背景点九@2x.png"; sourceTree = "<group>"; };
+		C6A022CE185052A9008EB2F7 /* 两项选项卡右1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右1.png"; sourceTree = "<group>"; };
+		C6A022CF185052A9008EB2F7 /* 两项选项卡右1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右1@2x.png"; sourceTree = "<group>"; };
+		C6A022D0185052A9008EB2F7 /* 两项选项卡右2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右2.png"; sourceTree = "<group>"; };
+		C6A022D1185052A9008EB2F7 /* 两项选项卡右2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右2@2x.png"; sourceTree = "<group>"; };
+		C6A022D2185052A9008EB2F7 /* 两项选项卡左1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左1.png"; sourceTree = "<group>"; };
+		C6A022D3185052A9008EB2F7 /* 两项选项卡左1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左1@2x.png"; sourceTree = "<group>"; };
+		C6A022D4185052A9008EB2F7 /* 两项选项卡左2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左2.png"; sourceTree = "<group>"; };
+		C6A022D5185052A9008EB2F7 /* 两项选项卡左2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左2@2x.png"; sourceTree = "<group>"; };
+		C6A022D6185052A9008EB2F7 /* 图片-分类大背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图片-分类大背景.png"; sourceTree = "<group>"; };
+		C6A022D7185052A9008EB2F7 /* 显示信息数目背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "显示信息数目背景.png"; sourceTree = "<group>"; };
+		C6A022D8185052A9008EB2F7 /* 显示信息数目背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "显示信息数目背景@2x.png"; sourceTree = "<group>"; };
+		C6EB7270184F036F00072B53 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		C6EB7272184F473B00072B53 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		C6EB7273184F473B00072B53 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C66C731A184EBD6C0059E952 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6EB7271184F036F00072B53 /* libz.1.2.5.dylib in Frameworks */,
+				C66C73EE184EC2570059E952 /* CFNetwork.framework in Frameworks */,
+				C66C7323184EBD6C0059E952 /* CoreGraphics.framework in Frameworks */,
+				C66C7325184EBD6C0059E952 /* UIKit.framework in Frameworks */,
+				C66C7321184EBD6C0059E952 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C66C7314184EBD6C0059E952 = {
+			isa = PBXGroup;
+			children = (
+				C6A02284185052A9008EB2F7 /* ASIHTTPRequest */,
+				C6A022A4185052A9008EB2F7 /* DownManager */,
+				C66C7326184EBD6C0059E952 /* DownLoadManager */,
+				C66C731F184EBD6C0059E952 /* Frameworks */,
+				C66C731E184EBD6C0059E952 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C66C731E184EBD6C0059E952 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C66C731D184EBD6C0059E952 /* DownLoadManager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C66C731F184EBD6C0059E952 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6EB7270184F036F00072B53 /* libz.1.2.5.dylib */,
+				C66C73EF184ECB360059E952 /* libz.dylib */,
+				C66C73ED184EC2570059E952 /* CFNetwork.framework */,
+				C66C7320184EBD6C0059E952 /* Foundation.framework */,
+				C66C7322184EBD6C0059E952 /* CoreGraphics.framework */,
+				C66C7324184EBD6C0059E952 /* UIKit.framework */,
+				C66C733F184EBD6C0059E952 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C66C7326184EBD6C0059E952 /* DownLoadManager */ = {
+			isa = PBXGroup;
+			children = (
+				C66C732F184EBD6C0059E952 /* AppDelegate.h */,
+				C66C7330184EBD6C0059E952 /* AppDelegate.m */,
+				C66C7332184EBD6C0059E952 /* Main.storyboard */,
+				C66C7335184EBD6C0059E952 /* ViewController.h */,
+				C66C7336184EBD6C0059E952 /* ViewController.m */,
+				C66C7338184EBD6C0059E952 /* Images.xcassets */,
+				C66C7327184EBD6C0059E952 /* Supporting Files */,
+				C6EB7272184F473B00072B53 /* SettingViewController.h */,
+				C6EB7273184F473B00072B53 /* SettingViewController.m */,
+			);
+			path = DownLoadManager;
+			sourceTree = "<group>";
+		};
+		C66C7327184EBD6C0059E952 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C66C7328184EBD6C0059E952 /* DownLoadManager-Info.plist */,
+				C66C7329184EBD6C0059E952 /* InfoPlist.strings */,
+				C66C732C184EBD6C0059E952 /* main.m */,
+				C66C732E184EBD6C0059E952 /* DownLoadManager-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C6A02284185052A9008EB2F7 /* ASIHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				C6A02285185052A9008EB2F7 /* ASIAuthenticationDialog.h */,
+				C6A02286185052A9008EB2F7 /* ASIAuthenticationDialog.m */,
+				C6A02287185052A9008EB2F7 /* ASICacheDelegate.h */,
+				C6A02288185052A9008EB2F7 /* ASIDataCompressor.h */,
+				C6A02289185052A9008EB2F7 /* ASIDataCompressor.m */,
+				C6A0228A185052A9008EB2F7 /* ASIDataDecompressor.h */,
+				C6A0228B185052A9008EB2F7 /* ASIDataDecompressor.m */,
+				C6A0228C185052A9008EB2F7 /* ASIDownloadCache.h */,
+				C6A0228D185052A9008EB2F7 /* ASIDownloadCache.m */,
+				C6A0228E185052A9008EB2F7 /* ASIFormDataRequest.h */,
+				C6A0228F185052A9008EB2F7 /* ASIFormDataRequest.m */,
+				C6A02290185052A9008EB2F7 /* ASIHTTPRequest.h */,
+				C6A02291185052A9008EB2F7 /* ASIHTTPRequest.m */,
+				C6A02292185052A9008EB2F7 /* ASIHTTPRequestConfig.h */,
+				C6A02293185052A9008EB2F7 /* ASIHTTPRequestDelegate.h */,
+				C6A02294185052A9008EB2F7 /* ASIInputStream.h */,
+				C6A02295185052A9008EB2F7 /* ASIInputStream.m */,
+				C6A02296185052A9008EB2F7 /* ASINetworkQueue.h */,
+				C6A02297185052A9008EB2F7 /* ASINetworkQueue.m */,
+				C6A02298185052A9008EB2F7 /* ASINSStringAdditions.h */,
+				C6A02299185052A9008EB2F7 /* ASINSStringAdditions.m */,
+				C6A0229A185052A9008EB2F7 /* ASIProgressDelegate.h */,
+				C6A0229B185052A9008EB2F7 /* NSHTTPCookieAdditions.h */,
+				C6A0229C185052A9008EB2F7 /* NSHTTPCookieAdditions.m */,
+				C6A0229D185052A9008EB2F7 /* Reachability.h */,
+				C6A0229E185052A9008EB2F7 /* Reachability.m */,
+			);
+			name = ASIHTTPRequest;
+			path = DownLoadManager/ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		C6A022A4185052A9008EB2F7 /* DownManager */ = {
+			isa = PBXGroup;
+			children = (
+				C6A022A5185052A9008EB2F7 /* CommonHelper.h */,
+				C6A022A6185052A9008EB2F7 /* CommonHelper.m */,
+				C6A022A7185052A9008EB2F7 /* DownloadCell.h */,
+				C6A022A8185052A9008EB2F7 /* DownloadCell.m */,
+				C6A022A9185052A9008EB2F7 /* DownloadDelegate.h */,
+				C6A022AA185052A9008EB2F7 /* DownloadViewController.h */,
+				C6A022AB185052A9008EB2F7 /* DownloadViewController.m */,
+				C6A022AC185052A9008EB2F7 /* DownloadViewController.xib */,
+				C6A022AD185052A9008EB2F7 /* FileModel.h */,
+				C6A022AE185052A9008EB2F7 /* FileModel.m */,
+				C6A022AF185052A9008EB2F7 /* FilesDownManage.h */,
+				C6A022B0185052A9008EB2F7 /* FilesDownManage.m */,
+				C6A022B1185052A9008EB2F7 /* FinishedCell.h */,
+				C6A022B2185052A9008EB2F7 /* FinishedCell.m */,
+				C6A022B3185052A9008EB2F7 /* image */,
+				C6A022D9185052A9008EB2F7 /* ImageEditor */,
+			);
+			name = DownManager;
+			path = DownLoadManager/DownManager;
+			sourceTree = "<group>";
+		};
+		C6A022B3185052A9008EB2F7 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				C6A022B4185052A9008EB2F7 /* 下载完成-删除.png */,
+				C6A022B5185052A9008EB2F7 /* 下载完成-删除@2x.png */,
+				C6A022B6185052A9008EB2F7 /* 下载弹出按钮.png */,
+				C6A022B7185052A9008EB2F7 /* 下载弹出按钮@2x.png */,
+				C6A022B8185052A9008EB2F7 /* 下载弹出背景.png */,
+				C6A022B9185052A9008EB2F7 /* 下载弹出背景@2x.png */,
+				C6A022BA185052A9008EB2F7 /* 下载弹出进度条.png */,
+				C6A022BB185052A9008EB2F7 /* 下载弹出进度条@2x.png */,
+				C6A022BC185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png */,
+				C6A022BD185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png */,
+				C6A022BE185052A9008EB2F7 /* 下载管理-上传图标.png */,
+				C6A022BF185052A9008EB2F7 /* 下载管理-上传图标@2x.png */,
+				C6A022C0185052A9008EB2F7 /* 下载管理-开始按钮.png */,
+				C6A022C1185052A9008EB2F7 /* 下载管理-开始按钮@2x.png */,
+				C6A022C2185052A9008EB2F7 /* 下载管理-暂停按钮.png */,
+				C6A022C3185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png */,
+				C6A022C4185052A9008EB2F7 /* 下载管理下载图标.png */,
+				C6A022C5185052A9008EB2F7 /* 下载管理下载图标@2x.png */,
+				C6A022C6185052A9008EB2F7 /* 下载管理单条背景.png */,
+				C6A022C7185052A9008EB2F7 /* 下载管理单条背景@2x.png */,
+				C6A022C8185052A9008EB2F7 /* 下载管理取消按钮.png */,
+				C6A022C9185052A9008EB2F7 /* 下载管理取消按钮@2x.png */,
+				C6A022CA185052A9008EB2F7 /* 下载管理进度条背景.png */,
+				C6A022CB185052A9008EB2F7 /* 下载管理进度条背景@2x.png */,
+				C6A022CC185052A9008EB2F7 /* 下载管理进度背景点九.png */,
+				C6A022CD185052A9008EB2F7 /* 下载管理进度背景点九@2x.png */,
+				C6A022CE185052A9008EB2F7 /* 两项选项卡右1.png */,
+				C6A022CF185052A9008EB2F7 /* 两项选项卡右1@2x.png */,
+				C6A022D0185052A9008EB2F7 /* 两项选项卡右2.png */,
+				C6A022D1185052A9008EB2F7 /* 两项选项卡右2@2x.png */,
+				C6A022D2185052A9008EB2F7 /* 两项选项卡左1.png */,
+				C6A022D3185052A9008EB2F7 /* 两项选项卡左1@2x.png */,
+				C6A022D4185052A9008EB2F7 /* 两项选项卡左2.png */,
+				C6A022D5185052A9008EB2F7 /* 两项选项卡左2@2x.png */,
+				C6A022D6185052A9008EB2F7 /* 图片-分类大背景.png */,
+				C6A022D7185052A9008EB2F7 /* 显示信息数目背景.png */,
+				C6A022D8185052A9008EB2F7 /* 显示信息数目背景@2x.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		C6A022D9185052A9008EB2F7 /* ImageEditor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ImageEditor;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C66C731C184EBD6C0059E952 /* DownLoadManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C66C734F184EBD6C0059E952 /* Build configuration list for PBXNativeTarget "DownLoadManager" */;
+			buildPhases = (
+				C66C7319184EBD6C0059E952 /* Sources */,
+				C66C731A184EBD6C0059E952 /* Frameworks */,
+				C66C731B184EBD6C0059E952 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DownLoadManager;
+			productName = DownLoadManager;
+			productReference = C66C731D184EBD6C0059E952 /* DownLoadManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C66C7315184EBD6C0059E952 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "11 111";
+			};
+			buildConfigurationList = C66C7318184EBD6C0059E952 /* Build configuration list for PBXProject "DownLoadManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C66C7314184EBD6C0059E952;
+			productRefGroup = C66C731E184EBD6C0059E952 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C66C731C184EBD6C0059E952 /* DownLoadManager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C66C731B184EBD6C0059E952 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6A0231518505304008EB2F7 /* Main.storyboard in Resources */,
+				C6A02304185052A9008EB2F7 /* 下载管理取消按钮@2x.png in Resources */,
+				C6A022FA185052A9008EB2F7 /* 下载管理-上传图标@2x.png in Resources */,
+				C6A0230D185052A9008EB2F7 /* 两项选项卡左1.png in Resources */,
+				C6A02303185052A9008EB2F7 /* 下载管理取消按钮.png in Resources */,
+				C6A022F8185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png in Resources */,
+				C6A02302185052A9008EB2F7 /* 下载管理单条背景@2x.png in Resources */,
+				C6A022F0185052A9008EB2F7 /* 下载完成-删除@2x.png in Resources */,
+				C6A0230F185052A9008EB2F7 /* 两项选项卡左2.png in Resources */,
+				C6A02305185052A9008EB2F7 /* 下载管理进度条背景.png in Resources */,
+				C6A022FF185052A9008EB2F7 /* 下载管理下载图标.png in Resources */,
+				C6A022FC185052A9008EB2F7 /* 下载管理-开始按钮@2x.png in Resources */,
+				C6A022F5185052A9008EB2F7 /* 下载弹出进度条.png in Resources */,
+				C6A02307185052A9008EB2F7 /* 下载管理进度背景点九.png in Resources */,
+				C6A02301185052A9008EB2F7 /* 下载管理单条背景.png in Resources */,
+				C6A02311185052A9008EB2F7 /* 图片-分类大背景.png in Resources */,
+				C6A0230C185052A9008EB2F7 /* 两项选项卡右2@2x.png in Resources */,
+				C6A0230E185052A9008EB2F7 /* 两项选项卡左1@2x.png in Resources */,
+				C6A022FE185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png in Resources */,
+				C6A022F1185052A9008EB2F7 /* 下载弹出按钮.png in Resources */,
+				C6A02308185052A9008EB2F7 /* 下载管理进度背景点九@2x.png in Resources */,
+				C6A022FD185052A9008EB2F7 /* 下载管理-暂停按钮.png in Resources */,
+				C66C7339184EBD6C0059E952 /* Images.xcassets in Resources */,
+				C6A022F4185052A9008EB2F7 /* 下载弹出背景@2x.png in Resources */,
+				C6A02309185052A9008EB2F7 /* 两项选项卡右1.png in Resources */,
+				C6A022F3185052A9008EB2F7 /* 下载弹出背景.png in Resources */,
+				C6A022EB185052A9008EB2F7 /* DownloadViewController.xib in Resources */,
+				C6A022F7185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png in Resources */,
+				C6A02310185052A9008EB2F7 /* 两项选项卡左2@2x.png in Resources */,
+				C6A0230A185052A9008EB2F7 /* 两项选项卡右1@2x.png in Resources */,
+				C66C732B184EBD6C0059E952 /* InfoPlist.strings in Resources */,
+				C6A02300185052A9008EB2F7 /* 下载管理下载图标@2x.png in Resources */,
+				C6A022F9185052A9008EB2F7 /* 下载管理-上传图标.png in Resources */,
+				C6A022EF185052A9008EB2F7 /* 下载完成-删除.png in Resources */,
+				C6A022F2185052A9008EB2F7 /* 下载弹出按钮@2x.png in Resources */,
+				C6A022FB185052A9008EB2F7 /* 下载管理-开始按钮.png in Resources */,
+				C6A02306185052A9008EB2F7 /* 下载管理进度条背景@2x.png in Resources */,
+				C6A022F6185052A9008EB2F7 /* 下载弹出进度条@2x.png in Resources */,
+				C6A02312185052A9008EB2F7 /* 显示信息数目背景.png in Resources */,
+				C6A0230B185052A9008EB2F7 /* 两项选项卡右2.png in Resources */,
+				C6A02313185052A9008EB2F7 /* 显示信息数目背景@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C66C7319184EBD6C0059E952 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6A022DB185052A9008EB2F7 /* ASIDataCompressor.m in Sources */,
+				C6A022E2185052A9008EB2F7 /* ASINSStringAdditions.m in Sources */,
+				C6A022E3185052A9008EB2F7 /* NSHTTPCookieAdditions.m in Sources */,
+				C6A022ED185052A9008EB2F7 /* FilesDownManage.m in Sources */,
+				C66C7337184EBD6C0059E952 /* ViewController.m in Sources */,
+				C6A022E4185052A9008EB2F7 /* Reachability.m in Sources */,
+				C6A022E9185052A9008EB2F7 /* DownloadCell.m in Sources */,
+				C66C7331184EBD6C0059E952 /* AppDelegate.m in Sources */,
+				C6A022DA185052A9008EB2F7 /* ASIAuthenticationDialog.m in Sources */,
+				C6A022DE185052A9008EB2F7 /* ASIFormDataRequest.m in Sources */,
+				C6A022EA185052A9008EB2F7 /* DownloadViewController.m in Sources */,
+				C6A022EC185052A9008EB2F7 /* FileModel.m in Sources */,
+				C6A022DC185052A9008EB2F7 /* ASIDataDecompressor.m in Sources */,
+				C66C732D184EBD6C0059E952 /* main.m in Sources */,
+				C6A022E0185052A9008EB2F7 /* ASIInputStream.m in Sources */,
+				C6A022E8185052A9008EB2F7 /* CommonHelper.m in Sources */,
+				C6A022EE185052A9008EB2F7 /* FinishedCell.m in Sources */,
+				C6A022E1185052A9008EB2F7 /* ASINetworkQueue.m in Sources */,
+				C6A022DF185052A9008EB2F7 /* ASIHTTPRequest.m in Sources */,
+				C6A022DD185052A9008EB2F7 /* ASIDownloadCache.m in Sources */,
+				C6EB7274184F473B00072B53 /* SettingViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C66C7329184EBD6C0059E952 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C66C732A184EBD6C0059E952 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C66C7332184EBD6C0059E952 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C66C7333184EBD6C0059E952 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C66C734D184EBD6C0059E952 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C66C734E184EBD6C0059E952 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C66C7350184EBD6C0059E952 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DownLoadManager/DownLoadManager-Prefix.pch";
+				INFOPLIST_FILE = "DownLoadManager/DownLoadManager-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C66C7351184EBD6C0059E952 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DownLoadManager/DownLoadManager-Prefix.pch";
+				INFOPLIST_FILE = "DownLoadManager/DownLoadManager-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C66C7318184EBD6C0059E952 /* Build configuration list for PBXProject "DownLoadManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C66C734D184EBD6C0059E952 /* Debug */,
+				C66C734E184EBD6C0059E952 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C66C734F184EBD6C0059E952 /* Build configuration list for PBXNativeTarget "DownLoadManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C66C7350184EBD6C0059E952 /* Debug */,
+				C66C7351184EBD6C0059E952 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C66C7315184EBD6C0059E952 /* Project object */;
+}
