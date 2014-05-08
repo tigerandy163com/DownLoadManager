@@ -23,15 +23,14 @@
                                @"http://219.239.26.11/download/46280417/68353447/3/dmg/105/192/1369883541097_192/KindleForMac._V383233429_.dmg",
                                @"http://free2.macx.cn:81/Tools/Office/UltraEdit-v4-0-0-7.dmg",
                                
-                               @"http://124.254.47.46/download/53349786/76725509/1/exe/13/154/53349786_1/QQ2013SP4.exe",
-                               @"http://dldir1.qq.com/qqfile/qq/QQ2013/QQ2013SP5/9050/QQ2013SP5.exe",
+ 
 
                                @"http://dldir1.qq.com/qqfile/tm/TM2013Preview1.exe",
                                @"http://dldir1.qq.com/invc/tt/QQBrowserSetup.exe",
                                @"http://dldir1.qq.com/music/clntupate/QQMusic_Setup_100.exe",
                                @"http://dl_dir.qq.com/invc/qqpinyin/QQPinyin_Setup_4.6.2028.400.exe",nil];
     
-    NSArray *names = [NSArray arrayWithObjects:@"MacQQ", @"KindleForMac",@"UltraEdit",@"QQ2013SP4",@"QQ2013SP5",@"TM2013",@"QQBrowser",@"QQMusic",@"QQPinyin",nil];
+    NSArray *names = [NSArray arrayWithObjects:@"MacQQ", @"KindleForMac",@"UltraEdit",@"TM2013",@"QQBrowser",@"QQMusic",@"QQPinyin",nil];
     
     downContentDatas = [[NSMutableArray alloc]initWithArray:names];
     downURLArr = [[NSArray alloc]initWithArray:onlineBooksUrl];

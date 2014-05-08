@@ -188,7 +188,6 @@
     [super viewDidLoad];
  
      version =[[[UIDevice currentDevice] systemVersion] floatValue];
-\
     
     [FilesDownManage sharedFilesDownManage].downloadDelegate = self;
 

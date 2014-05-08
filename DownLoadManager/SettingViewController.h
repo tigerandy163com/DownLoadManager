@@ -15,5 +15,6 @@
 @property (retain, nonatomic) IBOutlet UIStepper *countStepper;
 @property (retain, nonatomic) IBOutlet UILabel *countLab;
 - (IBAction)valueChange:(UIStepper *)sender;
+- (IBAction)validchange:(id)sender;
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "SettingViewController.h"
+#import "FilesDownManage.h"
+
 #define Max 5
 @interface SettingViewController ()
 
@@ -47,6 +49,13 @@
 }
 - (IBAction)valueChange:(UIStepper *)sender {
     [_countLab setText:[NSString stringWithFormat:@"%.0f",sender.value]];
+    maxcount = sender.value;
+
+}
+
+- (IBAction)validchange:(id)sender {
     [[NSUserDefaults standardUserDefaults]setValue:_countLab.text forKey:@"kMaxRequestCount"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    [[FilesDownManage sharedFilesDownManage]startLoad];
 }
 @end

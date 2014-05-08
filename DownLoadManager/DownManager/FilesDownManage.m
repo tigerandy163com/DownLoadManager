@@ -26,6 +26,7 @@
 @synthesize count;
 @synthesize  fileImage = _fileImage;
 static   FilesDownManage *sharedFilesDownManage = nil;
+NSInteger  maxcount;
 
 
 
@@ -219,7 +220,7 @@ static   FilesDownManage *sharedFilesDownManage = nil;
 }
 
 -(void)resumeRequest:(ASIHTTPRequest *)request{
-    NSInteger max = MAXLINES;
+    NSInteger max = maxcount;
     FileModel *fileInfo =  [request.userInfo objectForKey:@"File"];
     NSInteger downingcount =0;
     NSInteger indexmax =-1;
@@ -249,7 +250,7 @@ static   FilesDownManage *sharedFilesDownManage = nil;
     [self startLoad];
 }
 -(void)stopRequest:(ASIHTTPRequest *)request{
-    NSInteger max = MAXLINES;
+    NSInteger max = maxcount;
     if([request isExecuting])
     {
         [request cancel];
@@ -603,18 +604,27 @@ static   FilesDownManage *sharedFilesDownManage = nil;
     }
 }
 -(void)startLoad{
+    /*下载的三种状态，下载中，等待下载，停止下载
+     下载中：isDownloading ＝ YES; willDownloading = NO;
+     等待下载:isDownloading ＝ NO; willDownloading = YES;
+     停止下载：isDownloading ＝ NO; willDownloading = NO;
+ 
+     所有任务以添加时间排序。
+     */
+
     NSInteger num = 0;
-    NSInteger max = MAXLINES;
+    NSInteger max = maxcount;
     for (FileModel *file in _filelist) {
         if (!file.error) {
         if (file.isDownloading==YES) {
             file.willDownloading = NO;
-            
-            if (num>max) {
+
+            if (num>=max) {
                 file.isDownloading = NO;
                 file.willDownloading = YES;
             }else
-            num++;
+                num++;
+
         }
         }
     }

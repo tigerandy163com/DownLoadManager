@@ -12,10 +12,11 @@
 
 //#import "DownloadCell.h"
 #import <AVFoundation/AVAudioPlayer.h>
+extern NSInteger  maxcount;
+
 @interface FilesDownManage : NSObject<ASIHTTPRequestDelegate,ASIProgressDelegate>
 {
     NSInteger type;
-    NSInteger  maxcount;
     int count;
     
 }
