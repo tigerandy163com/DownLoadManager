@@ -150,8 +150,15 @@ NSInteger  maxcount;
 {
     for(ASIHTTPRequest *tempRequest in self.downinglist)
     {
+        
+        /**
+        注意这里判读是否是同一下载的方法，asihttprequest 有三种url：
+        url，originalurl，redirectURL
+        经过实践，应该使用originalurl,就是最先获得到的原下载地址
+        **/
+        
         NSLog(@"%@",[tempRequest.url absoluteString]);
-        if([[[tempRequest.url absoluteString]lastPathComponent] isEqualToString:[fileInfo.fileURL lastPathComponent]])
+        if([[[tempRequest.originalURL absoluteString]lastPathComponent] isEqualToString:[fileInfo.fileURL lastPathComponent]])
         {
             if ([tempRequest isExecuting]&&isBeginDown) {
                 return;

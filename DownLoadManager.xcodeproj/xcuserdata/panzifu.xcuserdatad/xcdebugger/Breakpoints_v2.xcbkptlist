@@ -16,17 +16,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DownLoadManager/DownManager/DownloadViewController.m"
-            timestampString = "421214293.91189"
+            filePath = "DownLoadManager/DownManager/FilesDownManage.m"
+            timestampString = "421919920.16439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "618"
+            endingLineNumber = "618"
+            landmarkName = "-startLoad"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FilesDownManage startLoad]"
+                  moduleName = "DownLoadManager"
+                  urlString = "file:///Users/panzifu/Desktop/DownLoadManager/DownLoadManager/DownManager/FilesDownManage.m"
+                  timestampString = "421918833.853435"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "617"
+                  endingLineNumber = "617"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FilesDownManage startLoad]"
+                  moduleName = "DownLoadManager"
+                  urlString = "file:///Users/panzifu/Desktop/DownLoadManager/DownLoadManager/DownManager/FilesDownManage.m"
+                  timestampString = "421918833.853754"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "617"
+                  endingLineNumber = "617"
+                  offsetFromSymbolStart = "566">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
