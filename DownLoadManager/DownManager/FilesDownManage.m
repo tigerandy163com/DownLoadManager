@@ -455,7 +455,11 @@ NSInteger  maxcount;
 }
 -(void)deleteFinishFile:(FileModel *)selectFile{
     [_finishedList removeObject:selectFile];
-    
+	NSFileManager* fm = [NSFileManager defaultManager];
+	if ([fm fileExistsAtPath:selectFile.targetPath]) {
+		[fm removeItemAtPath:selectFile.targetPath error:nil];
+	}
+    [self saveFinishedFile];
 }
 #pragma mark -- 入口 --
 -(void)downFileUrl:(NSString*)url

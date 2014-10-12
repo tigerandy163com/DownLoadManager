@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DownLoadManager/DownManager/FilesDownManage.m"
-            timestampString = "434817700.235872"
+            timestampString = "434818815.778982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "498"
-            endingLineNumber = "498"
+            startingLineNumber = "502"
+            endingLineNumber = "502"
             landmarkName = "-downFileUrl:filename:filetarget:fileimage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DownLoadManager/DownManager/FilesDownManage.m"
-            timestampString = "434817700.235872"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "605"
-            endingLineNumber = "605"
-            landmarkName = "-startLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -48,6 +32,22 @@
             startingLineNumber = "228"
             endingLineNumber = "228"
             landmarkName = "-resumeRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DownLoadManager/DownManager/FilesDownManage.m"
+            timestampString = "434818226.809124"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "-loadTempfiles"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
