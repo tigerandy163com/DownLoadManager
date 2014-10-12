@@ -158,10 +158,6 @@
         [self clearAction];
     }
 }
-//-(UIImage *)getImage:(FileModel *)fileinfo{
-//    FilesDownManage *filedownmanage = [FilesDownManage sharedFilesDownManage];
-//    return [filedownmanage getImage:fileinfo];
-//}
 #pragma mark - View lifecycle
 
 -(void)viewWillAppear:(BOOL)animated
@@ -294,7 +290,7 @@
         cell.fileTypeLab.text  =[NSString stringWithFormat:@"格式:%@",fileInfo.fileType] ;
         cell.timelable.text =[NSString stringWithFormat:@"%@",fileInfo.time] ;
         cell.timelable.hidden = YES;
-        cell.fileImage.image = fileInfo.fileimage;//[self getImage:fileInfo];
+        cell.fileImage.image = fileInfo.fileimage;
 
         if ([currentsize longLongValue]==0) {
             [cell.progress1 setProgress:0.0f];
@@ -302,15 +298,15 @@
         [cell.progress1 setProgress:[CommonHelper getProgress:[fileInfo.fileSize longLongValue] currentSize:[fileInfo.fileReceivedSize longLongValue]]];
         cell.sizeinfoLab.text =[NSString stringWithFormat:@"%0.0f%@",100*(cell.progress1.progress),@"%"];
        // NSLog(@"process:%@",cell.sizeinfoLab.text);
-        if(fileInfo.isDownloading)//文件正在下载
+        if(fileInfo.downloadState==Downloading)//文件正在下载
         {
             [cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-暂停按钮.png"] forState:UIControlStateNormal];
         }
-        else if(!fileInfo.isDownloading && !fileInfo.willDownloading&&!fileInfo.error)
+        else if(fileInfo.downloadState==StopDownload&&!fileInfo.error)
         {
             [cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-开始按钮.png"] forState:UIControlStateNormal];
             cell.sizeinfoLab.text = @"暂停";
-        }else if(!fileInfo.isDownloading && fileInfo.willDownloading&&!fileInfo.error)
+        }else if(fileInfo.downloadState==WillDownload&&!fileInfo.error)
         {
             [cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-开始按钮.png"] forState:UIControlStateNormal];
             cell.sizeinfoLab.text = @"等待";
@@ -387,10 +383,7 @@
             if([cell.fileInfo.fileURL isEqualToString: fileInfo.fileURL])
             {
                 NSString *currentsize;
-                if (fileInfo.post) {
-                    currentsize = fileInfo.fileUploadSize;
-                    
-                }else
+           
                    currentsize = fileInfo.fileReceivedSize;
                 NSString *totalsize = [CommonHelper getFileSizeString:fileInfo.fileSize];
                 cell.fileCurrentSize.text=[CommonHelper getFileSizeString:currentsize];;
@@ -403,23 +396,23 @@
 
                  cell.sizeinfoLab.text =[NSString stringWithFormat:@"%.0f%@",100*(cell.progress1.progress),@"%"];
 //                cell.averagebandLab.text =[NSString stringWithFormat:@"%@/s",[CommonHelper getFileSizeString:[NSString stringWithFormat:@"%lu",[ASIHTTPRequest averageBandwidthUsedPerSecond]]]] ;
-                if(fileInfo.isDownloading)//文件正在下载
-                {
-                    [cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-暂停按钮.png"] forState:UIControlStateNormal];
-                }
-                else if(!fileInfo.isDownloading && !fileInfo.willDownloading&&!fileInfo.error)
-                {
-                    [cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-开始按钮.png"] forState:UIControlStateNormal];
-                    cell.sizeinfoLab.text = @"暂停";
-                }else if(!fileInfo.isDownloading && fileInfo.willDownloading&&!fileInfo.error)
-                {
-                    [cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-开始按钮.png"] forState:UIControlStateNormal];
-                    cell.sizeinfoLab.text = @"等待";
-                }else if (fileInfo.error)
-                {
-                    [cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-开始按钮.png"] forState:UIControlStateNormal];
-                    cell.sizeinfoLab.text = @"错误";
-                }
+				if(fileInfo.downloadState==Downloading)//文件正在下载
+				{
+					[cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-暂停按钮.png"] forState:UIControlStateNormal];
+				}
+				else if(fileInfo.downloadState==StopDownload&&!fileInfo.error)
+				{
+					[cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-开始按钮.png"] forState:UIControlStateNormal];
+					cell.sizeinfoLab.text = @"暂停";
+				}else if(fileInfo.downloadState==WillDownload&&!fileInfo.error)
+				{
+					[cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-开始按钮.png"] forState:UIControlStateNormal];
+					cell.sizeinfoLab.text = @"等待";
+				}else if (fileInfo.error)
+				{
+					[cell.operateButton setBackgroundImage:[UIImage imageNamed:@"下载管理-开始按钮.png"] forState:UIControlStateNormal];
+					cell.sizeinfoLab.text = @"错误";
+				}
             }
         }
     }

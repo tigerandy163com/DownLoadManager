@@ -19,18 +19,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [FilesDownManage sharedFilesDownManageWithBasepath:@"DownLoad" TargetPathArr:[NSArray arrayWithObject:@"DownLoad/mp3"]];
-       NSArray *onlineBooksUrl = [NSArray arrayWithObjects:@"http://219.239.26.20/download/53546556/76795884/2/dmg/232/4/1383696088040_516/QQ_V3.0.1.dmg",
-                               @"http://219.239.26.11/download/46280417/68353447/3/dmg/105/192/1369883541097_192/KindleForMac._V383233429_.dmg",
-                               @"http://free2.macx.cn:81/Tools/Office/UltraEdit-v4-0-0-7.dmg",
-                               
- 
-
+       NSArray *onlineBooksUrl = [NSArray arrayWithObjects:@"http://dldir1.qq.com/qqfile/QQforMac/QQ_V3.1.2.dmg",
+                               @"http://dldir1.qq.com/qqfile/qq/QQ6.4/12593/QQ6.4.exe",
+                               @"http://dldir1.qq.com/qqfile/tm/TM2009Beta3.4_chs.exe",
                                @"http://dldir1.qq.com/qqfile/tm/TM2013Preview1.exe",
                                @"http://dldir1.qq.com/invc/tt/QQBrowserSetup.exe",
                                @"http://dldir1.qq.com/music/clntupate/QQMusic_Setup_100.exe",
                                @"http://dl_dir.qq.com/invc/qqpinyin/QQPinyin_Setup_4.6.2028.400.exe",nil];
     
-    NSArray *names = [NSArray arrayWithObjects:@"MacQQ", @"KindleForMac",@"UltraEdit",@"TM2013",@"QQBrowser",@"QQMusic",@"QQPinyin",nil];
+    NSArray *names = [NSArray arrayWithObjects:@"MacQQ", @"qq",@"TM2009",@"TM2013",@"QQBrowser",@"QQMusic",@"QQPinyin",nil];
     
     downContentDatas = [[NSMutableArray alloc]initWithArray:names];
     downURLArr = [[NSArray alloc]initWithArray:onlineBooksUrl];

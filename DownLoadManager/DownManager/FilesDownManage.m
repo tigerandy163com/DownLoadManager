@@ -6,10 +6,9 @@
 #import "FilesDownManage.h"
 #import "Reachability.h"
 
-#define MAXLINES  [[[NSUserDefaults standardUserDefaults] valueForKey:@"kMaxRequestCount"]integerValue]
+
 
 #define TEMPPATH [CommonHelper getTempFolderPathWithBasepath:_basepath]
-#define OPENFINISHLISTVIEW
 
 @implementation FilesDownManage
 @synthesize downinglist=_downinglist;
@@ -24,7 +23,6 @@
 @synthesize targetPathArray = _targetPathArray;
 @synthesize VCdelegate = _VCdelegate;
 @synthesize count;
-@synthesize  fileImage = _fileImage;
 static   FilesDownManage *sharedFilesDownManage = nil;
 NSInteger  maxcount;
 
@@ -192,7 +190,7 @@ NSInteger  maxcount;
     [request setDownloadProgressDelegate:self];
     [request setNumberOfTimesToRetryOnTimeout:2];
     // [request setShouldContinueWhenAppEntersBackground:YES];
-    //    [request setDownloadProgressDelegate:downCell.progress];//设置进度条的代理,这里由于下载是在AppDelegate里进行的全局下载，所以没有使用自带的进度条委托，这里自己设置了一个委托，用于更新UI
+
     [request setAllowResumeForFileDownloads:YES];//支持断点续传
 
     
@@ -232,7 +230,7 @@ NSInteger  maxcount;
     NSInteger downingcount =0;
     NSInteger indexmax =-1;
     for (FileModel *file in _filelist) {
-        if (file.isDownloading) {
+        if (file.downloadState==Downloading) {
             downingcount++;
             if (downingcount==max) {
                 indexmax = [_filelist indexOfObject:file];
@@ -241,16 +239,14 @@ NSInteger  maxcount;
     }//此时下载中数目是否是最大，并获得最大时的位置Index
     if (downingcount==max) {
         FileModel *file  = [_filelist objectAtIndex:indexmax];
-            if (file.isDownloading) {
-                file.isDownloading = NO;
-                file.willDownloading = YES;
+            if (file.downloadState==Downloading) {
+                file.downloadState=WillDownload;
             }
     }//中止一个进程使其进入等待
 
     for (FileModel *file in _filelist) {
         if ([file.fileName isEqualToString:fileInfo.fileName]) {
-            file.isDownloading = YES;
-            file.willDownloading = NO;
+			file.downloadState = Downloading;
             file.error = NO;
         }
     }//重新开始此下载
@@ -265,33 +261,29 @@ NSInteger  maxcount;
     FileModel *fileInfo =  [request.userInfo objectForKey:@"File"];
     for (FileModel *file in _filelist) {
         if ([file.fileName isEqualToString:fileInfo.fileName]) {
-            file.isDownloading = NO;
-            file.willDownloading = NO;
+
+			file.downloadState = StopDownload;
             break;
         }
     }
     NSInteger downingcount =0;
 
     for (FileModel *file in _filelist) {
-        if (file.isDownloading) {
+        if (file.downloadState==Downloading) {
             downingcount++;
         }
     }
     if (downingcount<max) {
         for (FileModel *file in _filelist) {
-            if (!file.isDownloading&&file.willDownloading){
-                file.isDownloading = YES;
-                file.willDownloading = NO;
+            if (file.downloadState==WillDownload){
+				file.downloadState=Downloading;
                 break;
             }
         }
     }
 
     [self startLoad];
-//    fileInfo.isDownloading = NO;
-//    fileInfo.willDownloading = NO;
-//    [request cancel];
-//    [self startWaitingRequest];
+
     
 }
 -(void)deleteRequest:(ASIHTTPRequest *)request{
@@ -305,9 +297,7 @@ NSInteger  maxcount;
     NSError *error;
     FileModel *fileInfo=(FileModel*)[request.userInfo objectForKey:@"File"];
     NSString *path=fileInfo.tempPath;
-   // NSInteger index=[fileInfo.fileName rangeOfString:@"."].location;
-//    NSString *name=[fileInfo.fileName substringToIndex:index];
-//    NSString *configPath=[TEMPPATH stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.rtf",name]];
+
     NSString *configPath=[NSString stringWithFormat:@"%@.plist",path];
     [fileManager removeItemAtPath:path error:&error];
     [fileManager removeItemAtPath:configPath error:&error];
@@ -378,9 +368,7 @@ NSInteger  maxcount;
     file.tempPath = tempfilePath;
     file.time = [dic objectForKey:@"time"];
     file.fileimage = [UIImage imageWithData:[dic objectForKey:@"fileimage"]];
-    file.isDownloading=NO;
-    file.isDownloading = NO;
-    file.willDownloading = NO;
+	file.downloadState =StopDownload;
    // file.isFirstReceived = YES;
     file.error = NO;
     
@@ -391,6 +379,10 @@ NSInteger  maxcount;
 
     
 }
+/*
+ 将本地的未下载完成的临时文件加载到正在下载列表里,但是不接着开始下载
+
+ */
 -(void)loadTempfiles
 {
     
@@ -413,12 +405,11 @@ NSInteger  maxcount;
     [_filelist addObjectsFromArray:arr];
     
     [self startLoad];
-//    for (FileModel *tempFile in arr) {
-//        [self beginRequest:tempFile isBeginDown:NO];
-//    }
     [filearr release];
 }
-
+/*
+	将本地已经下载完成的文件加载到已下载列表里
+ */
 -(void)loadFinishedfiles
 {
     NSString *document = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
@@ -483,6 +474,9 @@ NSInteger  maxcount;
         _fileInfo = nil;
     }
     _fileInfo = [[FileModel alloc]init];
+	if (!name) {
+		name = [url lastPathComponent];
+	}
     _fileInfo.fileName = name;
     _fileInfo.fileURL = url;
   
@@ -493,16 +487,13 @@ NSInteger  maxcount;
     path= [CommonHelper getTargetPathWithBasepath:_basepath subpath:path];
     path = [path stringByAppendingPathComponent:name];
       _fileInfo.targetPath = path ;
-    self.fileImage = image;
     _fileInfo.fileimage = image;
-    _fileInfo.isDownloading=YES;
-    _fileInfo.willDownloading = YES;
+	_fileInfo.downloadState = Downloading;
     _fileInfo.error = NO;
     _fileInfo.isFirstReceived = YES;
     NSString *tempfilePath= [TEMPPATH stringByAppendingPathComponent: _fileInfo.fileName]  ;
     _fileInfo.tempPath = tempfilePath;
-    
-    if([CommonHelper isExistFile: _fileInfo.targetPath])//已经下载过一次该音乐
+    if([CommonHelper isExistFile: _fileInfo.targetPath])//已经下载过一次
     {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已下载，是否重新下载？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [alert show];
@@ -519,10 +510,8 @@ NSInteger  maxcount;
         return;
     }
     
-   // [self saveImage:_fileInfo :image];
     //若不存在文件和临时文件，则是新的下载
     [self.filelist addObject:_fileInfo];
-   // [self beginRequest:_fileInfo isBeginDown:YES ];
     
     [self startLoad];
     if(self.VCdelegate!=nil && [self.VCdelegate respondsToSelector:@selector(allowNextRequest)])
@@ -594,11 +583,9 @@ NSInteger  maxcount;
         }
 
         }
-    //    [self saveImage:_fileInfo :_fileImage];
         
         self.fileInfo.fileReceivedSize=[CommonHelper getFileSizeString:@"0"];
         [_filelist addObject:_fileInfo];
-       // [self beginRequest:self.fileInfo isBeginDown:YES ];
         [self startLoad];
 //        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已经添加到您的下载列表中了！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
 //        [alert show];
@@ -612,10 +599,6 @@ NSInteger  maxcount;
 }
 -(void)startLoad{
     /*下载的三种状态，下载中，等待下载，停止下载
-     下载中：isDownloading ＝ YES; willDownloading = NO;
-     等待下载:isDownloading ＝ NO; willDownloading = YES;
-     停止下载：isDownloading ＝ NO; willDownloading = NO;
- 
      所有任务以添加时间排序。
      */
 
@@ -623,12 +606,10 @@ NSInteger  maxcount;
     NSInteger max = maxcount;
     for (FileModel *file in _filelist) {
         if (!file.error) {
-        if (file.isDownloading==YES) {
-            file.willDownloading = NO;
+        if (file.downloadState==Downloading) {
 
             if (num>=max) {
-                file.isDownloading = NO;
-                file.willDownloading = YES;
+				file.downloadState=WillDownload;
             }else
                 num++;
 
@@ -638,13 +619,12 @@ NSInteger  maxcount;
     if (num<max) {        
         for (FileModel *file in _filelist) {
              if (!file.error) {
-            if (!file.isDownloading&&file.willDownloading) {
+            if (file.downloadState==WillDownload) {
                 num++;
                 if (num>max) {
                     break;
                 }
-                file.isDownloading = YES;
-                file.willDownloading = NO;
+                file.downloadState=Downloading;
             }
         }
     }
@@ -652,7 +632,7 @@ NSInteger  maxcount;
     }
     for (FileModel *file in _filelist) {
          if (!file.error) {
-        if (file.isDownloading==YES) {
+        if (file.downloadState==Downloading) {
             [self beginRequest:file isBeginDown:YES];
         }else
             [self beginRequest:file isBeginDown:NO];
@@ -752,7 +732,6 @@ TargetPathArr:(NSArray *)targetpaths{
     [_downinglist release];
     [_filelist release];
     [_fileInfo release];
-    [_fileImage release];
     [_VCdelegate release];
     [super dealloc];
 }
@@ -770,13 +749,12 @@ TargetPathArr:(NSArray *)targetpaths{
         [request cancel];
     }
     FileModel *fileInfo =  [request.userInfo objectForKey:@"File"];
-    fileInfo.isDownloading = NO;
-    fileInfo.willDownloading = NO;
+    fileInfo.downloadState = StopDownload;
     fileInfo.error = YES;
     for (FileModel *file in _filelist) {
         if ([file.fileName isEqualToString:fileInfo.fileName]) {
-            file.isDownloading = NO;
-            file.willDownloading = NO;
+			file.downloadState = StopDownload;
+
             file.error = YES;
         }
     }
@@ -848,15 +826,7 @@ TargetPathArr:(NSArray *)targetpaths{
         }
     }
     
-  
-//    NSInteger delindex;
-//    for (FileModel *file in _filelist) {
-//        if ([file.fileName isEqualToString:fileInfo.fileName]) {
-//            delindex = [_filelist indexOfObject:file];
-//            break;
-//        }
-//    }
-//    [_filelist removeObjectAtIndex:delindex];
+
     [_filelist removeObject:fileInfo];
     [_downinglist removeObject:request];
     [self saveFinishedFile];
@@ -867,10 +837,6 @@ TargetPathArr:(NSArray *)targetpaths{
         [self.downloadDelegate finishedDownload:request];
     }
 }
-//-(BOOL) respondsToSelector:(SEL)aSelector {
-//    printf("SELECTOR: %s\n", [NSStringFromSelector(aSelector) UTF8String]);
-//    return [super respondsToSelector:aSelector];
-//}
 
 -(void)restartAllRquests{
     

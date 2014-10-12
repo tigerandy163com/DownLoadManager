@@ -14,14 +14,10 @@
 @synthesize fileURL;
 @synthesize targetPath;
 @synthesize tempPath;
-@synthesize isDownloading;
-@synthesize willDownloading;
+
 @synthesize error;
 @synthesize time;
-@synthesize isP2P;
-@synthesize post;
-@synthesize PostPointer,postUrl,fileUploadSize;
-@synthesize MD5,usrname,fileimage;
+@synthesize MD5,fileimage;
 
 -(id)init{
     self = [super init];
@@ -38,9 +34,6 @@
     [targetPath release];
     [tempPath release];
     [fileType release];
-    [postUrl release];
-    [fileUploadSize release];
-    [usrname release];
     [MD5 release];
     [fileimage release];
     [super dealloc];
