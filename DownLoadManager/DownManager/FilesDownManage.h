@@ -55,7 +55,6 @@ extern NSInteger  maxcount;
         filetarget:(NSString *)path
          fileimage:(UIImage *)image
          ;
--(void)beginRequest:(FileModel *)fileInfo isBeginDown:(BOOL)isBeginDown ;
 -(void)startLoad;
 -(void)restartAllRquests;
 
