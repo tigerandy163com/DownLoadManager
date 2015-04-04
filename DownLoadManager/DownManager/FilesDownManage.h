@@ -37,6 +37,12 @@ extern NSInteger  maxcount;
 @property(nonatomic,retain)FileModel *fileInfo;
 @property(nonatomic)BOOL isFistLoadSound;//是否第一次加载声音，静音
 
+
++(FilesDownManage *) sharedFilesDownManage;
+//＊＊＊第一次＊＊＊初始化是使用，设置缓存文件夹和已下载文件夹，构建下载列表和已下载文件列表时使用
++(FilesDownManage *) sharedFilesDownManageWithBasepath:(NSString *)basepath
+                                         TargetPathArr:(NSArray *)targetpaths;
+
 -(void)clearAllRquests;
 -(void)clearAllFinished;
 -(void)resumeRequest:(ASIHTTPRequest *)request;
@@ -49,11 +55,6 @@ extern NSInteger  maxcount;
         filetarget:(NSString *)path
          fileimage:(UIImage *)image
          ;
-
-+(FilesDownManage *) sharedFilesDownManage;
-//＊＊＊第一次＊＊＊初始化是使用，设置缓存文件夹和已下载文件夹，构建下载列表和已下载文件列表时使用
-+(FilesDownManage *) sharedFilesDownManageWithBasepath:(NSString *)basepath
-                                         TargetPathArr:(NSArray *)targetpaths;
 -(void)beginRequest:(FileModel *)fileInfo isBeginDown:(BOOL)isBeginDown ;
 -(void)startLoad;
 -(void)restartAllRquests;

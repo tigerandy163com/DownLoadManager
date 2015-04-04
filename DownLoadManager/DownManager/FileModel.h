@@ -2,9 +2,9 @@
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
 typedef enum {
-		Downloading,
-		WillDownload,
-		StopDownload
+		Downloading,//下载中
+		WillDownload,//等待下载
+		StopDownload//停止下载
 }DownLoadState;
 @interface FileModel : NSObject {
     

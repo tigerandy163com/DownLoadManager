@@ -26,134 +26,161 @@
 static   FilesDownManage *sharedFilesDownManage = nil;
 NSInteger  maxcount;
 
-
-
--(void)playButtonSound
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	NSString *audioAlert = [userDefaults valueForKey:@"kAudioAlertSetting"];
-
-	if( NO == [audioAlert boolValue] )
-    {
-        return;
-    }
-    NSURL *url=[[[NSBundle mainBundle]resourceURL] URLByAppendingPathComponent:@"btnEffect.wav"];
-    NSError *error;
-    if(self.buttonSound==nil)
-    {
-        self.buttonSound=[[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        if(!error)
-        {
-            NSLog(@"%@",[error description]);
+#pragma mark -- init methods --
++ (FilesDownManage *) sharedFilesDownManage{
+    @synchronized(self){
+        if (sharedFilesDownManage == nil) {
+            sharedFilesDownManage = [[self alloc] init];
         }
     }
-    if([audioAlert isEqualToString:@"YES"]||audioAlert==nil)//播放声音
-    {
-        if(!self.isFistLoadSound)
-        {
-            self.buttonSound.volume=1.0f;
-        }
-    }
-    else
-    {
-        self.buttonSound.volume=0.0f;
-    }
-    [self.buttonSound play];
+    return  sharedFilesDownManage;
 }
 
--(void)playDownloadSound
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	NSString *result = [userDefaults valueForKey:@"kAudioAlertSetting"];
++ (FilesDownManage *) sharedFilesDownManageWithBasepath:(NSString *)basepath
+                                         TargetPathArr:(NSArray *)targetpaths{
+    @synchronized(self){
+        if (sharedFilesDownManage == nil) {
+            sharedFilesDownManage = [[self alloc] initWithBasepath: basepath  TargetPathArr:targetpaths];
+        }
+    }
+    if (![sharedFilesDownManage.basepath isEqualToString:basepath]) {
+        //如果你更换了下载缓存目录，之前的缓存目录下载信息的plist文件将被删除，无法使用
+        [sharedFilesDownManage cleanLastInfo];
+        sharedFilesDownManage.basepath = basepath;
+        [sharedFilesDownManage loadTempfiles];
+        [sharedFilesDownManage loadFinishedfiles];
+    }
+    sharedFilesDownManage.basepath = basepath;
+    sharedFilesDownManage.targetPathArray =[NSMutableArray arrayWithArray:targetpaths];
+    return  sharedFilesDownManage;
+}
+- (id)init{
+    self = [super init];
+    if (self != nil) {
+        self.count = 0;
+        if (self.basepath!=nil) {
+            [self loadFinishedfiles];
+            [self loadTempfiles];
+            
+        }
+        
+    }
+    return self;
+}
+-(id)initWithBasepath:(NSString *)basepath
+        TargetPathArr:(NSArray *)targetpaths{
+    self = [super init];
+    if (self != nil) {
+        self.basepath = basepath;
+        _targetPathArray = [[NSMutableArray alloc]initWithArray:targetpaths];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString * Max= [userDefaults valueForKey:@"kMaxRequestCount"];
+        if (Max==nil) {
+            [userDefaults setObject:@"5" forKey:@"kMaxRequestCount"];
+            Max =@"5";
+        }
+        [userDefaults synchronize];
+        maxcount = [Max integerValue];
+        _filelist = [[NSMutableArray alloc]init];
+        _downinglist=[[NSMutableArray alloc] init];
+        _finishedList = [[NSMutableArray alloc] init];
+        self.isFistLoadSound=YES;
+        self.count = 0;
+        if (self.basepath!=nil) {
+            [self loadFinishedfiles];
+            [self loadTempfiles];
+            
+        }
+        
+    }
+    return self;
+}
+
+-(void)cleanLastInfo{
+    for (ASIHTTPRequest *request in _downinglist) {
+        if([request isExecuting])
+            [request cancel];
+    }
+    [self saveFinishedFile];
+    [_downinglist removeAllObjects];
+    [_finishedList removeAllObjects];
+    [_filelist removeAllObjects];
     
-	if( NO == [result boolValue] )
+}
+
+
+
+#pragma mark- -- 创建一个下载任务 --
+-(void)downFileUrl:(NSString*)url
+          filename:(NSString*)name
+        filetarget:(NSString *)path
+         fileimage:(UIImage *)image
+
+{
+    
+    //因为是重新下载，则说明肯定该文件已经被下载完，或者有临时文件正在留着，所以检查一下这两个地方，存在则删除掉
+    self.TargetSubPath = path;
+    
+    _fileInfo = [[FileModel alloc]init];
+    if (!name) {
+        name = [url lastPathComponent];
+    }
+    _fileInfo.fileName = name;
+    _fileInfo.fileURL = url;
+    
+    NSDate *myDate = [NSDate date];
+    _fileInfo.time = [CommonHelper dateToString:myDate];
+    // NSInteger index=[name rangeOfString:@"."].location;
+    _fileInfo.fileType=[name pathExtension];
+    path= [CommonHelper getTargetPathWithBasepath:_basepath subpath:path];
+    path = [path stringByAppendingPathComponent:name];
+    _fileInfo.targetPath = path ;
+    _fileInfo.fileimage = image;
+    _fileInfo.downloadState = Downloading;
+    _fileInfo.error = NO;
+    _fileInfo.isFirstReceived = YES;
+    NSString *tempfilePath= [TEMPPATH stringByAppendingPathComponent: _fileInfo.fileName]  ;
+    _fileInfo.tempPath = tempfilePath;
+    if([CommonHelper isExistFile: _fileInfo.targetPath])//已经下载过一次
     {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已下载，是否重新下载？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
         return;
     }
-
-    NSURL *url=[[[NSBundle mainBundle]resourceURL] URLByAppendingPathComponent:@"download-complete.wav"];
-    NSError *error;
-    if(self.downloadCompleteSound==nil)
+    //    //存在于临时文件夹里
+    tempfilePath =[tempfilePath stringByAppendingString:@".plist"];
+    if([CommonHelper isExistFile:tempfilePath])
     {
-        self.downloadCompleteSound=[[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        if(!error)
-        {
-            NSLog(@"%@",[error description]);
-        }
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已经在下载列表中了，是否重新下载？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+        return;
     }
-    if([result isEqualToString:@"YES"]||result==nil)//播放声音
+    
+    //若不存在文件和临时文件，则是新的下载
+    [self.filelist addObject:_fileInfo];
+    
+    [self startLoad];
+    if(self.VCdelegate!=nil && [self.VCdelegate respondsToSelector:@selector(allowNextRequest)])
     {
-        if(!self.isFistLoadSound)
-        {
-            self.downloadCompleteSound.volume=1.0f;
-        }
+        [self.VCdelegate allowNextRequest];
+    }else{
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件成功添加到下载队列" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
     }
-    else
-    {
-        self.downloadCompleteSound.volume=0.0f;
-    }
-    [self.downloadCompleteSound play];
+    return;
+    
 }
--(NSArray *)sortbyTime:(NSArray *)array{
-    NSArray *sorteArray1 = [array sortedArrayUsingComparator:^(id obj1, id obj2){
-        FileModel *file1 = (FileModel *)obj1;
-        FileModel *file2 = (FileModel *)obj2;
-        NSDate *date1 = [CommonHelper makeDate:file1.time];
-        NSDate *date2 = [CommonHelper makeDate:file2.time];
-        if ([[date1 earlierDate:date2]isEqualToDate:date2]) {
-            return (NSComparisonResult)NSOrderedDescending;
-        }
-        
-        if ([[date1 earlierDate:date2]isEqualToDate:date1]) {
-            return (NSComparisonResult)NSOrderedAscending;
-        }
-        
-        return (NSComparisonResult)NSOrderedSame;
-    }];
-    return sorteArray1;
-}
--(NSArray *)sortRequestArrbyTime:(NSArray *)array{
-    NSArray *sorteArray1 = [array sortedArrayUsingComparator:^(id obj1, id obj2){
-        //
-        FileModel* file1 =   [((ASIHTTPRequest *)obj1).userInfo objectForKey:@"File"];
-        FileModel *file2 =   [((ASIHTTPRequest *)obj2).userInfo objectForKey:@"File"];
-        
-        NSDate *date1 = [CommonHelper makeDate:file1.time];
-        NSDate *date2 = [CommonHelper makeDate:file2.time];
-        if ([[date1 earlierDate:date2]isEqualToDate:date2]) {
-            return (NSComparisonResult)NSOrderedDescending;
-        }
-        
-        if ([[date1 earlierDate:date2]isEqualToDate:date1]) {
-            return (NSComparisonResult)NSOrderedAscending;
-        }
-        
-        return (NSComparisonResult)NSOrderedSame;
-    }];
-    return sorteArray1;
-}
+#pragma mark  --下载开始--
 
-
--(void)saveDownloadFile:(FileModel*)fileinfo{
-    NSData *imagedata =UIImagePNGRepresentation(fileinfo.fileimage);
-
-    NSDictionary *filedic = [NSDictionary dictionaryWithObjectsAndKeys:fileinfo.fileName,@"filename",fileinfo.fileURL,@"fileurl",fileinfo.time,@"time",_basepath,@"basepath",_TargetSubPath,@"tarpath" ,fileinfo.fileSize,@"filesize",fileinfo.fileReceivedSize,@"filerecievesize",imagedata,@"fileimage",nil];
-
-    NSString *plistPath = [fileinfo.tempPath stringByAppendingPathExtension:@"plist"];
-    if (![filedic writeToFile:plistPath atomically:YES]) {
-        NSLog(@"write plist fail");
-    }
-}
 -(void)beginRequest:(FileModel *)fileInfo isBeginDown:(BOOL)isBeginDown
 {
     for(ASIHTTPRequest *tempRequest in self.downinglist)
     {
-        
         /**
-        注意这里判读是否是同一下载的方法，asihttprequest 有三种url：
-        url，originalurl，redirectURL
-        经过实践，应该使用originalurl,就是最先获得到的原下载地址
-        **/
+         注意这里判读是否是同一下载的方法，asihttprequest 有三种url：
+         url，originalurl，redirectURL
+         经过实践，应该使用originalurl,就是最先获得到的原下载地址
+         **/
         
         NSLog(@"%@",[tempRequest.url absoluteString]);
         if([[[tempRequest.originalURL absoluteString]lastPathComponent] isEqualToString:[fileInfo.fileURL lastPathComponent]])
@@ -162,19 +189,19 @@ NSInteger  maxcount;
                 return;
             }else if ([tempRequest isExecuting]&&!isBeginDown)
             {
-              [tempRequest setUserInfo:[NSDictionary dictionaryWithObject:fileInfo forKey:@"File"]];
-              [tempRequest cancel];
+                [tempRequest setUserInfo:[NSDictionary dictionaryWithObject:fileInfo forKey:@"File"]];
+                [tempRequest cancel];
                 [self.downloadDelegate updateCellProgress:tempRequest];
                 return;
             }
         }
     }
-
+    
     [self saveDownloadFile:fileInfo];
     
     //NSLog(@"targetPath %@",fileInfo.targetPath);
     //按照获取的文件名获取临时文件的大小，即已下载的大小
-
+    
     fileInfo.isFirstReceived=YES;
     NSFileManager *fileManager=[NSFileManager defaultManager];
     NSData *fileData=[fileManager contentsAtPath:fileInfo.tempPath];
@@ -182,7 +209,7 @@ NSInteger  maxcount;
     fileInfo.fileReceivedSize=[NSString stringWithFormat:@"%d",receivedDataLength];
     
     NSLog(@"start down::已经下载：%@",fileInfo.fileReceivedSize);
-   // [self limitMaxLines];
+    // [self limitMaxLines];
     ASIHTTPRequest *request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:fileInfo.fileURL]];
     request.delegate=self;
     [request setDownloadDestinationPath:[fileInfo targetPath]];
@@ -190,9 +217,9 @@ NSInteger  maxcount;
     [request setDownloadProgressDelegate:self];
     [request setNumberOfTimesToRetryOnTimeout:2];
     // [request setShouldContinueWhenAppEntersBackground:YES];
-
+    
     [request setAllowResumeForFileDownloads:YES];//支持断点续传
-
+    
     
     [request setUserInfo:[NSDictionary dictionaryWithObject:fileInfo forKey:@"File"]];//设置上下文的文件基本信息
     [request setTimeOutSeconds:30.0f];
@@ -204,7 +231,7 @@ NSInteger  maxcount;
     BOOL exit = NO;
     for(ASIHTTPRequest *tempRequest in self.downinglist)
     {
-       //  NSLog(@"!!!!---::%@",[tempRequest.url absoluteString]);
+        //  NSLog(@"!!!!---::%@",[tempRequest.url absoluteString]);
         if([[[tempRequest.url absoluteString]lastPathComponent] isEqualToString:[fileInfo.fileURL lastPathComponent] ])
         {
             [self.downinglist replaceObjectAtIndex:[_downinglist indexOfObject:tempRequest] withObject:request ];
@@ -215,14 +242,75 @@ NSInteger  maxcount;
     }
     
     if (!exit) {
-       
+        
         [self.downinglist addObject:request];
-         NSLog(@"EXIT!!!!---::%@",[request.url absoluteString]);
+        NSLog(@"EXIT!!!!---::%@",[request.url absoluteString]);
     }
     [self.downloadDelegate updateCellProgress:request];
     
 }
+#pragma mark --存储下载信息到一个plist文件--
+-(void)saveDownloadFile:(FileModel*)fileinfo{
+    NSData *imagedata =UIImagePNGRepresentation(fileinfo.fileimage);
+    
+    NSDictionary *filedic = [NSDictionary dictionaryWithObjectsAndKeys:fileinfo.fileName,@"filename",fileinfo.fileURL,@"fileurl",fileinfo.time,@"time",_basepath,@"basepath",_TargetSubPath,@"tarpath" ,fileinfo.fileSize,@"filesize",fileinfo.fileReceivedSize,@"filerecievesize",imagedata,@"fileimage",nil];
+    
+    NSString *plistPath = [fileinfo.tempPath stringByAppendingPathExtension:@"plist"];
+    if (![filedic writeToFile:plistPath atomically:YES]) {
+        NSLog(@"write plist fail");
+    }
+}
 
+#pragma mark- --自动处理下载状态的算法--
+
+/*下载状态的逻辑是这样的：三种状态，下载中，等待下载，停止下载
+ 
+ 当超过最大下载数时，继续添加的下载会进入等待状态，当同时下载数少于最大限制时会自动开始下载等待状态的任务。
+ 可以主动切换下载状态
+ 所有任务以添加时间排序。
+ */
+
+-(void)startLoad{
+    NSInteger num = 0;
+    NSInteger max = maxcount;
+    for (FileModel *file in _filelist) {
+        if (!file.error) {
+            if (file.downloadState==Downloading) {
+                
+                if (num>=max) {
+                    file.downloadState=WillDownload;
+                }else
+                    num++;
+                
+            }
+        }
+    }
+    if (num<max) {
+        for (FileModel *file in _filelist) {
+            if (!file.error) {
+                if (file.downloadState==WillDownload) {
+                    num++;
+                    if (num>max) {
+                        break;
+                    }
+                    file.downloadState=Downloading;
+                }
+            }
+        }
+        
+    }
+    for (FileModel *file in _filelist) {
+        if (!file.error) {
+            if (file.downloadState==Downloading) {
+                [self beginRequest:file isBeginDown:YES];
+            }else
+                [self beginRequest:file isBeginDown:NO];
+        }
+    }
+    self.count = [_filelist count];
+}
+#pragma mark -
+#pragma mark - --恢复下载--
 -(void)resumeRequest:(ASIHTTPRequest *)request{
     NSInteger max = maxcount;
     FileModel *fileInfo =  [request.userInfo objectForKey:@"File"];
@@ -251,6 +339,7 @@ NSInteger  maxcount;
     }//重新开始此下载
     [self startLoad];
 }
+#pragma mark - --暂停下载--
 -(void)stopRequest:(ASIHTTPRequest *)request{
     NSInteger max = maxcount;
     if([request isExecuting])
@@ -285,6 +374,7 @@ NSInteger  maxcount;
 
     
 }
+#pragma mark - --删除下载--
 -(void)deleteRequest:(ASIHTTPRequest *)request{
     bool isexecuting = NO;
     if([request isExecuting])
@@ -325,6 +415,8 @@ NSInteger  maxcount;
     }
      self.count = [_filelist count];
 }
+
+#pragma mark - --可能的UI操作接口 --
 -(void)clearAllFinished{
     [_finishedList removeAllObjects];
 }
@@ -339,15 +431,53 @@ NSInteger  maxcount;
         NSString *configPath=[NSString stringWithFormat:@"%@.plist",path];
         [fileManager removeItemAtPath:path error:&error];
         [fileManager removeItemAtPath:configPath error:&error];
-      //  [self deleteImage:fileInfo];
+        //  [self deleteImage:fileInfo];
         if(!error)
         {
             NSLog(@"%@",[error description]);
         }
-
+        
     }
     [_downinglist removeAllObjects];
     [_filelist removeAllObjects];
+}
+
+-(void)restartAllRquests{
+    
+    for (ASIHTTPRequest *request in _downinglist) {
+        if([request isExecuting])
+            [request cancel];
+    }
+    
+    [self startLoad];
+}
+#pragma mark- --从这里获取上次未完成下载的信息--
+/*
+ 将本地的未下载完成的临时文件加载到正在下载列表里,但是不接着开始下载
+ 
+ */
+-(void)loadTempfiles
+{
+    
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    NSError *error;
+    NSArray *filelist=[fileManager contentsOfDirectoryAtPath:TEMPPATH error:&error];
+    if(!error)
+    {
+        NSLog(@"%@",[error description]);
+    }
+    NSMutableArray *filearr = [[NSMutableArray alloc]init];
+    for(NSString *file in filelist)
+    {
+        NSString *filetype = [file  pathExtension];
+        if([filetype isEqualToString:@"plist"])
+            [filearr addObject:[self getTempfile:[TEMPPATH stringByAppendingPathComponent:file]]];
+    }
+    
+    NSArray* arr =  [self sortbyTime:(NSArray *)filearr];
+    [_filelist addObjectsFromArray:arr];
+    
+    [self startLoad];
 }
 
 -(FileModel *)getTempfile:(NSString *)path{
@@ -367,44 +497,34 @@ NSInteger  maxcount;
     file.tempPath = tempfilePath;
     file.time = [dic objectForKey:@"time"];
     file.fileimage = [UIImage imageWithData:[dic objectForKey:@"fileimage"]];
-	file.downloadState =StopDownload;
-   // file.isFirstReceived = YES;
+    file.downloadState =StopDownload;
+    // file.isFirstReceived = YES;
     file.error = NO;
     
     NSData *fileData=[[NSFileManager defaultManager ] contentsAtPath:file.tempPath];
     NSInteger receivedDataLength=[fileData length];
     file.fileReceivedSize=[NSString stringWithFormat:@"%d",receivedDataLength];
     return file;
-
-    
 }
-/*
- 将本地的未下载完成的临时文件加载到正在下载列表里,但是不接着开始下载
-
- */
--(void)loadTempfiles
-{
-    
-    NSFileManager *fileManager=[NSFileManager defaultManager];
-    NSError *error;
-    NSArray *filelist=[fileManager contentsOfDirectoryAtPath:TEMPPATH error:&error];
-    if(!error)
-    {
-        NSLog(@"%@",[error description]);
-    }
-    NSMutableArray *filearr = [[NSMutableArray alloc]init];
-    for(NSString *file in filelist)
-    {
-        NSString *filetype = [file  pathExtension];
-        if([filetype isEqualToString:@"plist"])
-           [filearr addObject:[self getTempfile:[TEMPPATH stringByAppendingPathComponent:file]]];
-    }
-   
-    NSArray* arr =  [self sortbyTime:(NSArray *)filearr];
-    [_filelist addObjectsFromArray:arr];
-    
-    [self startLoad];
+-(NSArray *)sortbyTime:(NSArray *)array{
+    NSArray *sorteArray1 = [array sortedArrayUsingComparator:^(id obj1, id obj2){
+        FileModel *file1 = (FileModel *)obj1;
+        FileModel *file2 = (FileModel *)obj2;
+        NSDate *date1 = [CommonHelper makeDate:file1.time];
+        NSDate *date2 = [CommonHelper makeDate:file2.time];
+        if ([[date1 earlierDate:date2]isEqualToDate:date2]) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        
+        if ([[date1 earlierDate:date2]isEqualToDate:date1]) {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        
+        return (NSComparisonResult)NSOrderedSame;
+    }];
+    return sorteArray1;
 }
+#pragma mark- --已完成的下载任务在这里处理--
 /*
 	将本地已经下载完成的文件加载到已下载列表里
  */
@@ -426,13 +546,13 @@ NSInteger  maxcount;
         }
         //self.finishedlist = finishArr;
     }
-//    else
-//        [[NSFileManager defaultManager]createFileAtPath:plistPath contents:nil attributes:nil];
-
+    //    else
+    //        [[NSFileManager defaultManager]createFileAtPath:plistPath contents:nil attributes:nil];
+    
 }
 
 -(void)saveFinishedFile{
-     //[_finishedList addObject:file];
+    //[_finishedList addObject:file];
     if (_finishedList==nil) {
         return;
     }
@@ -450,270 +570,14 @@ NSInteger  maxcount;
 }
 -(void)deleteFinishFile:(FileModel *)selectFile{
     [_finishedList removeObject:selectFile];
-	NSFileManager* fm = [NSFileManager defaultManager];
-	if ([fm fileExistsAtPath:selectFile.targetPath]) {
-		[fm removeItemAtPath:selectFile.targetPath error:nil];
-	}
-    [self saveFinishedFile];
-}
-#pragma mark -- 入口 --
--(void)downFileUrl:(NSString*)url
-          filename:(NSString*)name
-
-        filetarget:(NSString *)path
-        fileimage:(UIImage *)image
-
-{
-    
-    //因为是重新下载，则说明肯定该文件已经被下载完，或者有临时文件正在留着，所以检查一下这两个地方，存在则删除掉
-    self.TargetSubPath = path;
-
-    _fileInfo = [[FileModel alloc]init];
-	if (!name) {
-		name = [url lastPathComponent];
-	}
-    _fileInfo.fileName = name;
-    _fileInfo.fileURL = url;
-  
-      NSDate *myDate = [NSDate date];
-    _fileInfo.time = [CommonHelper dateToString:myDate];
-   // NSInteger index=[name rangeOfString:@"."].location;
-    _fileInfo.fileType=[name pathExtension];
-    path= [CommonHelper getTargetPathWithBasepath:_basepath subpath:path];
-    path = [path stringByAppendingPathComponent:name];
-      _fileInfo.targetPath = path ;
-    _fileInfo.fileimage = image;
-	_fileInfo.downloadState = Downloading;
-    _fileInfo.error = NO;
-    _fileInfo.isFirstReceived = YES;
-    NSString *tempfilePath= [TEMPPATH stringByAppendingPathComponent: _fileInfo.fileName]  ;
-    _fileInfo.tempPath = tempfilePath;
-    if([CommonHelper isExistFile: _fileInfo.targetPath])//已经下载过一次
-    {
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已下载，是否重新下载？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
-        return;
-    }
-//    //存在于临时文件夹里
-    tempfilePath =[tempfilePath stringByAppendingString:@".plist"];
-    if([CommonHelper isExistFile:tempfilePath])
-    {
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已经在下载列表中了，是否重新下载？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
-        return;
-    }
-    
-    //若不存在文件和临时文件，则是新的下载
-    [self.filelist addObject:_fileInfo];
-    
-    [self startLoad];
-    if(self.VCdelegate!=nil && [self.VCdelegate respondsToSelector:@selector(allowNextRequest)])
-    {
-        [self.VCdelegate allowNextRequest];
-    }else{
-           UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件成功添加到下载队列" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-           [alert show];
-    }
-    return;
-
-}
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex==1)//确定按钮
-    {
-
-        NSFileManager *fileManager=[NSFileManager defaultManager];
-        NSError *error;
-        NSInteger delindex =-1;
-        if([CommonHelper isExistFile:_fileInfo.targetPath])//已经下载过一次该音乐
-        {
-            if ([fileManager removeItemAtPath:_fileInfo.targetPath error:&error]!=YES) {
-   
-                    NSLog(@"删除文件出错:%@",[error localizedDescription]);
-            }
-
- 
-        }else{
-            for(ASIHTTPRequest *request in self.downinglist)
-            {
-                FileModel *fileModel=[request.userInfo objectForKey:@"File"];
-                if([fileModel.fileName isEqualToString:_fileInfo.fileName])
-                {
-                    //[self.downinglist removeObject:request];
-                    if ([request isExecuting]) {
-                        [request cancel];
-                    }
-                    delindex = [_downinglist indexOfObject:request];
-                  //  [self deleteImage:fileModel];
-                    break;
-                }
-            }
-            [_downinglist removeObjectAtIndex:delindex];
-            
-            for (FileModel *file in _filelist) {
-                if ([file.fileName isEqualToString:_fileInfo.fileName]) {
-                    delindex = [_filelist indexOfObject:file];
-                    break;
-                }
-            }
-            [_filelist removeObjectAtIndex:delindex];
-        //存在于临时文件夹里
-       NSString * tempfilePath =[_fileInfo.tempPath stringByAppendingString:@".plist"];
-        if([CommonHelper isExistFile:tempfilePath])
-        {   
-            if ([fileManager removeItemAtPath:tempfilePath error:&error]!=YES) {
-                 NSLog(@"删除临时文件出错:%@",[error localizedDescription]);
-            }
-
-        }
-        if([CommonHelper isExistFile:_fileInfo.tempPath])
-        {
-            if ([fileManager removeItemAtPath:_fileInfo.tempPath error:&error]!=YES) {
-                 NSLog(@"删除临时文件出错:%@",[error localizedDescription]);
-            }
-        }
-
-        }
-        
-        self.fileInfo.fileReceivedSize=[CommonHelper getFileSizeString:@"0"];
-        [_filelist addObject:_fileInfo];
-        [self startLoad];
-//        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已经添加到您的下载列表中了！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//        [alert show];
-//        [alert release];
-
-    }
-    if(self.VCdelegate!=nil && [self.VCdelegate respondsToSelector:@selector(allowNextRequest)])
-    {
-        [self.VCdelegate allowNextRequest];
-    }
-}
--(void)startLoad{
-    /*下载的三种状态，下载中，等待下载，停止下载
-     所有任务以添加时间排序。
-     */
-
-    NSInteger num = 0;
-    NSInteger max = maxcount;
-    for (FileModel *file in _filelist) {
-        if (!file.error) {
-        if (file.downloadState==Downloading) {
-
-            if (num>=max) {
-				file.downloadState=WillDownload;
-            }else
-                num++;
-
-        }
-        }
-    }
-    if (num<max) {        
-        for (FileModel *file in _filelist) {
-             if (!file.error) {
-            if (file.downloadState==WillDownload) {
-                num++;
-                if (num>max) {
-                    break;
-                }
-                file.downloadState=Downloading;
-            }
-        }
-    }
-            
-    }
-    for (FileModel *file in _filelist) {
-         if (!file.error) {
-        if (file.downloadState==Downloading) {
-            [self beginRequest:file isBeginDown:YES];
-        }else
-            [self beginRequest:file isBeginDown:NO];
-         }
-    }
-    self.count = [_filelist count];
-}
-
-#pragma mark -- init methods --
--(id)initWithBasepath:(NSString *)basepath
-TargetPathArr:(NSArray *)targetpaths{
-    self.basepath = basepath;
-    _targetPathArray = [[NSMutableArray alloc]initWithArray:targetpaths];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString * Max= [userDefaults valueForKey:@"kMaxRequestCount"];
-    if (Max==nil) {
-        [userDefaults setObject:@"5" forKey:@"kMaxRequestCount"];
-        Max =@"5";
-    }
-    [userDefaults synchronize];
-    maxcount = [Max integerValue];
-    _filelist = [[NSMutableArray alloc]init];
-    _downinglist=[[NSMutableArray alloc] init];
-    _finishedList = [[NSMutableArray alloc] init];
-    self.isFistLoadSound=YES;
-    return  [self init];
-}
-
-- (id)init
-{
-	self = [super init];
-	if (self != nil) {
-        self.count = 0;
-        if (self.basepath!=nil) {
-            [self loadFinishedfiles];
-            [self loadTempfiles];
-            
-        }
-
-    }
-	return self;
-}
--(void)cleanLastInfo{
-    for (ASIHTTPRequest *request in _downinglist) {
-        if([request isExecuting])
-            [request cancel];
+    NSFileManager* fm = [NSFileManager defaultManager];
+    if ([fm fileExistsAtPath:selectFile.targetPath]) {
+        [fm removeItemAtPath:selectFile.targetPath error:nil];
     }
     [self saveFinishedFile];
-    [_downinglist removeAllObjects];
-    [_finishedList removeAllObjects];
-    [_filelist removeAllObjects];
-   
 }
-+(FilesDownManage *) sharedFilesDownManageWithBasepath:(NSString *)basepath
-                                         TargetPathArr:(NSArray *)targetpaths{
-    @synchronized(self){
-        if (sharedFilesDownManage == nil) {
-            sharedFilesDownManage = [[self alloc] initWithBasepath: basepath  TargetPathArr:targetpaths];
-        }
-    }
-    if (![sharedFilesDownManage.basepath isEqualToString:basepath]) {
-        
-        [sharedFilesDownManage cleanLastInfo];
-        sharedFilesDownManage.basepath = basepath;
-         [sharedFilesDownManage loadTempfiles];
-        [sharedFilesDownManage loadFinishedfiles];
-    }
-   sharedFilesDownManage.basepath = basepath;
-   sharedFilesDownManage.targetPathArray =[NSMutableArray arrayWithArray:targetpaths];
-    return  sharedFilesDownManage;
-}
+#pragma mark -
 
-+(FilesDownManage *) sharedFilesDownManage{
-    @synchronized(self){
-        if (sharedFilesDownManage == nil) {
-            sharedFilesDownManage = [[self alloc] init];
-        }
-    }
-    return  sharedFilesDownManage;
-}
-+(id) allocWithZone:(NSZone *)zone{
-    @synchronized(self){
-        if (sharedFilesDownManage == nil) {
-            sharedFilesDownManage = [super allocWithZone:zone];
-            return  sharedFilesDownManage;
-        }
-    }
-    return nil;
-}
 #pragma mark -- ASIHttpRequest回调委托 --
 
 //出错了，如果是等待超时，则继续下载
@@ -789,7 +653,6 @@ TargetPathArr:(NSArray *)targetpaths{
 //将正在下载的文件请求ASIHttpRequest从队列里移除，并将其配置文件删除掉,然后向已下载列表里添加该文件对象
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    [self playDownloadSound];
     FileModel *fileInfo=(FileModel *)[request.userInfo objectForKey:@"File"];
     
      [_finishedList addObject:fileInfo];
@@ -817,14 +680,78 @@ TargetPathArr:(NSArray *)targetpaths{
     }
 }
 
--(void)restartAllRquests{
-    
-    for (ASIHTTPRequest *request in _downinglist) {
-        if([request isExecuting])
-            [request cancel];
+#pragma mark - --UIAlertViewDelegate--
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==1)//确定按钮
+    {
+        
+        NSFileManager *fileManager=[NSFileManager defaultManager];
+        NSError *error;
+        NSInteger delindex =-1;
+        if([CommonHelper isExistFile:_fileInfo.targetPath])//已经下载过一次该音乐
+        {
+            if ([fileManager removeItemAtPath:_fileInfo.targetPath error:&error]!=YES) {
+                
+                NSLog(@"删除文件出错:%@",[error localizedDescription]);
+            }
+            
+            
+        }else{
+            for(ASIHTTPRequest *request in self.downinglist)
+            {
+                FileModel *fileModel=[request.userInfo objectForKey:@"File"];
+                if([fileModel.fileName isEqualToString:_fileInfo.fileName])
+                {
+                    //[self.downinglist removeObject:request];
+                    if ([request isExecuting]) {
+                        [request cancel];
+                    }
+                    delindex = [_downinglist indexOfObject:request];
+                    //  [self deleteImage:fileModel];
+                    break;
+                }
+            }
+            [_downinglist removeObjectAtIndex:delindex];
+            
+            for (FileModel *file in _filelist) {
+                if ([file.fileName isEqualToString:_fileInfo.fileName]) {
+                    delindex = [_filelist indexOfObject:file];
+                    break;
+                }
+            }
+            [_filelist removeObjectAtIndex:delindex];
+            //存在于临时文件夹里
+            NSString * tempfilePath =[_fileInfo.tempPath stringByAppendingString:@".plist"];
+            if([CommonHelper isExistFile:tempfilePath])
+            {
+                if ([fileManager removeItemAtPath:tempfilePath error:&error]!=YES) {
+                    NSLog(@"删除临时文件出错:%@",[error localizedDescription]);
+                }
+                
+            }
+            if([CommonHelper isExistFile:_fileInfo.tempPath])
+            {
+                if ([fileManager removeItemAtPath:_fileInfo.tempPath error:&error]!=YES) {
+                    NSLog(@"删除临时文件出错:%@",[error localizedDescription]);
+                }
+            }
+            
+        }
+        
+        self.fileInfo.fileReceivedSize=[CommonHelper getFileSizeString:@"0"];
+        [_filelist addObject:_fileInfo];
+        [self startLoad];
+        //        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已经添加到您的下载列表中了！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        //        [alert show];
+        //        [alert release];
+        
     }
-    
-    [self startLoad];
+    if(self.VCdelegate!=nil && [self.VCdelegate respondsToSelector:@selector(allowNextRequest)])
+    {
+        [self.VCdelegate allowNextRequest];
+    }
 }
 
 @end
