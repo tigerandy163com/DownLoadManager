@@ -9,8 +9,7 @@
 #import "CommonHelper.h"
 #import "DownloadDelegate.h"
 #import "FileModel.h"
-
-#import <AVFoundation/AVAudioPlayer.h>
+#import "MidHttpRequest.h"
 extern NSInteger  maxcount;
 
 @interface FilesDownManage : NSObject<ASIHTTPRequestDelegate,ASIProgressDelegate>
@@ -20,21 +19,18 @@ extern NSInteger  maxcount;
     
 }
 @property int count;
-@property(nonatomic,retain)id<DownloadDelegate> VCdelegate;//获得下载事件的vc，用在比如多选图片后批量下载的情况，这时需配合 allowNextRequest 协议方法使用
-@property(nonatomic,retain)id<DownloadDelegate> downloadDelegate;//下载列表delegate
+@property(nonatomic,assign)id<DownloadDelegate> VCdelegate;//获得下载事件的vc，用在比如多选图片后批量下载的情况，这时需配合 allowNextRequest 协议方法使用
+@property(nonatomic,assign)id<DownloadDelegate> downloadDelegate;//下载列表delegate
 
-@property(nonatomic,retain)NSString *basepath;
-@property(nonatomic,retain)NSString *TargetSubPath;
-@property(nonatomic,retain)NSMutableArray *finishedlist;//已下载完成的文件列表（文件对象）
+@property(nonatomic,strong)NSString *basepath;
+@property(nonatomic,strong)NSString *TargetSubPath;
+@property(nonatomic,strong)NSMutableArray *finishedlist;//已下载完成的文件列表（文件对象）
 
-@property(nonatomic,retain)NSMutableArray *downinglist;//正在下载的文件列表(ASIHttpRequest对象)
-@property(nonatomic,retain)NSMutableArray *filelist;
-@property(nonatomic,retain)NSMutableArray *targetPathArray;
+@property(nonatomic,strong)NSMutableArray *downinglist;//正在下载的文件列表(ASIHttpRequest对象)
+@property(nonatomic,strong)NSMutableArray *filelist;
+@property(nonatomic,strong)NSMutableArray *targetPathArray;
 
-@property(nonatomic,retain)AVAudioPlayer *buttonSound;//按钮声音
-
-@property(nonatomic,retain)AVAudioPlayer *downloadCompleteSound;//下载完成的声音
-@property(nonatomic,retain)FileModel *fileInfo;
+@property(nonatomic,strong)FileModel *fileInfo;
 @property(nonatomic)BOOL isFistLoadSound;//是否第一次加载声音，静音
 
 
