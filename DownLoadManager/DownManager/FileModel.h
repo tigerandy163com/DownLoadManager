@@ -1,6 +1,5 @@
 
 #import <Foundation/Foundation.h>
-#import "ASIHTTPRequest.h"
 typedef enum {
 		Downloading,//下载中
 		WillDownload,//等待下载

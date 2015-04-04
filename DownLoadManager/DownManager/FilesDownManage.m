@@ -5,8 +5,7 @@
 
 #import "FilesDownManage.h"
 #import "Reachability.h"
-
-
+#import "ASIHTTPRequest.h"
 
 #define TEMPPATH [CommonHelper getTempFolderPathWithBasepath:_basepath]
 
@@ -15,8 +14,6 @@
 @synthesize fileInfo = _fileInfo;
 @synthesize downloadDelegate=_downloadDelegate;
 @synthesize finishedlist=_finishedList;
-@synthesize buttonSound=_buttonSound;
-@synthesize downloadCompleteSound=_downloadCompleteSound;
 @synthesize isFistLoadSound=_isFirstLoadSound;
 @synthesize basepath = _basepath;
 @synthesize filelist = _filelist;
@@ -97,7 +94,7 @@ NSInteger  maxcount;
 }
 
 -(void)cleanLastInfo{
-    for (ASIHTTPRequest *request in _downinglist) {
+    for (MidHttpRequest *request in _downinglist) {
         if([request isExecuting])
             [request cancel];
     }
@@ -144,7 +141,9 @@ NSInteger  maxcount;
     if([CommonHelper isExistFile: _fileInfo.targetPath])//已经下载过一次
     {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已下载，是否重新下载？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [alert show];
+        });
         return;
     }
     //    //存在于临时文件夹里
@@ -152,7 +151,9 @@ NSInteger  maxcount;
     if([CommonHelper isExistFile:tempfilePath])
     {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已经在下载列表中了，是否重新下载？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [alert show];
+        });
         return;
     }
     
@@ -165,7 +166,9 @@ NSInteger  maxcount;
         [self.VCdelegate allowNextRequest];
     }else{
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件成功添加到下载队列" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [alert show];
+        });
     }
     return;
     
@@ -174,7 +177,7 @@ NSInteger  maxcount;
 
 -(void)beginRequest:(FileModel *)fileInfo isBeginDown:(BOOL)isBeginDown
 {
-    for(ASIHTTPRequest *tempRequest in self.downinglist)
+    for(MidHttpRequest *tempRequest in self.downinglist)
     {
         /**
          注意这里判读是否是同一下载的方法，asihttprequest 有三种url：
@@ -209,32 +212,23 @@ NSInteger  maxcount;
     fileInfo.fileReceivedSize=[NSString stringWithFormat:@"%d",receivedDataLength];
     
     NSLog(@"start down::已经下载：%@",fileInfo.fileReceivedSize);
-    // [self limitMaxLines];
-    ASIHTTPRequest *request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:fileInfo.fileURL]];
-    request.delegate=self;
-    [request setDownloadDestinationPath:[fileInfo targetPath]];
-    [request setTemporaryFileDownloadPath:fileInfo.tempPath];
-    [request setDownloadProgressDelegate:self];
-    [request setNumberOfTimesToRetryOnTimeout:2];
-    // [request setShouldContinueWhenAppEntersBackground:YES];
-    
-    [request setAllowResumeForFileDownloads:YES];//支持断点续传
-    
-    
-    [request setUserInfo:[NSDictionary dictionaryWithObject:fileInfo forKey:@"File"]];//设置上下文的文件基本信息
-    [request setTimeOutSeconds:30.0f];
-    if (isBeginDown) {
-        [request startAsynchronous];
+    MidHttpRequest* midRequest = [[MidHttpRequest alloc]initWithURL: [NSURL URLWithString:fileInfo.fileURL]];
+    midRequest.downloadDestinationPath = fileInfo.targetPath;
+    midRequest.temporaryFileDownloadPath = fileInfo.tempPath;
+    midRequest.delegate = self;
+    [midRequest setUserInfo:[NSDictionary dictionaryWithObject:fileInfo forKey:@"File"]];//设置上下文的文件基本信息
+     if (isBeginDown) {
+        [midRequest startAsynchronous];
     }
     
     //如果文件重复下载或暂停、继续，则把队列中的请求删除，重新添加
     BOOL exit = NO;
-    for(ASIHTTPRequest *tempRequest in self.downinglist)
+    for(MidHttpRequest *tempRequest in self.downinglist)
     {
         //  NSLog(@"!!!!---::%@",[tempRequest.url absoluteString]);
         if([[[tempRequest.url absoluteString]lastPathComponent] isEqualToString:[fileInfo.fileURL lastPathComponent] ])
         {
-            [self.downinglist replaceObjectAtIndex:[_downinglist indexOfObject:tempRequest] withObject:request ];
+            [self.downinglist replaceObjectAtIndex:[_downinglist indexOfObject:tempRequest] withObject:midRequest ];
             
             exit = YES;
             break;
@@ -243,10 +237,10 @@ NSInteger  maxcount;
     
     if (!exit) {
         
-        [self.downinglist addObject:request];
-        NSLog(@"EXIT!!!!---::%@",[request.url absoluteString]);
+        [self.downinglist addObject:midRequest];
+        NSLog(@"EXIT!!!!---::%@",[midRequest.url absoluteString]);
     }
-    [self.downloadDelegate updateCellProgress:request];
+    [self.downloadDelegate updateCellProgress:midRequest];
     
 }
 #pragma mark --存储下载信息到一个plist文件--
@@ -311,7 +305,7 @@ NSInteger  maxcount;
 }
 #pragma mark -
 #pragma mark - --恢复下载--
--(void)resumeRequest:(ASIHTTPRequest *)request{
+-(void)resumeRequest:(MidHttpRequest *)request{
     NSInteger max = maxcount;
     FileModel *fileInfo =  [request.userInfo objectForKey:@"File"];
     NSInteger downingcount =0;
@@ -340,7 +334,7 @@ NSInteger  maxcount;
     [self startLoad];
 }
 #pragma mark - --暂停下载--
--(void)stopRequest:(ASIHTTPRequest *)request{
+-(void)stopRequest:(MidHttpRequest *)request{
     NSInteger max = maxcount;
     if([request isExecuting])
     {
@@ -375,7 +369,7 @@ NSInteger  maxcount;
     
 }
 #pragma mark - --删除下载--
--(void)deleteRequest:(ASIHTTPRequest *)request{
+-(void)deleteRequest:(MidHttpRequest *)request{
     bool isexecuting = NO;
     if([request isExecuting])
     {
@@ -423,7 +417,7 @@ NSInteger  maxcount;
 -(void)clearAllRquests{
     NSFileManager *fileManager=[NSFileManager defaultManager];
     NSError *error;
-    for (ASIHTTPRequest *request in _downinglist) {
+    for (MidHttpRequest *request in _downinglist) {
         if([request isExecuting])
             [request cancel];
         FileModel *fileInfo=(FileModel*)[request.userInfo objectForKey:@"File"];
@@ -444,7 +438,7 @@ NSInteger  maxcount;
 
 -(void)restartAllRquests{
     
-    for (ASIHTTPRequest *request in _downinglist) {
+    for (MidHttpRequest *request in _downinglist) {
         if([request isExecuting])
             [request cancel];
     }
@@ -581,7 +575,7 @@ NSInteger  maxcount;
 #pragma mark -- ASIHttpRequest回调委托 --
 
 //出错了，如果是等待超时，则继续下载
--(void)requestFailed:(ASIHTTPRequest *)request
+-(void)requestFailed:(MidHttpRequest *)request
 {
     NSError *error=[request error];
     NSLog(@"ASIHttpRequest出错了!%@",error);
@@ -604,12 +598,12 @@ NSInteger  maxcount;
     [self.downloadDelegate updateCellProgress:request];
 }
 
--(void)requestStarted:(ASIHTTPRequest *)request
+-(void)requestStarted:(MidHttpRequest *)request
 {
     NSLog(@"开始了!");
 }
 
--(void)request:(ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
+-(void)request:(MidHttpRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
 {
     NSLog(@"收到回复了！");
 
@@ -629,7 +623,7 @@ NSInteger  maxcount;
 }
 
 
--(void)request:(ASIHTTPRequest *)request didReceiveBytes:(long long)bytes
+-(void)request:(MidHttpRequest *)request didReceiveBytes:(long long)bytes
 {
     FileModel *fileInfo=[request.userInfo objectForKey:@"File"];
     NSLog(@"%@,%lld",fileInfo.fileReceivedSize,bytes);
@@ -651,7 +645,7 @@ NSInteger  maxcount;
 }
 
 //将正在下载的文件请求ASIHttpRequest从队列里移除，并将其配置文件删除掉,然后向已下载列表里添加该文件对象
--(void)requestFinished:(ASIHTTPRequest *)request
+-(void)requestFinished:(MidHttpRequest *)request
 {
     FileModel *fileInfo=(FileModel *)[request.userInfo objectForKey:@"File"];
     
@@ -699,7 +693,7 @@ NSInteger  maxcount;
             
             
         }else{
-            for(ASIHTTPRequest *request in self.downinglist)
+            for(MidHttpRequest *request in self.downinglist)
             {
                 FileModel *fileModel=[request.userInfo objectForKey:@"File"];
                 if([fileModel.fileName isEqualToString:_fileInfo.fileName])

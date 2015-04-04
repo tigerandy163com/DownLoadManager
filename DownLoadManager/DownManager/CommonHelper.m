@@ -149,9 +149,9 @@
     return [fileManager fileExistsAtPath:fileName];
 }
 
-+(float)getProgress:(float)totalSize currentSize:(float)currentSize
++(CGFloat)getProgress:(long long)totalSize currentSize:(long long)currentSize
 {
-    return currentSize/totalSize;
+    return (float)currentSize/totalSize;
 }
 +(NSDate *)makeDate:(NSString *)birthday
 {

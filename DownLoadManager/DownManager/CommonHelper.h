@@ -24,7 +24,7 @@
 + (NSString *)md5StringForData:(NSData*)data;
 + (NSString *)md5StringForString:(NSString*)str;
 //传入文件总大小和当前大小，得到文件的下载进度
-+(CGFloat) getProgress:(float)totalSize currentSize:(float)currentSize;
++(CGFloat) getProgress:(long long)totalSize currentSize:(long long)currentSize;
 
 
 @end

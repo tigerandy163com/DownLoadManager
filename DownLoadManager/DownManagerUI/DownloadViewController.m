@@ -249,7 +249,7 @@
         [cell.progress1 setProgressImage:[UIImage imageNamed:@"下载管理进度背景点九.png"]];
 
 
-        ASIHTTPRequest *theRequest=[self.downingList objectAtIndex:indexPath.row];
+        MidHttpRequest *theRequest=[self.downingList objectAtIndex:indexPath.row];
         if (theRequest==nil) {
             return cell=Nil;
         }
@@ -333,7 +333,7 @@
     {
         if(tableView.tag==101)//正在下载的表格
         {
-            ASIHTTPRequest *theRequest=[self.downingList objectAtIndex:indexPath.row];
+            MidHttpRequest *theRequest=[self.downingList objectAtIndex:indexPath.row];
             [[FilesDownManage sharedFilesDownManage] deleteRequest:theRequest];
             [self.downingList removeObjectAtIndex:indexPath.row];
             [self.downloadingTable reloadData];
@@ -369,8 +369,8 @@
 //                cell.sizeinfoLab.text = [NSString stringWithFormat:@"%@/%@",currentsize,totalsize];
 //                NSLog(@"%@",cell.sizeinfoLab.text);
                 
-                [cell.progress1 setProgress:[CommonHelper getProgress:[fileInfo.fileSize floatValue] currentSize:[currentsize floatValue]]];
-                NSLog(@"%f",cell.progress1 .progress);
+                [cell.progress1 setProgress:[CommonHelper getProgress:[fileInfo.fileSize longLongValue] currentSize:[currentsize longLongValue]]];
+                NSLog(@"进度%f",cell.progress1 .progress);
 
                  cell.sizeinfoLab.text =[NSString stringWithFormat:@"%.0f%@",100*(cell.progress1.progress),@"%"];
 //                cell.averagebandLab.text =[NSString stringWithFormat:@"%@/s",[CommonHelper getFileSizeString:[NSString stringWithFormat:@"%lu",[ASIHTTPRequest averageBandwidthUsedPerSecond]]]] ;
@@ -397,18 +397,18 @@
 }
 
 #pragma mark --- updateUI delegate ---
--(void)startDownload:(ASIHTTPRequest *)request;
+-(void)startDownload:(MidHttpRequest *)request;
 {
     NSLog(@"-------开始下载!");
 }
 
--(void)updateCellProgress:(ASIHTTPRequest *)request;
+-(void)updateCellProgress:(MidHttpRequest *)request;
 {
     FileModel *fileInfo=[request.userInfo objectForKey:@"File"];
     [self performSelectorOnMainThread:@selector(updateCellOnMainThread:) withObject:fileInfo waitUntilDone:YES];
 }
 
--(void)finishedDownload:(ASIHTTPRequest *)request;
+-(void)finishedDownload:(MidHttpRequest *)request;
 {
 
    // [self.downingList removeObject:request];

@@ -50,6 +50,7 @@
 		9DFCAC211ACFE229006A48C2 /* 显示信息数目背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABF41ACFE229006A48C2 /* 显示信息数目背景@2x.png */; };
 		9DFCAC221ACFE229006A48C2 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCABF61ACFE229006A48C2 /* SettingViewController.m */; };
 		9DFCAC231ACFE229006A48C2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCABF81ACFE229006A48C2 /* ViewController.m */; };
+		9DFCAC261ACFF317006A48C2 /* MidHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCAC251ACFF317006A48C2 /* MidHttpRequest.m */; };
 		C66C7321184EBD6C0059E952 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C7320184EBD6C0059E952 /* Foundation.framework */; };
 		C66C7323184EBD6C0059E952 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C7322184EBD6C0059E952 /* CoreGraphics.framework */; };
 		C66C7325184EBD6C0059E952 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C7324184EBD6C0059E952 /* UIKit.framework */; };
@@ -125,6 +126,8 @@
 		9DFCABF61ACFE229006A48C2 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		9DFCABF71ACFE229006A48C2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9DFCABF81ACFE229006A48C2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9DFCAC241ACFF317006A48C2 /* MidHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidHttpRequest.h; sourceTree = "<group>"; };
+		9DFCAC251ACFF317006A48C2 /* MidHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidHttpRequest.m; sourceTree = "<group>"; };
 		C66C731D184EBD6C0059E952 /* DownLoadManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownLoadManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66C7320184EBD6C0059E952 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C66C7322184EBD6C0059E952 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -356,6 +359,8 @@
 				C6A022AE185052A9008EB2F7 /* FileModel.m */,
 				C6A022AF185052A9008EB2F7 /* FilesDownManage.h */,
 				C6A022B0185052A9008EB2F7 /* FilesDownManage.m */,
+				9DFCAC241ACFF317006A48C2 /* MidHttpRequest.h */,
+				9DFCAC251ACFF317006A48C2 /* MidHttpRequest.m */,
 			);
 			name = DownManager;
 			path = DownLoadManager/DownManager;
@@ -472,6 +477,7 @@
 				C6A022E4185052A9008EB2F7 /* Reachability.m in Sources */,
 				C66C7331184EBD6C0059E952 /* AppDelegate.m in Sources */,
 				C6A022DA185052A9008EB2F7 /* ASIAuthenticationDialog.m in Sources */,
+				9DFCAC261ACFF317006A48C2 /* MidHttpRequest.m in Sources */,
 				C6A022DE185052A9008EB2F7 /* ASIFormDataRequest.m in Sources */,
 				9DFCABFA1ACFE229006A48C2 /* DownloadViewController.m in Sources */,
 				C6A022EC185052A9008EB2F7 /* FileModel.m in Sources */,

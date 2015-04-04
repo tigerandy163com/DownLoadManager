@@ -4,15 +4,14 @@
 
 
 #import <Foundation/Foundation.h>
-#import "ASIHTTPRequest.h"
-#import "ASINetworkQueue.h"
+
 #import "CommonHelper.h"
 #import "DownloadDelegate.h"
 #import "FileModel.h"
 #import "MidHttpRequest.h"
 extern NSInteger  maxcount;
 
-@interface FilesDownManage : NSObject<ASIHTTPRequestDelegate,ASIProgressDelegate>
+@interface FilesDownManage : NSObject<MidHttpRequestDelegate>
 {
     NSInteger type;
     int count;
@@ -41,9 +40,9 @@ extern NSInteger  maxcount;
 
 -(void)clearAllRquests;
 -(void)clearAllFinished;
--(void)resumeRequest:(ASIHTTPRequest *)request;
--(void)deleteRequest:(ASIHTTPRequest *)request;
--(void)stopRequest:(ASIHTTPRequest *)request;
+-(void)resumeRequest:(MidHttpRequest *)request;
+-(void)deleteRequest:(MidHttpRequest *)request;
+-(void)stopRequest:(MidHttpRequest *)request;
 -(void)saveFinishedFile;
 -(void)deleteFinishFile:(FileModel *)selectFile;
 -(void)downFileUrl:(NSString*)url

@@ -5,7 +5,7 @@
 #import <UIKit/UIKit.h>
 #import "FileModel.h"
 //#import "Constants.h"
-
+#import "MidHttpRequest.h"
 
 @interface DownloadCell : UITableViewCell {
     FileModel *fileInfo;
@@ -30,7 +30,7 @@
 @property(nonatomic,retain)IBOutlet UILabel *fileSize;
 @property (retain, nonatomic) IBOutlet UILabel *timelable;
 @property(nonatomic,retain)IBOutlet UIButton *operateButton;
-@property(nonatomic,retain)ASIHTTPRequest *request;//该文件发起的请求
+@property(nonatomic,retain)MidHttpRequest *request;//该文件发起的请求
 
 
 - (IBAction)deleteRquest:(id)sender;
