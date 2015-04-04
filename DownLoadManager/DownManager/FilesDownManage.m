@@ -41,7 +41,7 @@ NSInteger  maxcount;
     NSError *error;
     if(self.buttonSound==nil)
     {
-        self.buttonSound=[[[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error] autorelease];
+        self.buttonSound=[[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
         if(!error)
         {
             NSLog(@"%@",[error description]);
@@ -75,7 +75,7 @@ NSInteger  maxcount;
     NSError *error;
     if(self.downloadCompleteSound==nil)
     {
-        self.downloadCompleteSound=[[[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error] autorelease];
+        self.downloadCompleteSound=[[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
         if(!error)
         {
             NSLog(@"%@",[error description]);
@@ -220,7 +220,6 @@ NSInteger  maxcount;
          NSLog(@"EXIT!!!!---::%@",[request.url absoluteString]);
     }
     [self.downloadDelegate updateCellProgress:request];
-    [request release];
     
 }
 
@@ -353,7 +352,7 @@ NSInteger  maxcount;
 
 -(FileModel *)getTempfile:(NSString *)path{
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:path];
-    FileModel *file = [[[FileModel alloc]init]autorelease];
+    FileModel *file = [[FileModel alloc]init];
     file.fileName = [dic objectForKey:@"filename"];
     file.fileType = [file.fileName pathExtension ];
     file.fileURL = [dic objectForKey:@"fileurl"];
@@ -405,7 +404,6 @@ NSInteger  maxcount;
     [_filelist addObjectsFromArray:arr];
     
     [self startLoad];
-    [filearr release];
 }
 /*
 	将本地已经下载完成的文件加载到已下载列表里
@@ -425,10 +423,8 @@ NSInteger  maxcount;
             file.time = [dic objectForKey:@"time"];
             file.fileimage = [UIImage imageWithData:[dic objectForKey:@"fileimage"]];
             [_finishedList addObject:file];
-            [file release];
         }
         //self.finishedlist = finishArr;
-        [finishArr release];
     }
 //    else
 //        [[NSFileManager defaultManager]createFileAtPath:plistPath contents:nil attributes:nil];
@@ -451,7 +447,6 @@ NSInteger  maxcount;
     if (![finishedinfo writeToFile:plistPath atomically:YES]) {
         NSLog(@"write plist fail");
     }
-    [finishedinfo release];
 }
 -(void)deleteFinishFile:(FileModel *)selectFile{
     [_finishedList removeObject:selectFile];
@@ -472,11 +467,7 @@ NSInteger  maxcount;
     
     //因为是重新下载，则说明肯定该文件已经被下载完，或者有临时文件正在留着，所以检查一下这两个地方，存在则删除掉
     self.TargetSubPath = path;
-    if (_fileInfo!=nil) {
-        [_fileInfo release];
-        
-        _fileInfo = nil;
-    }
+
     _fileInfo = [[FileModel alloc]init];
 	if (!name) {
 		name = [url lastPathComponent];
@@ -501,7 +492,6 @@ NSInteger  maxcount;
     {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已下载，是否重新下载？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [alert show];
-        [alert release];
         return;
     }
 //    //存在于临时文件夹里
@@ -510,7 +500,6 @@ NSInteger  maxcount;
     {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件已经在下载列表中了，是否重新下载？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [alert show];
-        [alert release];
         return;
     }
     
@@ -524,7 +513,6 @@ NSInteger  maxcount;
     }else{
            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"该文件成功添加到下载队列" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
            [alert show];
-           [alert release];
     }
     return;
 
@@ -725,19 +713,6 @@ TargetPathArr:(NSArray *)targetpaths{
         }
     }
     return nil;
-}
-- (void)dealloc
-{
-    [_targetPathArray release];
-    [_downloadCompleteSound release];
-    [_buttonSound release];
-    [_finishedList release];
-    [_downloadDelegate release];
-    [_downinglist release];
-    [_filelist release];
-    [_fileInfo release];
-    [_VCdelegate release];
-    [super dealloc];
 }
 #pragma mark -- ASIHttpRequest回调委托 --
 

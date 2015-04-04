@@ -7,76 +7,124 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DFCABF91ACFE229006A48C2 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCABC91ACFE229006A48C2 /* DownloadCell.m */; };
+		9DFCABFA1ACFE229006A48C2 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCABCB1ACFE229006A48C2 /* DownloadViewController.m */; };
+		9DFCABFB1ACFE229006A48C2 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABCC1ACFE229006A48C2 /* DownloadViewController.xib */; };
+		9DFCABFC1ACFE229006A48C2 /* FinishedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCABCE1ACFE229006A48C2 /* FinishedCell.m */; };
+		9DFCABFD1ACFE229006A48C2 /* 下载完成-删除.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD01ACFE229006A48C2 /* 下载完成-删除.png */; };
+		9DFCABFE1ACFE229006A48C2 /* 下载完成-删除@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD11ACFE229006A48C2 /* 下载完成-删除@2x.png */; };
+		9DFCABFF1ACFE229006A48C2 /* 下载弹出按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD21ACFE229006A48C2 /* 下载弹出按钮.png */; };
+		9DFCAC001ACFE229006A48C2 /* 下载弹出按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD31ACFE229006A48C2 /* 下载弹出按钮@2x.png */; };
+		9DFCAC011ACFE229006A48C2 /* 下载弹出背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD41ACFE229006A48C2 /* 下载弹出背景.png */; };
+		9DFCAC021ACFE229006A48C2 /* 下载弹出背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD51ACFE229006A48C2 /* 下载弹出背景@2x.png */; };
+		9DFCAC031ACFE229006A48C2 /* 下载弹出进度条.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD61ACFE229006A48C2 /* 下载弹出进度条.png */; };
+		9DFCAC041ACFE229006A48C2 /* 下载弹出进度条@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD71ACFE229006A48C2 /* 下载弹出进度条@2x.png */; };
+		9DFCAC051ACFE229006A48C2 /* 下载弹出进度条进度背景点九.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD81ACFE229006A48C2 /* 下载弹出进度条进度背景点九.png */; };
+		9DFCAC061ACFE229006A48C2 /* 下载弹出进度条进度背景点九@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABD91ACFE229006A48C2 /* 下载弹出进度条进度背景点九@2x.png */; };
+		9DFCAC071ACFE229006A48C2 /* 下载管理-上传图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABDA1ACFE229006A48C2 /* 下载管理-上传图标.png */; };
+		9DFCAC081ACFE229006A48C2 /* 下载管理-上传图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABDB1ACFE229006A48C2 /* 下载管理-上传图标@2x.png */; };
+		9DFCAC091ACFE229006A48C2 /* 下载管理-开始按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABDC1ACFE229006A48C2 /* 下载管理-开始按钮.png */; };
+		9DFCAC0A1ACFE229006A48C2 /* 下载管理-开始按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABDD1ACFE229006A48C2 /* 下载管理-开始按钮@2x.png */; };
+		9DFCAC0B1ACFE229006A48C2 /* 下载管理-暂停按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABDE1ACFE229006A48C2 /* 下载管理-暂停按钮.png */; };
+		9DFCAC0C1ACFE229006A48C2 /* 下载管理-暂停按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABDF1ACFE229006A48C2 /* 下载管理-暂停按钮@2x.png */; };
+		9DFCAC0D1ACFE229006A48C2 /* 下载管理下载图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE01ACFE229006A48C2 /* 下载管理下载图标.png */; };
+		9DFCAC0E1ACFE229006A48C2 /* 下载管理下载图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE11ACFE229006A48C2 /* 下载管理下载图标@2x.png */; };
+		9DFCAC0F1ACFE229006A48C2 /* 下载管理单条背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE21ACFE229006A48C2 /* 下载管理单条背景.png */; };
+		9DFCAC101ACFE229006A48C2 /* 下载管理单条背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE31ACFE229006A48C2 /* 下载管理单条背景@2x.png */; };
+		9DFCAC111ACFE229006A48C2 /* 下载管理取消按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE41ACFE229006A48C2 /* 下载管理取消按钮.png */; };
+		9DFCAC121ACFE229006A48C2 /* 下载管理取消按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE51ACFE229006A48C2 /* 下载管理取消按钮@2x.png */; };
+		9DFCAC131ACFE229006A48C2 /* 下载管理进度条背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE61ACFE229006A48C2 /* 下载管理进度条背景.png */; };
+		9DFCAC141ACFE229006A48C2 /* 下载管理进度条背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE71ACFE229006A48C2 /* 下载管理进度条背景@2x.png */; };
+		9DFCAC151ACFE229006A48C2 /* 下载管理进度背景点九.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE81ACFE229006A48C2 /* 下载管理进度背景点九.png */; };
+		9DFCAC161ACFE229006A48C2 /* 下载管理进度背景点九@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABE91ACFE229006A48C2 /* 下载管理进度背景点九@2x.png */; };
+		9DFCAC171ACFE229006A48C2 /* 两项选项卡右1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABEA1ACFE229006A48C2 /* 两项选项卡右1.png */; };
+		9DFCAC181ACFE229006A48C2 /* 两项选项卡右1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABEB1ACFE229006A48C2 /* 两项选项卡右1@2x.png */; };
+		9DFCAC191ACFE229006A48C2 /* 两项选项卡右2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABEC1ACFE229006A48C2 /* 两项选项卡右2.png */; };
+		9DFCAC1A1ACFE229006A48C2 /* 两项选项卡右2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABED1ACFE229006A48C2 /* 两项选项卡右2@2x.png */; };
+		9DFCAC1B1ACFE229006A48C2 /* 两项选项卡左1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABEE1ACFE229006A48C2 /* 两项选项卡左1.png */; };
+		9DFCAC1C1ACFE229006A48C2 /* 两项选项卡左1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABEF1ACFE229006A48C2 /* 两项选项卡左1@2x.png */; };
+		9DFCAC1D1ACFE229006A48C2 /* 两项选项卡左2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABF01ACFE229006A48C2 /* 两项选项卡左2.png */; };
+		9DFCAC1E1ACFE229006A48C2 /* 两项选项卡左2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABF11ACFE229006A48C2 /* 两项选项卡左2@2x.png */; };
+		9DFCAC1F1ACFE229006A48C2 /* 图片-分类大背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABF21ACFE229006A48C2 /* 图片-分类大背景.png */; };
+		9DFCAC201ACFE229006A48C2 /* 显示信息数目背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABF31ACFE229006A48C2 /* 显示信息数目背景.png */; };
+		9DFCAC211ACFE229006A48C2 /* 显示信息数目背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABF41ACFE229006A48C2 /* 显示信息数目背景@2x.png */; };
+		9DFCAC221ACFE229006A48C2 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCABF61ACFE229006A48C2 /* SettingViewController.m */; };
+		9DFCAC231ACFE229006A48C2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCABF81ACFE229006A48C2 /* ViewController.m */; };
 		C66C7321184EBD6C0059E952 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C7320184EBD6C0059E952 /* Foundation.framework */; };
 		C66C7323184EBD6C0059E952 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C7322184EBD6C0059E952 /* CoreGraphics.framework */; };
 		C66C7325184EBD6C0059E952 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C7324184EBD6C0059E952 /* UIKit.framework */; };
 		C66C732B184EBD6C0059E952 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C66C7329184EBD6C0059E952 /* InfoPlist.strings */; };
 		C66C732D184EBD6C0059E952 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C66C732C184EBD6C0059E952 /* main.m */; };
 		C66C7331184EBD6C0059E952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C66C7330184EBD6C0059E952 /* AppDelegate.m */; };
-		C66C7337184EBD6C0059E952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66C7336184EBD6C0059E952 /* ViewController.m */; };
 		C66C7339184EBD6C0059E952 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66C7338184EBD6C0059E952 /* Images.xcassets */; };
 		C66C73EE184EC2570059E952 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66C73ED184EC2570059E952 /* CFNetwork.framework */; };
-		C6A022DA185052A9008EB2F7 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02286185052A9008EB2F7 /* ASIAuthenticationDialog.m */; };
-		C6A022DB185052A9008EB2F7 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02289185052A9008EB2F7 /* ASIDataCompressor.m */; };
-		C6A022DC185052A9008EB2F7 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0228B185052A9008EB2F7 /* ASIDataDecompressor.m */; };
-		C6A022DD185052A9008EB2F7 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0228D185052A9008EB2F7 /* ASIDownloadCache.m */; };
-		C6A022DE185052A9008EB2F7 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0228F185052A9008EB2F7 /* ASIFormDataRequest.m */; };
-		C6A022DF185052A9008EB2F7 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02291185052A9008EB2F7 /* ASIHTTPRequest.m */; };
-		C6A022E0185052A9008EB2F7 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02295185052A9008EB2F7 /* ASIInputStream.m */; };
-		C6A022E1185052A9008EB2F7 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02297185052A9008EB2F7 /* ASINetworkQueue.m */; };
-		C6A022E2185052A9008EB2F7 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02299185052A9008EB2F7 /* ASINSStringAdditions.m */; };
-		C6A022E3185052A9008EB2F7 /* NSHTTPCookieAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0229C185052A9008EB2F7 /* NSHTTPCookieAdditions.m */; };
-		C6A022E4185052A9008EB2F7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0229E185052A9008EB2F7 /* Reachability.m */; };
+		C6A022DA185052A9008EB2F7 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02286185052A9008EB2F7 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022DB185052A9008EB2F7 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02289185052A9008EB2F7 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022DC185052A9008EB2F7 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0228B185052A9008EB2F7 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022DD185052A9008EB2F7 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0228D185052A9008EB2F7 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022DE185052A9008EB2F7 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0228F185052A9008EB2F7 /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022DF185052A9008EB2F7 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02291185052A9008EB2F7 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022E0185052A9008EB2F7 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02295185052A9008EB2F7 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022E1185052A9008EB2F7 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02297185052A9008EB2F7 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022E2185052A9008EB2F7 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A02299185052A9008EB2F7 /* ASINSStringAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022E3185052A9008EB2F7 /* NSHTTPCookieAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0229C185052A9008EB2F7 /* NSHTTPCookieAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C6A022E4185052A9008EB2F7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A0229E185052A9008EB2F7 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C6A022E8185052A9008EB2F7 /* CommonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022A6185052A9008EB2F7 /* CommonHelper.m */; };
-		C6A022E9185052A9008EB2F7 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022A8185052A9008EB2F7 /* DownloadCell.m */; };
-		C6A022EA185052A9008EB2F7 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022AB185052A9008EB2F7 /* DownloadViewController.m */; };
-		C6A022EB185052A9008EB2F7 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6A022AC185052A9008EB2F7 /* DownloadViewController.xib */; };
 		C6A022EC185052A9008EB2F7 /* FileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022AE185052A9008EB2F7 /* FileModel.m */; };
 		C6A022ED185052A9008EB2F7 /* FilesDownManage.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022B0185052A9008EB2F7 /* FilesDownManage.m */; };
-		C6A022EE185052A9008EB2F7 /* FinishedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A022B2185052A9008EB2F7 /* FinishedCell.m */; };
-		C6A022EF185052A9008EB2F7 /* 下载完成-删除.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B4185052A9008EB2F7 /* 下载完成-删除.png */; };
-		C6A022F0185052A9008EB2F7 /* 下载完成-删除@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B5185052A9008EB2F7 /* 下载完成-删除@2x.png */; };
-		C6A022F1185052A9008EB2F7 /* 下载弹出按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B6185052A9008EB2F7 /* 下载弹出按钮.png */; };
-		C6A022F2185052A9008EB2F7 /* 下载弹出按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B7185052A9008EB2F7 /* 下载弹出按钮@2x.png */; };
-		C6A022F3185052A9008EB2F7 /* 下载弹出背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B8185052A9008EB2F7 /* 下载弹出背景.png */; };
-		C6A022F4185052A9008EB2F7 /* 下载弹出背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022B9185052A9008EB2F7 /* 下载弹出背景@2x.png */; };
-		C6A022F5185052A9008EB2F7 /* 下载弹出进度条.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BA185052A9008EB2F7 /* 下载弹出进度条.png */; };
-		C6A022F6185052A9008EB2F7 /* 下载弹出进度条@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BB185052A9008EB2F7 /* 下载弹出进度条@2x.png */; };
-		C6A022F7185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BC185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png */; };
-		C6A022F8185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BD185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png */; };
-		C6A022F9185052A9008EB2F7 /* 下载管理-上传图标.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BE185052A9008EB2F7 /* 下载管理-上传图标.png */; };
-		C6A022FA185052A9008EB2F7 /* 下载管理-上传图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022BF185052A9008EB2F7 /* 下载管理-上传图标@2x.png */; };
-		C6A022FB185052A9008EB2F7 /* 下载管理-开始按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C0185052A9008EB2F7 /* 下载管理-开始按钮.png */; };
-		C6A022FC185052A9008EB2F7 /* 下载管理-开始按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C1185052A9008EB2F7 /* 下载管理-开始按钮@2x.png */; };
-		C6A022FD185052A9008EB2F7 /* 下载管理-暂停按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C2185052A9008EB2F7 /* 下载管理-暂停按钮.png */; };
-		C6A022FE185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C3185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png */; };
-		C6A022FF185052A9008EB2F7 /* 下载管理下载图标.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C4185052A9008EB2F7 /* 下载管理下载图标.png */; };
-		C6A02300185052A9008EB2F7 /* 下载管理下载图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C5185052A9008EB2F7 /* 下载管理下载图标@2x.png */; };
-		C6A02301185052A9008EB2F7 /* 下载管理单条背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C6185052A9008EB2F7 /* 下载管理单条背景.png */; };
-		C6A02302185052A9008EB2F7 /* 下载管理单条背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C7185052A9008EB2F7 /* 下载管理单条背景@2x.png */; };
-		C6A02303185052A9008EB2F7 /* 下载管理取消按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C8185052A9008EB2F7 /* 下载管理取消按钮.png */; };
-		C6A02304185052A9008EB2F7 /* 下载管理取消按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022C9185052A9008EB2F7 /* 下载管理取消按钮@2x.png */; };
-		C6A02305185052A9008EB2F7 /* 下载管理进度条背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CA185052A9008EB2F7 /* 下载管理进度条背景.png */; };
-		C6A02306185052A9008EB2F7 /* 下载管理进度条背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CB185052A9008EB2F7 /* 下载管理进度条背景@2x.png */; };
-		C6A02307185052A9008EB2F7 /* 下载管理进度背景点九.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CC185052A9008EB2F7 /* 下载管理进度背景点九.png */; };
-		C6A02308185052A9008EB2F7 /* 下载管理进度背景点九@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CD185052A9008EB2F7 /* 下载管理进度背景点九@2x.png */; };
-		C6A02309185052A9008EB2F7 /* 两项选项卡右1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CE185052A9008EB2F7 /* 两项选项卡右1.png */; };
-		C6A0230A185052A9008EB2F7 /* 两项选项卡右1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022CF185052A9008EB2F7 /* 两项选项卡右1@2x.png */; };
-		C6A0230B185052A9008EB2F7 /* 两项选项卡右2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D0185052A9008EB2F7 /* 两项选项卡右2.png */; };
-		C6A0230C185052A9008EB2F7 /* 两项选项卡右2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D1185052A9008EB2F7 /* 两项选项卡右2@2x.png */; };
-		C6A0230D185052A9008EB2F7 /* 两项选项卡左1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D2185052A9008EB2F7 /* 两项选项卡左1.png */; };
-		C6A0230E185052A9008EB2F7 /* 两项选项卡左1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D3185052A9008EB2F7 /* 两项选项卡左1@2x.png */; };
-		C6A0230F185052A9008EB2F7 /* 两项选项卡左2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D4185052A9008EB2F7 /* 两项选项卡左2.png */; };
-		C6A02310185052A9008EB2F7 /* 两项选项卡左2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D5185052A9008EB2F7 /* 两项选项卡左2@2x.png */; };
-		C6A02311185052A9008EB2F7 /* 图片-分类大背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D6185052A9008EB2F7 /* 图片-分类大背景.png */; };
-		C6A02312185052A9008EB2F7 /* 显示信息数目背景.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D7185052A9008EB2F7 /* 显示信息数目背景.png */; };
-		C6A02313185052A9008EB2F7 /* 显示信息数目背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A022D8185052A9008EB2F7 /* 显示信息数目背景@2x.png */; };
 		C6A0231518505304008EB2F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66C7332184EBD6C0059E952 /* Main.storyboard */; };
 		C6EB7271184F036F00072B53 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C6EB7270184F036F00072B53 /* libz.1.2.5.dylib */; };
-		C6EB7274184F473B00072B53 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EB7273184F473B00072B53 /* SettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9DFCABC81ACFE229006A48C2 /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
+		9DFCABC91ACFE229006A48C2 /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
+		9DFCABCA1ACFE229006A48C2 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
+		9DFCABCB1ACFE229006A48C2 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
+		9DFCABCC1ACFE229006A48C2 /* DownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadViewController.xib; sourceTree = "<group>"; };
+		9DFCABCD1ACFE229006A48C2 /* FinishedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishedCell.h; sourceTree = "<group>"; };
+		9DFCABCE1ACFE229006A48C2 /* FinishedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishedCell.m; sourceTree = "<group>"; };
+		9DFCABD01ACFE229006A48C2 /* 下载完成-删除.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载完成-删除.png"; sourceTree = "<group>"; };
+		9DFCABD11ACFE229006A48C2 /* 下载完成-删除@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载完成-删除@2x.png"; sourceTree = "<group>"; };
+		9DFCABD21ACFE229006A48C2 /* 下载弹出按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出按钮.png"; sourceTree = "<group>"; };
+		9DFCABD31ACFE229006A48C2 /* 下载弹出按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出按钮@2x.png"; sourceTree = "<group>"; };
+		9DFCABD41ACFE229006A48C2 /* 下载弹出背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出背景.png"; sourceTree = "<group>"; };
+		9DFCABD51ACFE229006A48C2 /* 下载弹出背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出背景@2x.png"; sourceTree = "<group>"; };
+		9DFCABD61ACFE229006A48C2 /* 下载弹出进度条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条.png"; sourceTree = "<group>"; };
+		9DFCABD71ACFE229006A48C2 /* 下载弹出进度条@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条@2x.png"; sourceTree = "<group>"; };
+		9DFCABD81ACFE229006A48C2 /* 下载弹出进度条进度背景点九.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条进度背景点九.png"; sourceTree = "<group>"; };
+		9DFCABD91ACFE229006A48C2 /* 下载弹出进度条进度背景点九@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条进度背景点九@2x.png"; sourceTree = "<group>"; };
+		9DFCABDA1ACFE229006A48C2 /* 下载管理-上传图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-上传图标.png"; sourceTree = "<group>"; };
+		9DFCABDB1ACFE229006A48C2 /* 下载管理-上传图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-上传图标@2x.png"; sourceTree = "<group>"; };
+		9DFCABDC1ACFE229006A48C2 /* 下载管理-开始按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-开始按钮.png"; sourceTree = "<group>"; };
+		9DFCABDD1ACFE229006A48C2 /* 下载管理-开始按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-开始按钮@2x.png"; sourceTree = "<group>"; };
+		9DFCABDE1ACFE229006A48C2 /* 下载管理-暂停按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-暂停按钮.png"; sourceTree = "<group>"; };
+		9DFCABDF1ACFE229006A48C2 /* 下载管理-暂停按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-暂停按钮@2x.png"; sourceTree = "<group>"; };
+		9DFCABE01ACFE229006A48C2 /* 下载管理下载图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理下载图标.png"; sourceTree = "<group>"; };
+		9DFCABE11ACFE229006A48C2 /* 下载管理下载图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理下载图标@2x.png"; sourceTree = "<group>"; };
+		9DFCABE21ACFE229006A48C2 /* 下载管理单条背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理单条背景.png"; sourceTree = "<group>"; };
+		9DFCABE31ACFE229006A48C2 /* 下载管理单条背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理单条背景@2x.png"; sourceTree = "<group>"; };
+		9DFCABE41ACFE229006A48C2 /* 下载管理取消按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理取消按钮.png"; sourceTree = "<group>"; };
+		9DFCABE51ACFE229006A48C2 /* 下载管理取消按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理取消按钮@2x.png"; sourceTree = "<group>"; };
+		9DFCABE61ACFE229006A48C2 /* 下载管理进度条背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度条背景.png"; sourceTree = "<group>"; };
+		9DFCABE71ACFE229006A48C2 /* 下载管理进度条背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度条背景@2x.png"; sourceTree = "<group>"; };
+		9DFCABE81ACFE229006A48C2 /* 下载管理进度背景点九.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度背景点九.png"; sourceTree = "<group>"; };
+		9DFCABE91ACFE229006A48C2 /* 下载管理进度背景点九@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度背景点九@2x.png"; sourceTree = "<group>"; };
+		9DFCABEA1ACFE229006A48C2 /* 两项选项卡右1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右1.png"; sourceTree = "<group>"; };
+		9DFCABEB1ACFE229006A48C2 /* 两项选项卡右1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右1@2x.png"; sourceTree = "<group>"; };
+		9DFCABEC1ACFE229006A48C2 /* 两项选项卡右2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右2.png"; sourceTree = "<group>"; };
+		9DFCABED1ACFE229006A48C2 /* 两项选项卡右2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右2@2x.png"; sourceTree = "<group>"; };
+		9DFCABEE1ACFE229006A48C2 /* 两项选项卡左1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左1.png"; sourceTree = "<group>"; };
+		9DFCABEF1ACFE229006A48C2 /* 两项选项卡左1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左1@2x.png"; sourceTree = "<group>"; };
+		9DFCABF01ACFE229006A48C2 /* 两项选项卡左2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左2.png"; sourceTree = "<group>"; };
+		9DFCABF11ACFE229006A48C2 /* 两项选项卡左2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左2@2x.png"; sourceTree = "<group>"; };
+		9DFCABF21ACFE229006A48C2 /* 图片-分类大背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图片-分类大背景.png"; sourceTree = "<group>"; };
+		9DFCABF31ACFE229006A48C2 /* 显示信息数目背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "显示信息数目背景.png"; sourceTree = "<group>"; };
+		9DFCABF41ACFE229006A48C2 /* 显示信息数目背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "显示信息数目背景@2x.png"; sourceTree = "<group>"; };
+		9DFCABF51ACFE229006A48C2 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		9DFCABF61ACFE229006A48C2 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		9DFCABF71ACFE229006A48C2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9DFCABF81ACFE229006A48C2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C66C731D184EBD6C0059E952 /* DownLoadManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownLoadManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66C7320184EBD6C0059E952 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C66C7322184EBD6C0059E952 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,8 +136,6 @@
 		C66C732F184EBD6C0059E952 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C66C7330184EBD6C0059E952 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C66C7333184EBD6C0059E952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C66C7335184EBD6C0059E952 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C66C7336184EBD6C0059E952 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C66C7338184EBD6C0059E952 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C66C733F184EBD6C0059E952 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C66C73ED184EC2570059E952 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -122,58 +168,12 @@
 		C6A0229E185052A9008EB2F7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C6A022A5185052A9008EB2F7 /* CommonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonHelper.h; sourceTree = "<group>"; };
 		C6A022A6185052A9008EB2F7 /* CommonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonHelper.m; sourceTree = "<group>"; };
-		C6A022A7185052A9008EB2F7 /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
-		C6A022A8185052A9008EB2F7 /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
 		C6A022A9185052A9008EB2F7 /* DownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadDelegate.h; sourceTree = "<group>"; };
-		C6A022AA185052A9008EB2F7 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
-		C6A022AB185052A9008EB2F7 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
-		C6A022AC185052A9008EB2F7 /* DownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadViewController.xib; sourceTree = "<group>"; };
 		C6A022AD185052A9008EB2F7 /* FileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileModel.h; sourceTree = "<group>"; };
 		C6A022AE185052A9008EB2F7 /* FileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileModel.m; sourceTree = "<group>"; };
 		C6A022AF185052A9008EB2F7 /* FilesDownManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesDownManage.h; sourceTree = "<group>"; };
 		C6A022B0185052A9008EB2F7 /* FilesDownManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesDownManage.m; sourceTree = "<group>"; };
-		C6A022B1185052A9008EB2F7 /* FinishedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishedCell.h; sourceTree = "<group>"; };
-		C6A022B2185052A9008EB2F7 /* FinishedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishedCell.m; sourceTree = "<group>"; };
-		C6A022B4185052A9008EB2F7 /* 下载完成-删除.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载完成-删除.png"; sourceTree = "<group>"; };
-		C6A022B5185052A9008EB2F7 /* 下载完成-删除@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载完成-删除@2x.png"; sourceTree = "<group>"; };
-		C6A022B6185052A9008EB2F7 /* 下载弹出按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出按钮.png"; sourceTree = "<group>"; };
-		C6A022B7185052A9008EB2F7 /* 下载弹出按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出按钮@2x.png"; sourceTree = "<group>"; };
-		C6A022B8185052A9008EB2F7 /* 下载弹出背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出背景.png"; sourceTree = "<group>"; };
-		C6A022B9185052A9008EB2F7 /* 下载弹出背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出背景@2x.png"; sourceTree = "<group>"; };
-		C6A022BA185052A9008EB2F7 /* 下载弹出进度条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条.png"; sourceTree = "<group>"; };
-		C6A022BB185052A9008EB2F7 /* 下载弹出进度条@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条@2x.png"; sourceTree = "<group>"; };
-		C6A022BC185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条进度背景点九.png"; sourceTree = "<group>"; };
-		C6A022BD185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载弹出进度条进度背景点九@2x.png"; sourceTree = "<group>"; };
-		C6A022BE185052A9008EB2F7 /* 下载管理-上传图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-上传图标.png"; sourceTree = "<group>"; };
-		C6A022BF185052A9008EB2F7 /* 下载管理-上传图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-上传图标@2x.png"; sourceTree = "<group>"; };
-		C6A022C0185052A9008EB2F7 /* 下载管理-开始按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-开始按钮.png"; sourceTree = "<group>"; };
-		C6A022C1185052A9008EB2F7 /* 下载管理-开始按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-开始按钮@2x.png"; sourceTree = "<group>"; };
-		C6A022C2185052A9008EB2F7 /* 下载管理-暂停按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-暂停按钮.png"; sourceTree = "<group>"; };
-		C6A022C3185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理-暂停按钮@2x.png"; sourceTree = "<group>"; };
-		C6A022C4185052A9008EB2F7 /* 下载管理下载图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理下载图标.png"; sourceTree = "<group>"; };
-		C6A022C5185052A9008EB2F7 /* 下载管理下载图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理下载图标@2x.png"; sourceTree = "<group>"; };
-		C6A022C6185052A9008EB2F7 /* 下载管理单条背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理单条背景.png"; sourceTree = "<group>"; };
-		C6A022C7185052A9008EB2F7 /* 下载管理单条背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理单条背景@2x.png"; sourceTree = "<group>"; };
-		C6A022C8185052A9008EB2F7 /* 下载管理取消按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理取消按钮.png"; sourceTree = "<group>"; };
-		C6A022C9185052A9008EB2F7 /* 下载管理取消按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理取消按钮@2x.png"; sourceTree = "<group>"; };
-		C6A022CA185052A9008EB2F7 /* 下载管理进度条背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度条背景.png"; sourceTree = "<group>"; };
-		C6A022CB185052A9008EB2F7 /* 下载管理进度条背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度条背景@2x.png"; sourceTree = "<group>"; };
-		C6A022CC185052A9008EB2F7 /* 下载管理进度背景点九.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度背景点九.png"; sourceTree = "<group>"; };
-		C6A022CD185052A9008EB2F7 /* 下载管理进度背景点九@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下载管理进度背景点九@2x.png"; sourceTree = "<group>"; };
-		C6A022CE185052A9008EB2F7 /* 两项选项卡右1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右1.png"; sourceTree = "<group>"; };
-		C6A022CF185052A9008EB2F7 /* 两项选项卡右1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右1@2x.png"; sourceTree = "<group>"; };
-		C6A022D0185052A9008EB2F7 /* 两项选项卡右2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右2.png"; sourceTree = "<group>"; };
-		C6A022D1185052A9008EB2F7 /* 两项选项卡右2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡右2@2x.png"; sourceTree = "<group>"; };
-		C6A022D2185052A9008EB2F7 /* 两项选项卡左1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左1.png"; sourceTree = "<group>"; };
-		C6A022D3185052A9008EB2F7 /* 两项选项卡左1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左1@2x.png"; sourceTree = "<group>"; };
-		C6A022D4185052A9008EB2F7 /* 两项选项卡左2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左2.png"; sourceTree = "<group>"; };
-		C6A022D5185052A9008EB2F7 /* 两项选项卡左2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两项选项卡左2@2x.png"; sourceTree = "<group>"; };
-		C6A022D6185052A9008EB2F7 /* 图片-分类大背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图片-分类大背景.png"; sourceTree = "<group>"; };
-		C6A022D7185052A9008EB2F7 /* 显示信息数目背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "显示信息数目背景.png"; sourceTree = "<group>"; };
-		C6A022D8185052A9008EB2F7 /* 显示信息数目背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "显示信息数目背景@2x.png"; sourceTree = "<group>"; };
 		C6EB7270184F036F00072B53 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
-		C6EB7272184F473B00072B53 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		C6EB7273184F473B00072B53 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +192,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DFCABC71ACFE229006A48C2 /* DownManagerUI */ = {
+			isa = PBXGroup;
+			children = (
+				9DFCABC81ACFE229006A48C2 /* DownloadCell.h */,
+				9DFCABC91ACFE229006A48C2 /* DownloadCell.m */,
+				9DFCABCA1ACFE229006A48C2 /* DownloadViewController.h */,
+				9DFCABCB1ACFE229006A48C2 /* DownloadViewController.m */,
+				9DFCABCC1ACFE229006A48C2 /* DownloadViewController.xib */,
+				9DFCABCD1ACFE229006A48C2 /* FinishedCell.h */,
+				9DFCABCE1ACFE229006A48C2 /* FinishedCell.m */,
+				9DFCABCF1ACFE229006A48C2 /* image */,
+				9DFCABF51ACFE229006A48C2 /* SettingViewController.h */,
+				9DFCABF61ACFE229006A48C2 /* SettingViewController.m */,
+				9DFCABF71ACFE229006A48C2 /* ViewController.h */,
+				9DFCABF81ACFE229006A48C2 /* ViewController.m */,
+			);
+			path = DownManagerUI;
+			sourceTree = "<group>";
+		};
+		9DFCABCF1ACFE229006A48C2 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				9DFCABD01ACFE229006A48C2 /* 下载完成-删除.png */,
+				9DFCABD11ACFE229006A48C2 /* 下载完成-删除@2x.png */,
+				9DFCABD21ACFE229006A48C2 /* 下载弹出按钮.png */,
+				9DFCABD31ACFE229006A48C2 /* 下载弹出按钮@2x.png */,
+				9DFCABD41ACFE229006A48C2 /* 下载弹出背景.png */,
+				9DFCABD51ACFE229006A48C2 /* 下载弹出背景@2x.png */,
+				9DFCABD61ACFE229006A48C2 /* 下载弹出进度条.png */,
+				9DFCABD71ACFE229006A48C2 /* 下载弹出进度条@2x.png */,
+				9DFCABD81ACFE229006A48C2 /* 下载弹出进度条进度背景点九.png */,
+				9DFCABD91ACFE229006A48C2 /* 下载弹出进度条进度背景点九@2x.png */,
+				9DFCABDA1ACFE229006A48C2 /* 下载管理-上传图标.png */,
+				9DFCABDB1ACFE229006A48C2 /* 下载管理-上传图标@2x.png */,
+				9DFCABDC1ACFE229006A48C2 /* 下载管理-开始按钮.png */,
+				9DFCABDD1ACFE229006A48C2 /* 下载管理-开始按钮@2x.png */,
+				9DFCABDE1ACFE229006A48C2 /* 下载管理-暂停按钮.png */,
+				9DFCABDF1ACFE229006A48C2 /* 下载管理-暂停按钮@2x.png */,
+				9DFCABE01ACFE229006A48C2 /* 下载管理下载图标.png */,
+				9DFCABE11ACFE229006A48C2 /* 下载管理下载图标@2x.png */,
+				9DFCABE21ACFE229006A48C2 /* 下载管理单条背景.png */,
+				9DFCABE31ACFE229006A48C2 /* 下载管理单条背景@2x.png */,
+				9DFCABE41ACFE229006A48C2 /* 下载管理取消按钮.png */,
+				9DFCABE51ACFE229006A48C2 /* 下载管理取消按钮@2x.png */,
+				9DFCABE61ACFE229006A48C2 /* 下载管理进度条背景.png */,
+				9DFCABE71ACFE229006A48C2 /* 下载管理进度条背景@2x.png */,
+				9DFCABE81ACFE229006A48C2 /* 下载管理进度背景点九.png */,
+				9DFCABE91ACFE229006A48C2 /* 下载管理进度背景点九@2x.png */,
+				9DFCABEA1ACFE229006A48C2 /* 两项选项卡右1.png */,
+				9DFCABEB1ACFE229006A48C2 /* 两项选项卡右1@2x.png */,
+				9DFCABEC1ACFE229006A48C2 /* 两项选项卡右2.png */,
+				9DFCABED1ACFE229006A48C2 /* 两项选项卡右2@2x.png */,
+				9DFCABEE1ACFE229006A48C2 /* 两项选项卡左1.png */,
+				9DFCABEF1ACFE229006A48C2 /* 两项选项卡左1@2x.png */,
+				9DFCABF01ACFE229006A48C2 /* 两项选项卡左2.png */,
+				9DFCABF11ACFE229006A48C2 /* 两项选项卡左2@2x.png */,
+				9DFCABF21ACFE229006A48C2 /* 图片-分类大背景.png */,
+				9DFCABF31ACFE229006A48C2 /* 显示信息数目背景.png */,
+				9DFCABF41ACFE229006A48C2 /* 显示信息数目背景@2x.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
 		C66C7314184EBD6C0059E952 = {
 			isa = PBXGroup;
 			children = (
@@ -228,15 +291,12 @@
 		C66C7326184EBD6C0059E952 /* DownLoadManager */ = {
 			isa = PBXGroup;
 			children = (
+				9DFCABC71ACFE229006A48C2 /* DownManagerUI */,
 				C66C732F184EBD6C0059E952 /* AppDelegate.h */,
 				C66C7330184EBD6C0059E952 /* AppDelegate.m */,
 				C66C7332184EBD6C0059E952 /* Main.storyboard */,
-				C66C7335184EBD6C0059E952 /* ViewController.h */,
-				C66C7336184EBD6C0059E952 /* ViewController.m */,
 				C66C7338184EBD6C0059E952 /* Images.xcassets */,
 				C66C7327184EBD6C0059E952 /* Supporting Files */,
-				C6EB7272184F473B00072B53 /* SettingViewController.h */,
-				C6EB7273184F473B00072B53 /* SettingViewController.m */,
 			);
 			path = DownLoadManager;
 			sourceTree = "<group>";
@@ -291,74 +351,14 @@
 			children = (
 				C6A022A5185052A9008EB2F7 /* CommonHelper.h */,
 				C6A022A6185052A9008EB2F7 /* CommonHelper.m */,
-				C6A022A7185052A9008EB2F7 /* DownloadCell.h */,
-				C6A022A8185052A9008EB2F7 /* DownloadCell.m */,
 				C6A022A9185052A9008EB2F7 /* DownloadDelegate.h */,
-				C6A022AA185052A9008EB2F7 /* DownloadViewController.h */,
-				C6A022AB185052A9008EB2F7 /* DownloadViewController.m */,
-				C6A022AC185052A9008EB2F7 /* DownloadViewController.xib */,
 				C6A022AD185052A9008EB2F7 /* FileModel.h */,
 				C6A022AE185052A9008EB2F7 /* FileModel.m */,
 				C6A022AF185052A9008EB2F7 /* FilesDownManage.h */,
 				C6A022B0185052A9008EB2F7 /* FilesDownManage.m */,
-				C6A022B1185052A9008EB2F7 /* FinishedCell.h */,
-				C6A022B2185052A9008EB2F7 /* FinishedCell.m */,
-				C6A022B3185052A9008EB2F7 /* image */,
-				C6A022D9185052A9008EB2F7 /* ImageEditor */,
 			);
 			name = DownManager;
 			path = DownLoadManager/DownManager;
-			sourceTree = "<group>";
-		};
-		C6A022B3185052A9008EB2F7 /* image */ = {
-			isa = PBXGroup;
-			children = (
-				C6A022B4185052A9008EB2F7 /* 下载完成-删除.png */,
-				C6A022B5185052A9008EB2F7 /* 下载完成-删除@2x.png */,
-				C6A022B6185052A9008EB2F7 /* 下载弹出按钮.png */,
-				C6A022B7185052A9008EB2F7 /* 下载弹出按钮@2x.png */,
-				C6A022B8185052A9008EB2F7 /* 下载弹出背景.png */,
-				C6A022B9185052A9008EB2F7 /* 下载弹出背景@2x.png */,
-				C6A022BA185052A9008EB2F7 /* 下载弹出进度条.png */,
-				C6A022BB185052A9008EB2F7 /* 下载弹出进度条@2x.png */,
-				C6A022BC185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png */,
-				C6A022BD185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png */,
-				C6A022BE185052A9008EB2F7 /* 下载管理-上传图标.png */,
-				C6A022BF185052A9008EB2F7 /* 下载管理-上传图标@2x.png */,
-				C6A022C0185052A9008EB2F7 /* 下载管理-开始按钮.png */,
-				C6A022C1185052A9008EB2F7 /* 下载管理-开始按钮@2x.png */,
-				C6A022C2185052A9008EB2F7 /* 下载管理-暂停按钮.png */,
-				C6A022C3185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png */,
-				C6A022C4185052A9008EB2F7 /* 下载管理下载图标.png */,
-				C6A022C5185052A9008EB2F7 /* 下载管理下载图标@2x.png */,
-				C6A022C6185052A9008EB2F7 /* 下载管理单条背景.png */,
-				C6A022C7185052A9008EB2F7 /* 下载管理单条背景@2x.png */,
-				C6A022C8185052A9008EB2F7 /* 下载管理取消按钮.png */,
-				C6A022C9185052A9008EB2F7 /* 下载管理取消按钮@2x.png */,
-				C6A022CA185052A9008EB2F7 /* 下载管理进度条背景.png */,
-				C6A022CB185052A9008EB2F7 /* 下载管理进度条背景@2x.png */,
-				C6A022CC185052A9008EB2F7 /* 下载管理进度背景点九.png */,
-				C6A022CD185052A9008EB2F7 /* 下载管理进度背景点九@2x.png */,
-				C6A022CE185052A9008EB2F7 /* 两项选项卡右1.png */,
-				C6A022CF185052A9008EB2F7 /* 两项选项卡右1@2x.png */,
-				C6A022D0185052A9008EB2F7 /* 两项选项卡右2.png */,
-				C6A022D1185052A9008EB2F7 /* 两项选项卡右2@2x.png */,
-				C6A022D2185052A9008EB2F7 /* 两项选项卡左1.png */,
-				C6A022D3185052A9008EB2F7 /* 两项选项卡左1@2x.png */,
-				C6A022D4185052A9008EB2F7 /* 两项选项卡左2.png */,
-				C6A022D5185052A9008EB2F7 /* 两项选项卡左2@2x.png */,
-				C6A022D6185052A9008EB2F7 /* 图片-分类大背景.png */,
-				C6A022D7185052A9008EB2F7 /* 显示信息数目背景.png */,
-				C6A022D8185052A9008EB2F7 /* 显示信息数目背景@2x.png */,
-			);
-			path = image;
-			sourceTree = "<group>";
-		};
-		C6A022D9185052A9008EB2F7 /* ImageEditor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ImageEditor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,47 +413,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DFCAC171ACFE229006A48C2 /* 两项选项卡右1.png in Resources */,
+				9DFCAC151ACFE229006A48C2 /* 下载管理进度背景点九.png in Resources */,
+				9DFCAC1A1ACFE229006A48C2 /* 两项选项卡右2@2x.png in Resources */,
+				9DFCABFE1ACFE229006A48C2 /* 下载完成-删除@2x.png in Resources */,
+				9DFCAC1D1ACFE229006A48C2 /* 两项选项卡左2.png in Resources */,
+				9DFCABFD1ACFE229006A48C2 /* 下载完成-删除.png in Resources */,
+				9DFCAC031ACFE229006A48C2 /* 下载弹出进度条.png in Resources */,
+				9DFCAC011ACFE229006A48C2 /* 下载弹出背景.png in Resources */,
+				9DFCAC211ACFE229006A48C2 /* 显示信息数目背景@2x.png in Resources */,
+				9DFCAC0D1ACFE229006A48C2 /* 下载管理下载图标.png in Resources */,
+				9DFCAC091ACFE229006A48C2 /* 下载管理-开始按钮.png in Resources */,
+				9DFCAC061ACFE229006A48C2 /* 下载弹出进度条进度背景点九@2x.png in Resources */,
 				C6A0231518505304008EB2F7 /* Main.storyboard in Resources */,
-				C6A02304185052A9008EB2F7 /* 下载管理取消按钮@2x.png in Resources */,
-				C6A022FA185052A9008EB2F7 /* 下载管理-上传图标@2x.png in Resources */,
-				C6A0230D185052A9008EB2F7 /* 两项选项卡左1.png in Resources */,
-				C6A02303185052A9008EB2F7 /* 下载管理取消按钮.png in Resources */,
-				C6A022F8185052A9008EB2F7 /* 下载弹出进度条进度背景点九@2x.png in Resources */,
-				C6A02302185052A9008EB2F7 /* 下载管理单条背景@2x.png in Resources */,
-				C6A022F0185052A9008EB2F7 /* 下载完成-删除@2x.png in Resources */,
-				C6A0230F185052A9008EB2F7 /* 两项选项卡左2.png in Resources */,
-				C6A02305185052A9008EB2F7 /* 下载管理进度条背景.png in Resources */,
-				C6A022FF185052A9008EB2F7 /* 下载管理下载图标.png in Resources */,
-				C6A022FC185052A9008EB2F7 /* 下载管理-开始按钮@2x.png in Resources */,
-				C6A022F5185052A9008EB2F7 /* 下载弹出进度条.png in Resources */,
-				C6A02307185052A9008EB2F7 /* 下载管理进度背景点九.png in Resources */,
-				C6A02301185052A9008EB2F7 /* 下载管理单条背景.png in Resources */,
-				C6A02311185052A9008EB2F7 /* 图片-分类大背景.png in Resources */,
-				C6A0230C185052A9008EB2F7 /* 两项选项卡右2@2x.png in Resources */,
-				C6A0230E185052A9008EB2F7 /* 两项选项卡左1@2x.png in Resources */,
-				C6A022FE185052A9008EB2F7 /* 下载管理-暂停按钮@2x.png in Resources */,
-				C6A022F1185052A9008EB2F7 /* 下载弹出按钮.png in Resources */,
-				C6A02308185052A9008EB2F7 /* 下载管理进度背景点九@2x.png in Resources */,
-				C6A022FD185052A9008EB2F7 /* 下载管理-暂停按钮.png in Resources */,
+				9DFCAC0E1ACFE229006A48C2 /* 下载管理下载图标@2x.png in Resources */,
+				9DFCAC0B1ACFE229006A48C2 /* 下载管理-暂停按钮.png in Resources */,
+				9DFCAC161ACFE229006A48C2 /* 下载管理进度背景点九@2x.png in Resources */,
 				C66C7339184EBD6C0059E952 /* Images.xcassets in Resources */,
-				C6A022F4185052A9008EB2F7 /* 下载弹出背景@2x.png in Resources */,
-				C6A02309185052A9008EB2F7 /* 两项选项卡右1.png in Resources */,
-				C6A022F3185052A9008EB2F7 /* 下载弹出背景.png in Resources */,
-				C6A022EB185052A9008EB2F7 /* DownloadViewController.xib in Resources */,
-				C6A022F7185052A9008EB2F7 /* 下载弹出进度条进度背景点九.png in Resources */,
-				C6A02310185052A9008EB2F7 /* 两项选项卡左2@2x.png in Resources */,
-				C6A0230A185052A9008EB2F7 /* 两项选项卡右1@2x.png in Resources */,
+				9DFCAC051ACFE229006A48C2 /* 下载弹出进度条进度背景点九.png in Resources */,
+				9DFCAC1B1ACFE229006A48C2 /* 两项选项卡左1.png in Resources */,
+				9DFCAC181ACFE229006A48C2 /* 两项选项卡右1@2x.png in Resources */,
+				9DFCAC1C1ACFE229006A48C2 /* 两项选项卡左1@2x.png in Resources */,
+				9DFCAC101ACFE229006A48C2 /* 下载管理单条背景@2x.png in Resources */,
+				9DFCAC141ACFE229006A48C2 /* 下载管理进度条背景@2x.png in Resources */,
+				9DFCAC0F1ACFE229006A48C2 /* 下载管理单条背景.png in Resources */,
+				9DFCAC121ACFE229006A48C2 /* 下载管理取消按钮@2x.png in Resources */,
+				9DFCAC201ACFE229006A48C2 /* 显示信息数目背景.png in Resources */,
+				9DFCAC1F1ACFE229006A48C2 /* 图片-分类大背景.png in Resources */,
+				9DFCAC081ACFE229006A48C2 /* 下载管理-上传图标@2x.png in Resources */,
+				9DFCAC001ACFE229006A48C2 /* 下载弹出按钮@2x.png in Resources */,
+				9DFCAC021ACFE229006A48C2 /* 下载弹出背景@2x.png in Resources */,
+				9DFCAC111ACFE229006A48C2 /* 下载管理取消按钮.png in Resources */,
+				9DFCAC041ACFE229006A48C2 /* 下载弹出进度条@2x.png in Resources */,
+				9DFCAC0A1ACFE229006A48C2 /* 下载管理-开始按钮@2x.png in Resources */,
+				9DFCABFF1ACFE229006A48C2 /* 下载弹出按钮.png in Resources */,
+				9DFCABFB1ACFE229006A48C2 /* DownloadViewController.xib in Resources */,
+				9DFCAC191ACFE229006A48C2 /* 两项选项卡右2.png in Resources */,
+				9DFCAC071ACFE229006A48C2 /* 下载管理-上传图标.png in Resources */,
+				9DFCAC131ACFE229006A48C2 /* 下载管理进度条背景.png in Resources */,
+				9DFCAC1E1ACFE229006A48C2 /* 两项选项卡左2@2x.png in Resources */,
+				9DFCAC0C1ACFE229006A48C2 /* 下载管理-暂停按钮@2x.png in Resources */,
 				C66C732B184EBD6C0059E952 /* InfoPlist.strings in Resources */,
-				C6A02300185052A9008EB2F7 /* 下载管理下载图标@2x.png in Resources */,
-				C6A022F9185052A9008EB2F7 /* 下载管理-上传图标.png in Resources */,
-				C6A022EF185052A9008EB2F7 /* 下载完成-删除.png in Resources */,
-				C6A022F2185052A9008EB2F7 /* 下载弹出按钮@2x.png in Resources */,
-				C6A022FB185052A9008EB2F7 /* 下载管理-开始按钮.png in Resources */,
-				C6A02306185052A9008EB2F7 /* 下载管理进度条背景@2x.png in Resources */,
-				C6A022F6185052A9008EB2F7 /* 下载弹出进度条@2x.png in Resources */,
-				C6A02312185052A9008EB2F7 /* 显示信息数目背景.png in Resources */,
-				C6A0230B185052A9008EB2F7 /* 两项选项卡右2.png in Resources */,
-				C6A02313185052A9008EB2F7 /* 显示信息数目背景@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,27 +464,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DFCAC231ACFE229006A48C2 /* ViewController.m in Sources */,
 				C6A022DB185052A9008EB2F7 /* ASIDataCompressor.m in Sources */,
 				C6A022E2185052A9008EB2F7 /* ASINSStringAdditions.m in Sources */,
 				C6A022E3185052A9008EB2F7 /* NSHTTPCookieAdditions.m in Sources */,
 				C6A022ED185052A9008EB2F7 /* FilesDownManage.m in Sources */,
-				C66C7337184EBD6C0059E952 /* ViewController.m in Sources */,
 				C6A022E4185052A9008EB2F7 /* Reachability.m in Sources */,
-				C6A022E9185052A9008EB2F7 /* DownloadCell.m in Sources */,
 				C66C7331184EBD6C0059E952 /* AppDelegate.m in Sources */,
 				C6A022DA185052A9008EB2F7 /* ASIAuthenticationDialog.m in Sources */,
 				C6A022DE185052A9008EB2F7 /* ASIFormDataRequest.m in Sources */,
-				C6A022EA185052A9008EB2F7 /* DownloadViewController.m in Sources */,
+				9DFCABFA1ACFE229006A48C2 /* DownloadViewController.m in Sources */,
 				C6A022EC185052A9008EB2F7 /* FileModel.m in Sources */,
 				C6A022DC185052A9008EB2F7 /* ASIDataDecompressor.m in Sources */,
 				C66C732D184EBD6C0059E952 /* main.m in Sources */,
 				C6A022E0185052A9008EB2F7 /* ASIInputStream.m in Sources */,
+				9DFCABFC1ACFE229006A48C2 /* FinishedCell.m in Sources */,
 				C6A022E8185052A9008EB2F7 /* CommonHelper.m in Sources */,
-				C6A022EE185052A9008EB2F7 /* FinishedCell.m in Sources */,
 				C6A022E1185052A9008EB2F7 /* ASINetworkQueue.m in Sources */,
+				9DFCABF91ACFE229006A48C2 /* DownloadCell.m in Sources */,
 				C6A022DF185052A9008EB2F7 /* ASIHTTPRequest.m in Sources */,
 				C6A022DD185052A9008EB2F7 /* ASIDownloadCache.m in Sources */,
-				C6EB7274184F473B00072B53 /* SettingViewController.m in Sources */,
+				9DFCAC221ACFE229006A48C2 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,7 +587,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DownLoadManager/DownLoadManager-Prefix.pch";
 				INFOPLIST_FILE = "DownLoadManager/DownLoadManager-Info.plist";
@@ -602,7 +602,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DownLoadManager/DownLoadManager-Prefix.pch";
 				INFOPLIST_FILE = "DownLoadManager/DownLoadManager-Info.plist";

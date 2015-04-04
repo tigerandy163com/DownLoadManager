@@ -60,9 +60,6 @@
 }
 
 - (void)dealloc {
-    [_theTable release];
-
-    [super dealloc];
 }
 - (void)ClickDownBut:(UIButton *)sender {
     

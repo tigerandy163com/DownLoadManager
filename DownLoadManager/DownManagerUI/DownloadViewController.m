@@ -22,24 +22,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [downingList release];
-    [finishedList release];
-    [downloadingTable release];
-    [finishedTable release];
-    [_editbtn release];
-    [clearallbtn release];
-    [backbtn release];
-    [_diskInfoLab release];
-    [_bandwithLab release];
-    [_noLoadsInfo release];
-
-    [_downloadingViewBtn release];
-    [_finieshedViewBtn release];
-    [super dealloc];
-}
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -133,7 +115,6 @@
         return;
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"删除已完成列表的所有内容，将不会删除对应的文件，确认删除吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
     [alert show];
-    [alert release];
     return;
 }
 -(void)clearAction{
@@ -203,9 +184,7 @@
     [self setFinieshedViewBtn:nil];
     
     [self setEditbtn:nil];
-    [clearallbtn release];
     clearallbtn = nil;
-    [backbtn release];
     backbtn = nil;
     [self setDiskInfoLab:nil];
     [self setBandwithLab:nil];
@@ -231,8 +210,7 @@
     showfinishbtn.titleLabel.font=[UIFont systemFontOfSize:14];
     [showfinishbtn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem* showFinishedBarButtonItem= [[[UIBarButtonItem alloc] initWithCustomView:showfinishbtn]autorelease];
-    [showfinishbtn release];
+    UIBarButtonItem* showFinishedBarButtonItem= [[UIBarButtonItem alloc] initWithCustomView:showfinishbtn];
     return showFinishedBarButtonItem;
 }
 #pragma mark ---UITableView Delegate---

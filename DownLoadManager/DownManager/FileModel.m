@@ -24,18 +24,4 @@
     
     return self;
 }
--(void)dealloc{
-    [fileID release];
-    [fileName release];
-    [fileSize release];
-    [fileReceivedData release];
-    [fileURL release];
-    [time release];
-    [targetPath release];
-    [tempPath release];
-    [fileType release];
-    [MD5 release];
-    [fileimage release];
-    [super dealloc];
-}
 @end

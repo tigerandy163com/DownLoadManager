@@ -42,11 +42,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    [_countStepper release];
-    [_countLab release];
-    [super dealloc];
-}
 - (IBAction)valueChange:(UIStepper *)sender {
     [_countLab setText:[NSString stringWithFormat:@"%.0f",sender.value]];
     maxcount = sender.value;

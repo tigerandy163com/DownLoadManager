@@ -25,23 +25,7 @@
     }
     return self;
 }
-- (void)dealloc
-{
-    [request release];
-    [operateButton release];
-    [fileName release];
-    [fileCurrentSize release];
-    [fileSize release];
-    [progress1 release];
-    [fileInfo release];
-    [timelable release];
-    [averagebandLab release];
-    [sizeinfoLab release];
-    [_fileImage release];
-    [_fileTypeLab release];
-    [_typeImage release];
-    [super dealloc];
-}
+ 
 
 - (IBAction)deleteRquest:(id)sender {
     FilesDownManage *filedownmanage = [FilesDownManage sharedFilesDownManage];

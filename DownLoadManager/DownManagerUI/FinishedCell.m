@@ -32,15 +32,4 @@
 - (IBAction)openFile:(UIButton *)sender {
 
 }
-- (void)dealloc
-{
-    
-    [fileInfo release];
-    [fileSize release];
-    [fileTypeLab release];
-    [fileImage release];
-    [timelable release];
-    [fileName release];
-    [super dealloc];
-}
 @end

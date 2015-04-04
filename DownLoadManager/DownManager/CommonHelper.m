@@ -101,7 +101,7 @@
     return pathstr;
 }
 +(NSArray *)getTargetFloderPathWithBasepath:(NSString *)name subpatharr:(NSArray *)arr{
-    NSMutableArray *patharr = [[[NSMutableArray alloc]init]autorelease];
+    NSMutableArray *patharr = [[NSMutableArray alloc]init];
     NSFileManager *fileManager=[NSFileManager defaultManager];
     NSError *error;
     NSString *pathstr = [[self class]getDocumentPath];
@@ -126,7 +126,7 @@
 
 +(NSMutableArray *)getAllFinishFilesListWithPatharr:(NSArray *)patharr {
 
-    NSMutableArray *finishlist = [[[NSMutableArray alloc]init]autorelease];
+    NSMutableArray *finishlist = [[NSMutableArray alloc]init];
     for (NSString *pathstr in patharr) {
         NSFileManager *fileManager=[NSFileManager defaultManager];
         if( ![fileManager fileExistsAtPath:pathstr]){
@@ -151,7 +151,6 @@
             NSInteger length=[[fileManager contentsAtPath:finishedFile.targetPath] length];
             finishedFile.fileSize=[CommonHelper getFileSizeString:[NSString stringWithFormat:@"%d",length]];
             [finishlist addObject:finishedFile];
-            [finishedFile release];
         }
     }
     return finishlist;
@@ -196,7 +195,6 @@
     //    [df setLocale:locale];
     
     NSDate *date=[df dateFromString:birthday];
-    [df release];
     //    [ locale release];
     NSLog(@"%@",date);
     return date;
@@ -206,7 +204,6 @@
     
     [df setDateFormat:@"MM-dd HH:mm:ss"];//[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *datestr = [df stringFromDate:date];
-    [df release];
     return datestr;
 }
 +(uint64_t)getFreeDiskspace {
