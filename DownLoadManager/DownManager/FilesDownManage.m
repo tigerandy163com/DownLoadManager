@@ -135,8 +135,7 @@ NSInteger  maxcount;
     _fileInfo.fileimage = image;
     _fileInfo.downloadState = Downloading;
     _fileInfo.error = NO;
-    _fileInfo.isFirstReceived = YES;
-    NSString *tempfilePath= [TEMPPATH stringByAppendingPathComponent: _fileInfo.fileName]  ;
+     NSString *tempfilePath= [TEMPPATH stringByAppendingPathComponent: _fileInfo.fileName]  ;
     _fileInfo.tempPath = tempfilePath;
     if([CommonHelper isExistFile: _fileInfo.targetPath])//已经下载过一次
     {
@@ -205,11 +204,10 @@ NSInteger  maxcount;
     //NSLog(@"targetPath %@",fileInfo.targetPath);
     //按照获取的文件名获取临时文件的大小，即已下载的大小
     
-    fileInfo.isFirstReceived=YES;
-    NSFileManager *fileManager=[NSFileManager defaultManager];
+     NSFileManager *fileManager=[NSFileManager defaultManager];
     NSData *fileData=[fileManager contentsAtPath:fileInfo.tempPath];
     NSInteger receivedDataLength=[fileData length];
-    fileInfo.fileReceivedSize=[NSString stringWithFormat:@"%d",receivedDataLength];
+    fileInfo.fileReceivedSize=[NSString stringWithFormat:@"%zd", receivedDataLength];
     
     NSLog(@"start down::已经下载：%@",fileInfo.fileReceivedSize);
     MidHttpRequest* midRequest = [[MidHttpRequest alloc]initWithURL: [NSURL URLWithString:fileInfo.fileURL]];
@@ -492,12 +490,11 @@ NSInteger  maxcount;
     file.time = [dic objectForKey:@"time"];
     file.fileimage = [UIImage imageWithData:[dic objectForKey:@"fileimage"]];
     file.downloadState =StopDownload;
-    // file.isFirstReceived = YES;
-    file.error = NO;
+     file.error = NO;
     
     NSData *fileData=[[NSFileManager defaultManager ] contentsAtPath:file.tempPath];
     NSInteger receivedDataLength=[fileData length];
-    file.fileReceivedSize=[NSString stringWithFormat:@"%d",receivedDataLength];
+    file.fileReceivedSize=[NSString stringWithFormat:@"%zd",receivedDataLength];
     return file;
 }
 -(NSArray *)sortbyTime:(NSArray *)array{
@@ -606,6 +603,7 @@ NSInteger  maxcount;
 -(void)request:(MidHttpRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
 {
     NSLog(@"收到回复了！");
+	_fileInfo.isFirstReceived = YES;
 
     FileModel *fileInfo=[request.userInfo objectForKey:@"File"];
   
