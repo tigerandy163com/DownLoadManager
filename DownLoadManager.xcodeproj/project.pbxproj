@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281B6A8C1BAC13B4002B9D4A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281B6A8B1BAC13B4002B9D4A /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		9DFCABF91ACFE229006A48C2 /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCABC91ACFE229006A48C2 /* DownloadCell.m */; };
 		9DFCABFA1ACFE229006A48C2 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCABCB1ACFE229006A48C2 /* DownloadViewController.m */; };
 		9DFCABFB1ACFE229006A48C2 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFCABCC1ACFE229006A48C2 /* DownloadViewController.xib */; };
@@ -78,6 +79,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		281B6A8B1BAC13B4002B9D4A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9DFCABC81ACFE229006A48C2 /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
 		9DFCABC91ACFE229006A48C2 /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
 		9DFCABCA1ACFE229006A48C2 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				C66C7329184EBD6C0059E952 /* InfoPlist.strings */,
 				C66C732C184EBD6C0059E952 /* main.m */,
 				C66C732E184EBD6C0059E952 /* DownLoadManager-Prefix.pch */,
+				281B6A8B1BAC13B4002B9D4A /* Launch Screen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				9DFCABFE1ACFE229006A48C2 /* 下载完成-删除@2x.png in Resources */,
 				9DFCAC1D1ACFE229006A48C2 /* 两项选项卡左2.png in Resources */,
 				9DFCABFD1ACFE229006A48C2 /* 下载完成-删除.png in Resources */,
+				281B6A8C1BAC13B4002B9D4A /* Launch Screen.storyboard in Resources */,
 				9DFCAC031ACFE229006A48C2 /* 下载弹出进度条.png in Resources */,
 				9DFCAC011ACFE229006A48C2 /* 下载弹出背景.png in Resources */,
 				9DFCAC211ACFE229006A48C2 /* 显示信息数目背景@2x.png in Resources */,
