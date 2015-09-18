@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DownLoadManager/DownManager/FilesDownManage.m"
-            timestampString = "464263163.10553"
+            timestampString = "464267596.321782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
             landmarkName = "-sortbyTime:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DownLoadManager/DownManager/FilesDownManage.m"
-            timestampString = "464266320.32296"
+            timestampString = "464267596.321782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-beginRequest:isBeginDown:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DownLoadManager/DownManager/FilesDownManage.m"
-            timestampString = "464263163.10553"
+            timestampString = "464267596.321782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
             landmarkName = "-deleteRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DownLoadManager/DownManager/FilesDownManage.m"
-            timestampString = "464267319.492713"
+            timestampString = "464267596.321782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "642"
-            endingLineNumber = "642"
+            startingLineNumber = "639"
+            endingLineNumber = "639"
             landmarkName = "-request:didReceiveBytes:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DownLoadManager/DownManager/FilesDownManage.m"
-            timestampString = "464266475.865204"
+            timestampString = "464267596.321782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
             landmarkName = "-getTempfile:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,12 +122,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DownLoadManager/DownManager/FilesDownManage.m"
-            timestampString = "464267319.492713"
+            timestampString = "464267701.212531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "611"
-            endingLineNumber = "611"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
             landmarkName = "-request:didReceiveResponseHeaders:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DownLoadManager/DownManager/FilesDownManage.m"
+            timestampString = "464267651.019156"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "630"
+            endingLineNumber = "630"
+            landmarkName = "-request:didReceiveBytes:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

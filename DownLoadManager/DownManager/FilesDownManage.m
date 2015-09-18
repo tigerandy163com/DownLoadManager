@@ -603,10 +603,10 @@ NSInteger  maxcount;
 -(void)request:(MidHttpRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
 {
     NSLog(@"收到回复了！");
-	_fileInfo.isFirstReceived = YES;
-
+ 
     FileModel *fileInfo=[request.userInfo objectForKey:@"File"];
-  
+	fileInfo.isFirstReceived = YES;
+
     NSString *len = [responseHeaders objectForKey:@"Content-Length"];//
         // NSLog(@"%@,%@,%@",fileInfo.fileSize,fileInfo.fileReceivedSize,len);
     //这个信息头，首次收到的为总大小，那么后来续传时收到的大小为肯定小于或等于首次的值，则忽略
